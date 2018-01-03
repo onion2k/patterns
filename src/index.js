@@ -50,16 +50,17 @@ var triangle = function() {
 
         var v = variance / 2 - Math.random() * variance;
 
-        // this.r.triangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y)
-        //     .fill(r + v, g + v, b + v)
-        //     .stroke(false);
+        this.r
+          .triangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y)
+          .fill(r + v, g + v, b + v)
+          .stroke(false);
       }
 
       setTimeout(function() {
         self._chunk(chunk + 40, total);
       }, 0);
     } else {
-      // self.r.draw();
+      self.r.draw();
       document.body.removeChild(progress);
     }
   };
