@@ -7,62 +7,68 @@ var triangle = function() {
     var self = this;
     var variance = this.variance;
 
-    var progress = document.getElementById("progress");
-    progress.value = Math.floor(chunk / total * 100);
+    for (var i = 0; i < total; i += 4) {
+      console.log(i, "of", total);
+      var r = this.data[i + chunk];
+      var g = this.data[i + chunk + 1];
+      var b = this.data[i + chunk + 2];
+      var a = this.data[i + chunk + 3];
 
-    if (chunk + 40 < total) {
-      for (var i = 0; i < 40; i += 4) {
-        var r = this.data[i + chunk];
-        var g = this.data[i + chunk + 1];
-        var b = this.data[i + chunk + 2];
-        var a = this.data[i + chunk + 3];
+      var pos = (i + chunk) / 4;
 
-        var pos = (i + chunk) / 4;
+      var x = Math.floor(pos % this.imgSize);
+      var y = Math.floor(pos / this.imgSize);
 
-        var x = Math.floor(pos % this.imgSize);
-        var y = Math.floor(pos / this.imgSize);
+      var c = {
+        x:
+          x * (this.cellSize * this.padding) +
+          (y % 2) * this.cellSize * this.padding,
+        y:
+          y * (this.cellSize * (1 + this.padding) - this.cellSize / 3) +
+          (x % 2) * this.cellSize / 2,
+        a: x % 2,
+        s: this.cellSize
+      };
 
-        var c = {
-          x:
-            x * (this.cellSize * this.padding) +
-            (y % 2) * this.cellSize * this.padding,
-          y:
-            y * (this.cellSize * (1 + this.padding) - this.cellSize / 3) +
-            (x % 2) * this.cellSize / 2,
-          a: (x % 2) * 180,
-          s: this.cellSize
-        };
+      // c.a is either 0 or 180 - move to a look up
 
+      if (c.a === 0) {
         var p1 = {
-          x: c.x + Math.sin(Math.PI * ((c.a + 0) / 180)) * c.s,
-          y: c.y + Math.cos(Math.PI * ((c.a + 0) / 180)) * c.s
+          x: c.x + this.p[0].x,
+          y: c.y + this.p[0].y
         };
         var p2 = {
-          x: c.x + Math.sin(Math.PI * ((c.a + 120) / 180)) * c.s,
-          y: c.y + Math.cos(Math.PI * ((c.a + 120) / 180)) * c.s
+          x: c.x + this.p[1].x,
+          y: c.y + this.p[1].y
         };
         var p3 = {
-          x: c.x + Math.sin(Math.PI * ((c.a + 240) / 180)) * c.s,
-          y: c.y + Math.cos(Math.PI * ((c.a + 240) / 180)) * c.s
+          x: c.x + this.p[2].x,
+          y: c.y + this.p[2].y
         };
-
-        var brightness = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
-
-        var v = variance / 2 - Math.random() * variance;
-
-        this.r
-          .triangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y)
-          .fill(r + v, g + v, b + v)
-          .stroke(false);
+      } else {
+        var p1 = {
+          x: c.x + this.p[3].x,
+          y: c.y + this.p[3].y
+        };
+        var p2 = {
+          x: c.x + this.p[4].x,
+          y: c.y + this.p[4].y
+        };
+        var p3 = {
+          x: c.x + this.p[5].x,
+          y: c.y + this.p[5].y
+        };
       }
 
-      setTimeout(function() {
-        self._chunk(chunk + 40, total);
-      }, 0);
-    } else {
-      self.r.draw();
-      document.body.removeChild(progress);
+      var v = variance / 2 - Math.random() * variance;
+
+      this.r
+        .triangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y)
+        .fill(r + v, g + v, b + v)
+        .stroke(false);
     }
+
+    self.r.draw();
   };
 
   var init = function(imgSize, cellSize, padding, aspect, variance, data) {
@@ -72,6 +78,33 @@ var triangle = function() {
     this.aspect = aspect;
     this.variance = variance;
     this.data = data;
+
+    this.p = [
+      {
+        x: Math.sin(Math.PI * ((0 * 180 + 0) / 180)) * this.cellSize,
+        y: Math.cos(Math.PI * ((0 * 180 + 0) / 180)) * this.cellSize
+      },
+      {
+        x: Math.sin(Math.PI * ((0 * 180 + 120) / 180)) * this.cellSize,
+        y: Math.cos(Math.PI * ((0 * 180 + 120) / 180)) * this.cellSize
+      },
+      {
+        x: Math.sin(Math.PI * ((0 * 180 + 240) / 180)) * this.cellSize,
+        y: Math.cos(Math.PI * ((0 * 180 + 240) / 180)) * this.cellSize
+      },
+      {
+        x: Math.sin(Math.PI * ((1 * 180 + 0) / 180)) * this.cellSize,
+        y: Math.cos(Math.PI * ((1 * 180 + 0) / 180)) * this.cellSize
+      },
+      {
+        x: Math.sin(Math.PI * ((1 * 180 + 120) / 180)) * this.cellSize,
+        y: Math.cos(Math.PI * ((1 * 180 + 120) / 180)) * this.cellSize
+      },
+      {
+        x: Math.sin(Math.PI * ((1 * 180 + 240) / 180)) * this.cellSize,
+        y: Math.cos(Math.PI * ((1 * 180 + 240) / 180)) * this.cellSize
+      }
+    ];
 
     this.r = new Rune({
       container: "body",
@@ -88,9 +121,6 @@ var triangle = function() {
 
   var render = function(data) {
     var total = this.data.length;
-
-    console.log("Total: ", total / 4);
-
     this._chunk(0, total);
   };
 
@@ -275,20 +305,13 @@ holder.ondrop = function(e) {
 
   document.body.innerHTML = "";
 
-  var progress = document.createElement("progress");
-  progress.id = "progress";
-  progress.max = 100;
-  progress.value = 1;
-
-  document.body.appendChild(progress);
-
   var file = e.dataTransfer.files[0];
   var reader = new FileReader();
 
   reader.onload = function(event) {
-    var cellSize = 9;
+    var cellSize = 4;
     var padding = 1.0;
-    var imgSize = 96;
+    var imgSize = 320;
     var distortion = 1.5;
     var variance = 30;
 
