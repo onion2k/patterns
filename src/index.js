@@ -1,4 +1,5 @@
 import Rune from "rune.js";
+import "./patterns.css";
 
 var triangle = function() {
   var r, imgSize, cellSize, padding, aspect;
