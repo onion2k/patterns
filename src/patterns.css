@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister');
+
 body {
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 1.1em;
   width: 100vw;
   height: 100vh;
   background-color: #fff;
@@ -9,11 +13,25 @@ body {
   grid-template-rows: 1fr;
   align-items: center;
   justify-items: center;
+}
+
+.starry {
   background: url(starry.png);
   background: url(starry.svg), linear-gradient(transparent, transparent);
+  background-repeat: no-repeat;
+  background-size: auto 100vh;
+  background-position: center center;
+}
+
+.black {
+  background-color: black;
 }
 
 form {
+  background-color: rgb(255, 255, 255);
+  padding: 30px;
+  border: 1px solid #888;
+  border-radius: 15px;
 }
 
 div {
@@ -26,7 +44,6 @@ div {
 label {
   flex: 1;
   padding: 10px;
-  text-align: right;
 }
 
 input,

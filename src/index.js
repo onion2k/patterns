@@ -1,157 +1,8 @@
 import Rune from "rune.js";
 import "./patterns.css";
 
-/**
- * 
- * 
- * @returns 
- */
-var triangle = function() {
-  var r, imgSize, cellSize, padding, aspect;
+import triangle from "./triangle";
 
-  /**
-   * @param  {} chunk
-   * @param  {} total
-   */
-
-  var _chunk = function(chunk, total) {
-    var self = this;
-    var variance = this.variance;
-
-    for (var i = 0; i < total; i += 4) {
-      var r = this.data[i + chunk];
-      var g = this.data[i + chunk + 1];
-      var b = this.data[i + chunk + 2];
-      var a = this.data[i + chunk + 3];
-
-      var pos = (i + chunk) / 4;
-
-      var x = Math.floor(pos % this.imgSize);
-      var y = Math.floor(pos / this.imgSize);
-
-      var c = {
-        x:
-          x * (this.cellSize * this.padding) +
-          (y % 2) * this.cellSize * this.padding,
-        y:
-          y * (this.cellSize * (1 + this.padding) - this.cellSize / 3) +
-          (x % 2) * this.cellSize / 2,
-        a: x % 2,
-        s: this.cellSize
-      };
-
-      if (c.a === 0) {
-        var p1 = {
-          x: c.x + this.p[0].x,
-          y: c.y + this.p[0].y
-        };
-        var p2 = {
-          x: c.x + this.p[1].x,
-          y: c.y + this.p[1].y
-        };
-        var p3 = {
-          x: c.x + this.p[2].x,
-          y: c.y + this.p[2].y
-        };
-      } else {
-        var p1 = {
-          x: c.x + this.p[3].x,
-          y: c.y + this.p[3].y
-        };
-        var p2 = {
-          x: c.x + this.p[4].x,
-          y: c.y + this.p[4].y
-        };
-        var p3 = {
-          x: c.x + this.p[5].x,
-          y: c.y + this.p[5].y
-        };
-      }
-
-      var v = variance / 2 - Math.random() * variance;
-
-      this.r
-        .triangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y)
-        .fill(r + v, g + v, b + v)
-        .stroke(false);
-    }
-
-    self.r.draw();
-  };
-
-/**
- * 
- * 
- * @param {any} imgSize 
- * @param {any} cellSize 
- * @param {any} padding 
- * @param {any} aspect 
- * @param {any} variance 
- * @param {any} data 
- * @returns 
- */
-var init = function(imgSize, cellSize, padding, aspect, variance, data) {
-    this.imgSize = imgSize;
-    this.cellSize = cellSize;
-    this.padding = padding;
-    this.aspect = aspect;
-    this.variance = variance;
-    this.data = data;
-
-    this.p = [
-      {
-        x: Math.sin(Math.PI * ((0 * 180 + 0) / 180)) * this.cellSize,
-        y: Math.cos(Math.PI * ((0 * 180 + 0) / 180)) * this.cellSize
-      },
-      {
-        x: Math.sin(Math.PI * ((0 * 180 + 120) / 180)) * this.cellSize,
-        y: Math.cos(Math.PI * ((0 * 180 + 120) / 180)) * this.cellSize
-      },
-      {
-        x: Math.sin(Math.PI * ((0 * 180 + 240) / 180)) * this.cellSize,
-        y: Math.cos(Math.PI * ((0 * 180 + 240) / 180)) * this.cellSize
-      },
-      {
-        x: Math.sin(Math.PI * ((1 * 180 + 0) / 180)) * this.cellSize,
-        y: Math.cos(Math.PI * ((1 * 180 + 0) / 180)) * this.cellSize
-      },
-      {
-        x: Math.sin(Math.PI * ((1 * 180 + 120) / 180)) * this.cellSize,
-        y: Math.cos(Math.PI * ((1 * 180 + 120) / 180)) * this.cellSize
-      },
-      {
-        x: Math.sin(Math.PI * ((1 * 180 + 240) / 180)) * this.cellSize,
-        y: Math.cos(Math.PI * ((1 * 180 + 240) / 180)) * this.cellSize
-      }
-    ];
-
-    this.r = new Rune({
-      container: "body",
-      width: this.imgSize * this.cellSize * this.padding,
-      height: Math.floor(
-        this.aspect * this.imgSize * this.cellSize * this.padding
-      )
-    });
-
-    return r;
-  };
-
-  var render = function(data) {
-    var total = this.data.length;
-    this._chunk(0, total);
-  };
-
-  return {
-    _chunk: _chunk,
-    init: init,
-    render: render
-  };
-};
-/**
- * 
- * 
- * @returns 
- */
 var square = function() {
   var r, imgSize, cellSize, padding, aspect;
 
@@ -206,11 +57,7 @@ var square = function() {
     render: render
   };
 };
-/**
- * 
- * 
- * @returns 
- */
+
 var hex = function() {
   var r, imgSize, cellSize, padding, aspect, offsets;
 
@@ -236,10 +83,11 @@ var hex = function() {
         y: Math.cos(Math.PI * (x * 60 / 180)) * this.cellSize
       });
     }
+  };
   /**
-   * 
-   * 
-   * @param {any} data 
+   *
+   *
+   * @param {any} data
    */
   var render = function(data) {
     var total = data.length;
@@ -301,14 +149,7 @@ var circle = {
   init: function() {},
   render: function() {}
 };
-/**
- * 
- * 
- * @param {any} imgSize 
- * @param {any} img 
- * @param {any} distortion 
- * @returns 
- */
+
 var getScaledImageData = function(imgSize, img, distortion) {
   var c = document.createElement("canvas");
   var aspect = img.height / img.width;
@@ -325,18 +166,12 @@ var getScaledImageData = function(imgSize, img, distortion) {
 var holder = document.body;
 
 holder.ondragover = function() {
-  this.className = "hover";
   return false;
 };
 holder.ondragend = function() {
-  this.className = "";
   return false;
-/**
- * 
- * 
- * @param {any} e 
- * @returns 
- */
+};
+
 holder.ondrop = function(e) {
   e.preventDefault();
 
@@ -357,6 +192,9 @@ holder.ondrop = function(e) {
       var data = getScaledImageData(imgSize, img, distortion);
 
       document.body.innerHTML = "";
+      document.body.classList.remove("starry");
+      document.body.classList.add("black");
+
       var mosaic = new triangle();
       mosaic.init(
         imgSize * distortion,
@@ -371,5 +209,6 @@ holder.ondrop = function(e) {
   };
 
   reader.readAsDataURL(file);
+
   return false;
 };
