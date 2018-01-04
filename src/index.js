@@ -179,8 +179,6 @@ var square = function() {
     }
 
     this.r.draw();
-
-    document.body.removeChild(progress);
   };
 
   return {
@@ -263,8 +261,6 @@ var hex = function() {
     }
 
     this.r.draw();
-
-    document.body.removeChild(progress);
   };
 
   return {
@@ -304,17 +300,15 @@ holder.ondragend = function() {
 holder.ondrop = function(e) {
   e.preventDefault();
 
-  document.body.innerHTML = "";
-
   var file = e.dataTransfer.files[0];
   var reader = new FileReader();
 
   reader.onload = function(event) {
-    var cellSize = 4;
     var padding = 1.0;
-    var imgSize = 320;
     var distortion = 1.5;
-    var variance = 30;
+    var cellSize = document.getElementById("cellsize").value;
+    var imgSize = document.getElementById("size").value || 48;
+    var variance = document.getElementById("variance").value;
 
     var img = document.createElement("img");
     img.src = event.target.result;
@@ -322,6 +316,7 @@ holder.ondrop = function(e) {
     img.addEventListener("load", () => {
       var data = getScaledImageData(imgSize, img, distortion);
 
+      document.body.innerHTML = "";
       var mosaic = new triangle();
       mosaic.init(
         imgSize * distortion,
