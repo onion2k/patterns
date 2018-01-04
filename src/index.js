@@ -9,7 +9,6 @@ var triangle = function() {
     var variance = this.variance;
 
     for (var i = 0; i < total; i += 4) {
-      console.log(i, "of", total);
       var r = this.data[i + chunk];
       var g = this.data[i + chunk + 1];
       var b = this.data[i + chunk + 2];
@@ -30,8 +29,6 @@ var triangle = function() {
         a: x % 2,
         s: this.cellSize
       };
-
-      // c.a is either 0 or 180 - move to a look up
 
       if (c.a === 0) {
         var p1 = {
@@ -109,11 +106,9 @@ var triangle = function() {
 
     this.r = new Rune({
       container: "body",
-      width: this.imgSize * this.cellSize * this.padding * 1.5,
+      width: this.imgSize * this.cellSize * this.padding,
       height: Math.floor(
-        this.imgSize *
-          this.aspect *
-          (this.cellSize * (1 + this.padding) - this.cellSize / 2)
+        this.aspect * this.imgSize * this.cellSize * this.padding
       )
     });
 
