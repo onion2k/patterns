@@ -1,8 +1,18 @@
 import Rune from "rune.js";
 import "./patterns.css";
 
+/**
+ * 
+ * 
+ * @returns 
+ */
 var triangle = function() {
   var r, imgSize, cellSize, padding, aspect;
+
+  /**
+   * @param  {} chunk
+   * @param  {} total
+   */
 
   var _chunk = function(chunk, total) {
     var self = this;
@@ -69,7 +79,18 @@ var triangle = function() {
     self.r.draw();
   };
 
-  var init = function(imgSize, cellSize, padding, aspect, variance, data) {
+/**
+ * 
+ * 
+ * @param {any} imgSize 
+ * @param {any} cellSize 
+ * @param {any} padding 
+ * @param {any} aspect 
+ * @param {any} variance 
+ * @param {any} data 
+ * @returns 
+ */
+var init = function(imgSize, cellSize, padding, aspect, variance, data) {
     this.imgSize = imgSize;
     this.cellSize = cellSize;
     this.padding = padding;
@@ -126,7 +147,11 @@ var triangle = function() {
     render: render
   };
 };
-
+/**
+ * 
+ * 
+ * @returns 
+ */
 var square = function() {
   var r, imgSize, cellSize, padding, aspect;
 
@@ -181,7 +206,11 @@ var square = function() {
     render: render
   };
 };
-
+/**
+ * 
+ * 
+ * @returns 
+ */
 var hex = function() {
   var r, imgSize, cellSize, padding, aspect, offsets;
 
@@ -207,7 +236,11 @@ var hex = function() {
         y: Math.cos(Math.PI * (x * 60 / 180)) * this.cellSize
       });
     }
-  };
+  /**
+   * 
+   * 
+   * @param {any} data 
+   */
   var render = function(data) {
     var total = data.length;
     var progress = document.getElementById("progress");
@@ -268,7 +301,14 @@ var circle = {
   init: function() {},
   render: function() {}
 };
-
+/**
+ * 
+ * 
+ * @param {any} imgSize 
+ * @param {any} img 
+ * @param {any} distortion 
+ * @returns 
+ */
 var getScaledImageData = function(imgSize, img, distortion) {
   var c = document.createElement("canvas");
   var aspect = img.height / img.width;
@@ -291,7 +331,12 @@ holder.ondragover = function() {
 holder.ondragend = function() {
   this.className = "";
   return false;
-};
+/**
+ * 
+ * 
+ * @param {any} e 
+ * @returns 
+ */
 holder.ondrop = function(e) {
   e.preventDefault();
 
