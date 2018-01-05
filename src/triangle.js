@@ -26,11 +26,9 @@ export default function() {
 
       var c = {
         x:
-          x * (this.cellSize + this.padding) -
-          (y % 2) * (this.cellSize + this.padding),
-        y:
-          y * (this.cellSize + this.padding) -
-          (x % 2) * (this.cellSize + this.padding),
+          x * (this.cellSize + this.padding) +
+          (y % 4 === 0 || y % 4 === 3) * (this.cellSize + this.padding),
+        y: y * (this.cellSize + this.padding) + (y % 2) * this.padding * 1.5,
         a: x % 2,
         s: this.cellSize
       };
