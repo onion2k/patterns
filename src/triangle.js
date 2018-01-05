@@ -20,11 +20,11 @@ export default function() {
 
       var c = {
         x:
-          x * (this.cellSize * this.padding) +
-          (y % 2) * this.cellSize * this.padding,
+          x * (this.cellSize + this.padding) -
+          (y % 2) * (this.cellSize + this.padding),
         y:
-          y * (this.cellSize * (1 + this.padding) - this.cellSize / 3) +
-          (x % 2) * this.cellSize / 2,
+          y * (this.cellSize + this.padding) +
+          (x % 2) * (this.cellSize + this.padding) / 2,
         a: x % 2,
         s: this.cellSize
       };
@@ -68,13 +68,14 @@ export default function() {
     self.r.draw();
   };
 
-  var init = function(imgSize, cellSize, padding, aspect, variance, data) {
+  var init = function(imgSize, cellSize, padding, aspect, variance, data, img) {
     this.imgSize = imgSize;
     this.cellSize = cellSize;
     this.padding = padding;
     this.aspect = aspect;
     this.variance = variance;
     this.data = data;
+    this.img = img;
 
     this.p = [
       {
@@ -105,9 +106,9 @@ export default function() {
 
     this.r = new Rune({
       container: "body",
-      width: this.imgSize * this.cellSize * this.padding,
+      width: this.imgSize * (this.cellSize + this.padding),
       height: Math.floor(
-        this.aspect * this.imgSize * this.cellSize * this.padding
+        this.aspect * this.imgSize * (this.cellSize + this.padding)
       )
     });
 
@@ -115,8 +116,8 @@ export default function() {
   };
 
   var render = function(data) {
-    var total = this.data.length;
-    this._chunk(0, total);
+    this.r.image(this.img, 0, 0, this.r.width, this.r.height);
+    this._chunk(0, this.data.length);
   };
 
   return {

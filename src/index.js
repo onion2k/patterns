@@ -15,9 +15,9 @@ var square = function() {
 
     this.r = new Rune({
       container: "body",
-      width: this.imgSize * this.cellSize * this.padding,
+      width: this.imgSize * (this.cellSize + this.padding),
       height: Math.floor(
-        this.imgSize * this.cellSize * this.padding * this.aspect
+        this.imgSize * (this.cellSize + this.padding) * this.aspect
       )
     });
 
@@ -38,8 +38,8 @@ var square = function() {
 
       var pos = i / 4;
 
-      var x = Math.floor(pos % this.imgSize) * (this.cellSize * this.padding);
-      var y = Math.floor(pos / this.imgSize) * (this.cellSize * this.padding);
+      var x = Math.floor(pos % this.imgSize) * (this.cellSize + this.padding);
+      var y = Math.floor(pos / this.imgSize) * (this.cellSize + this.padding);
 
       var v = variance / 2 - Math.random() * variance;
 
@@ -71,10 +71,11 @@ var hex = function() {
 
     this.r = new Rune({
       container: "body",
-      width: this.imgSize * this.cellSize * this.padding * 2,
+      width: this.imgSize * (this.cellSize + this.padding * 2),
       height:
-        Math.floor(this.imgSize * this.cellSize * this.padding * this.aspect) *
-        2
+        Math.floor(
+          this.imgSize * (this.cellSize + this.padding) * this.aspect
+        ) * 2
     });
 
     for (var x = 0; x < 6; x++) {
@@ -150,15 +151,15 @@ var circle = {
   render: function() {}
 };
 
-var getScaledImageData = function(imgSize, img, distortion) {
+var getScaledImageData = function(imgSize, img) {
   var c = document.createElement("canvas");
   var aspect = img.height / img.width;
-  c.width = imgSize * distortion;
+  c.width = imgSize;
   c.height = Math.floor(imgSize * aspect);
 
   var ctx = c.getContext("2d");
 
-  ctx.drawImage(img, 1, 1, imgSize * distortion, Math.floor(imgSize * aspect));
+  ctx.drawImage(img, 1, 1, imgSize, Math.floor(imgSize * aspect));
 
   return ctx.getImageData(0, 0, c.width, c.height).data;
 };
@@ -179,17 +180,17 @@ holder.ondrop = function(e) {
   var reader = new FileReader();
 
   reader.onload = function(event) {
-    var padding = 1.0;
     var distortion = 1.5;
-    var cellSize = document.getElementById("cellsize").value;
-    var imgSize = document.getElementById("size").value || 48;
-    var variance = document.getElementById("variance").value;
+    var cellSize = parseInt(document.getElementById("cellsize").value) || 5;
+    var imgSize = parseInt(document.getElementById("size").value) || 48;
+    var variance = parseInt(document.getElementById("variance").value) || 30;
+    var padding = parseInt(document.getElementById("gap").value) || 1;
 
     var img = document.createElement("img");
     img.src = event.target.result;
 
     img.addEventListener("load", () => {
-      var data = getScaledImageData(imgSize, img, distortion);
+      var data = getScaledImageData(imgSize, img);
 
       document.body.innerHTML = "";
       document.body.classList.remove("starry");
@@ -197,12 +198,13 @@ holder.ondrop = function(e) {
 
       var mosaic = new triangle();
       mosaic.init(
-        imgSize * distortion,
+        imgSize,
         cellSize,
         padding,
         img.height / img.width,
         variance,
-        data
+        data,
+        img.src
       );
       mosaic.render(data);
     });
