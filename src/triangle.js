@@ -8,23 +8,29 @@ export default function() {
     var variance = this.variance;
 
     for (var i = 0; i < total; i += 4) {
-      var r = this.data[i + chunk];
-      var g = this.data[i + chunk + 1];
-      var b = this.data[i + chunk + 2];
-      var a = this.data[i + chunk + 3];
+      //ignore every other pixel alternatively
 
       var pos = (i + chunk) / 4;
 
       var x = Math.floor(pos % this.imgSize);
       var y = Math.floor(pos / this.imgSize);
 
+      if (x % 2 === y % 2) {
+        continue;
+      }
+
+      var r = this.data[i + chunk];
+      var g = this.data[i + chunk + 1];
+      var b = this.data[i + chunk + 2];
+      var a = this.data[i + chunk + 3];
+
       var c = {
         x:
           x * (this.cellSize + this.padding) -
           (y % 2) * (this.cellSize + this.padding),
         y:
-          y * (this.cellSize + this.padding) +
-          (x % 2) * (this.cellSize + this.padding) / 2,
+          y * (this.cellSize + this.padding) -
+          (x % 2) * (this.cellSize + this.padding),
         a: x % 2,
         s: this.cellSize
       };
@@ -116,7 +122,7 @@ export default function() {
   };
 
   var render = function(data) {
-    this.r.image(this.img, 0, 0, this.r.width, this.r.height);
+    // this.r.image(this.img, 0, 0, this.r.width, this.r.height);
     this._chunk(0, this.data.length);
   };
 
