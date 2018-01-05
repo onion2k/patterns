@@ -28,7 +28,9 @@ export default function() {
         x:
           x * (this.cellSize + this.padding) +
           (y % 4 === 0 || y % 4 === 3) * (this.cellSize + this.padding),
-        y: y * (this.cellSize + this.padding) + (y % 2) * this.padding * 1.5,
+        y:
+          y * (this.cellSize + this.padding) +
+          (y % 2) * (this.cellSize + this.padding - 1) * 0.25,
         a: x % 2,
         s: this.cellSize
       };
@@ -75,7 +77,7 @@ export default function() {
   var init = function(imgSize, cellSize, padding, aspect, variance, data, img) {
     this.imgSize = imgSize;
     this.cellSize = cellSize;
-    this.padding = padding;
+    this.padding = padding * 0.8 - 1;
     this.aspect = aspect;
     this.variance = variance;
     this.data = data;
@@ -121,6 +123,10 @@ export default function() {
 
   var render = function(data) {
     // this.r.image(this.img, 0, 0, this.r.width, this.r.height);
+    this.r
+      .rect(0, 0, this.r.width, this.r.height)
+      .fill(0, 0, 0)
+      .stroke(false);
     this._chunk(0, this.data.length);
   };
 

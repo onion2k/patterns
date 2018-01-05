@@ -184,7 +184,7 @@ holder.ondrop = function(e) {
     var cellSize = parseInt(document.getElementById("cellsize").value) || 5;
     var imgSize = parseInt(document.getElementById("size").value) || 48;
     var variance = parseInt(document.getElementById("variance").value) || 30;
-    var padding = parseInt(document.getElementById("gap").value) || 1;
+    var padding = parseInt(document.getElementById("gap").value) || 0;
 
     var img = document.createElement("img");
     img.src = event.target.result;
