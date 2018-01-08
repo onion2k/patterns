@@ -3,6 +3,53 @@ import Rune from "rune.js";
 export default function() {
   var r, imgSize, cellSize, padding, aspect;
 
+  var init = function(imgSize, cellSize, padding, aspect, variance, data, img) {
+    this.imgSize = imgSize;
+    this.cellSize = cellSize;
+    this.padding = padding * 0.8 - 1;
+    this.aspect = aspect;
+    this.variance = variance;
+    this.data = data;
+    this.img = img;
+
+    this.p = [
+      {
+        x: Math.sin(Math.PI * ((0 * 180 + 0) / 180)) * this.cellSize,
+        y: Math.cos(Math.PI * ((0 * 180 + 0) / 180)) * this.cellSize
+      },
+      {
+        x: Math.sin(Math.PI * ((0 * 180 + 120) / 180)) * this.cellSize,
+        y: Math.cos(Math.PI * ((0 * 180 + 120) / 180)) * this.cellSize
+      },
+      {
+        x: Math.sin(Math.PI * ((0 * 180 + 240) / 180)) * this.cellSize,
+        y: Math.cos(Math.PI * ((0 * 180 + 240) / 180)) * this.cellSize
+      },
+      {
+        x: Math.sin(Math.PI * ((1 * 180 + 0) / 180)) * this.cellSize,
+        y: Math.cos(Math.PI * ((1 * 180 + 0) / 180)) * this.cellSize
+      },
+      {
+        x: Math.sin(Math.PI * ((1 * 180 + 120) / 180)) * this.cellSize,
+        y: Math.cos(Math.PI * ((1 * 180 + 120) / 180)) * this.cellSize
+      },
+      {
+        x: Math.sin(Math.PI * ((1 * 180 + 240) / 180)) * this.cellSize,
+        y: Math.cos(Math.PI * ((1 * 180 + 240) / 180)) * this.cellSize
+      }
+    ];
+
+    this.r = new Rune({
+      container: "body",
+      width: this.imgSize * (this.cellSize + this.padding),
+      height: Math.floor(
+        this.aspect * this.imgSize * (this.cellSize + this.padding)
+      )
+    });
+
+    return r;
+  };
+
   var _chunk = function(chunk, total) {
     var self = this;
     var variance = this.variance;
@@ -72,53 +119,6 @@ export default function() {
     }
 
     self.r.draw();
-  };
-
-  var init = function(imgSize, cellSize, padding, aspect, variance, data, img) {
-    this.imgSize = imgSize;
-    this.cellSize = cellSize;
-    this.padding = padding * 0.8 - 1;
-    this.aspect = aspect;
-    this.variance = variance;
-    this.data = data;
-    this.img = img;
-
-    this.p = [
-      {
-        x: Math.sin(Math.PI * ((0 * 180 + 0) / 180)) * this.cellSize,
-        y: Math.cos(Math.PI * ((0 * 180 + 0) / 180)) * this.cellSize
-      },
-      {
-        x: Math.sin(Math.PI * ((0 * 180 + 120) / 180)) * this.cellSize,
-        y: Math.cos(Math.PI * ((0 * 180 + 120) / 180)) * this.cellSize
-      },
-      {
-        x: Math.sin(Math.PI * ((0 * 180 + 240) / 180)) * this.cellSize,
-        y: Math.cos(Math.PI * ((0 * 180 + 240) / 180)) * this.cellSize
-      },
-      {
-        x: Math.sin(Math.PI * ((1 * 180 + 0) / 180)) * this.cellSize,
-        y: Math.cos(Math.PI * ((1 * 180 + 0) / 180)) * this.cellSize
-      },
-      {
-        x: Math.sin(Math.PI * ((1 * 180 + 120) / 180)) * this.cellSize,
-        y: Math.cos(Math.PI * ((1 * 180 + 120) / 180)) * this.cellSize
-      },
-      {
-        x: Math.sin(Math.PI * ((1 * 180 + 240) / 180)) * this.cellSize,
-        y: Math.cos(Math.PI * ((1 * 180 + 240) / 180)) * this.cellSize
-      }
-    ];
-
-    this.r = new Rune({
-      container: "body",
-      width: this.imgSize * (this.cellSize + this.padding),
-      height: Math.floor(
-        this.aspect * this.imgSize * (this.cellSize + this.padding)
-      )
-    });
-
-    return r;
   };
 
   var render = function(data) {
