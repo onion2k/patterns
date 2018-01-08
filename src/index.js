@@ -2,61 +2,7 @@ import Rune from "rune.js";
 import "./patterns.css";
 
 import triangle from "./triangle";
-
-var square = function() {
-  var r, imgSize, cellSize, padding, aspect;
-
-  var init = function(imgSize, cellSize, padding, aspect, variance) {
-    this.imgSize = imgSize;
-    this.cellSize = cellSize;
-    this.padding = padding;
-    this.aspect = aspect;
-    this.variance = variance;
-
-    this.r = new Rune({
-      container: "body",
-      width: this.imgSize * (this.cellSize + this.padding),
-      height: Math.floor(
-        this.imgSize * (this.cellSize + this.padding) * this.aspect
-      )
-    });
-
-    return r;
-  };
-  var render = function(data) {
-    var variance = this.variance;
-    var progress = document.getElementById("progress");
-    var total = data.length;
-
-    for (var i = 0, n = data.length; i < n; i += 4) {
-      progress.value = Math.floor(i / total * 100);
-
-      var r = data[i];
-      var g = data[i + 1];
-      var b = data[i + 2];
-      var a = data[i + 3];
-
-      var pos = i / 4;
-
-      var x = Math.floor(pos % this.imgSize) * (this.cellSize + this.padding);
-      var y = Math.floor(pos / this.imgSize) * (this.cellSize + this.padding);
-
-      var v = variance / 2 - Math.random() * variance;
-
-      this.r
-        .rect(x, y, this.cellSize, this.cellSize)
-        .fill(r + v, g + v, b + v)
-        .stroke(false);
-    }
-
-    this.r.draw();
-  };
-
-  return {
-    init: init,
-    render: render
-  };
-};
+import square from "./square";
 
 var hex = function() {
   var r, imgSize, cellSize, padding, aspect, offsets;
@@ -196,7 +142,7 @@ holder.ondrop = function(e) {
       document.body.classList.remove("starry");
       document.body.classList.add("black");
 
-      var mosaic = new triangle();
+      var mosaic = new square();
       mosaic.init(
         imgSize,
         cellSize,
