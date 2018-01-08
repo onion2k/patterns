@@ -127,6 +127,8 @@ holder.ondrop = function(e) {
 
   reader.onload = function(event) {
     var distortion = 1.5;
+    let shapeSelect = document.getElementById("shape");
+    let shape = shapeSelect.options[shapeSelect.selectedIndex].value;
     var cellSize = parseInt(document.getElementById("cellsize").value) || 5;
     var imgSize = parseInt(document.getElementById("size").value) || 48;
     var variance = parseInt(document.getElementById("variance").value) || 30;
@@ -142,7 +144,19 @@ holder.ondrop = function(e) {
       document.body.classList.remove("starry");
       document.body.classList.add("black");
 
-      var mosaic = new square();
+      let mosaic;
+      switch (shape) {
+        case "triangle":
+          mosaic = new triangle();
+          break;
+        case "square":
+          mosaic = new square();
+          break;
+        default:
+          mosaic = new triangle();
+          break;
+      }
+
       mosaic.init(
         imgSize,
         cellSize,
