@@ -112,10 +112,13 @@ export default function() {
 
       var v = variance / 2 - Math.random() * variance;
 
+      let color = new Rune.Color(r + v, g + v, b + v);
+
       this.r
         .triangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y)
-        .fill(r + v, g + v, b + v)
-        .stroke(false);
+        .fill(color)
+        .stroke(false)
+        .scale(0.5 + color.luminosity());
     }
 
     self.r.draw();

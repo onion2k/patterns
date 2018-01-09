@@ -44,34 +44,47 @@ export default function() {
       var b = this.data[i + chunk + 2];
       var a = this.data[i + chunk + 3];
 
-      var c = {
-        x:
-          x * (this.cellSize + this.padding) +
-          (y % 2) * ((this.cellSize + this.padding) / 2),
-        y: y * (this.cellSize + this.padding),
-        s: this.cellSize
-      };
-
       var v = this.variance / 2 - Math.random() * this.variance;
+      let color = new Rune.Color(r + v, g + v, b + v);
 
-      let p1 = { x: c.x + this.offsets[0].x, y: c.y + this.offsets[0].y };
-      let p2 = { x: c.x + this.offsets[1].x, y: c.y + this.offsets[1].y };
-      let p3 = { x: c.x + this.offsets[2].x, y: c.y + this.offsets[2].y };
-      let p4 = { x: c.x + this.offsets[3].x, y: c.y + this.offsets[3].y };
-      let p5 = { x: c.x + this.offsets[4].x, y: c.y + this.offsets[4].y };
-      let p6 = { x: c.x + this.offsets[5].x, y: c.y + this.offsets[5].y };
+      let p1 = { x: this.offsets[0].x, y: this.offsets[0].y };
+      let p2 = { x: this.offsets[1].x, y: this.offsets[1].y };
+      let p3 = { x: this.offsets[2].x, y: this.offsets[2].y };
+      let p4 = { x: this.offsets[3].x, y: this.offsets[3].y };
+      let p5 = { x: this.offsets[4].x, y: this.offsets[4].y };
+      let p6 = { x: this.offsets[5].x, y: this.offsets[5].y };
 
-      this.r
-        .path(c.x, c.y)
-        .moveTo(p1.x, p1.y)
+      // this.r
+      //   .path(c.x, c.y)
+      //   .moveTo(p1.x, p1.y)
+      //   .lineTo(p2.x, p2.y)
+      //   .lineTo(p3.x, p3.y)
+      //   .lineTo(p4.x, p4.y)
+      //   .lineTo(p5.x, p5.y)
+      //   .lineTo(p6.x, p6.y)
+      //   .fill(color)
+      //   .stroke(false)
+      //   .closePath();
+
+      let anchor = this.r.group(
+        x * (2 * (this.cellSize + this.padding)) +
+          (y % 2) * 2 * ((this.cellSize + this.padding) / 2),
+        y * 2 * (this.cellSize + this.padding)
+      );
+
+      let hex = new Rune.Polygon(0, 0)
+        .lineTo(p1.x, p1.y)
         .lineTo(p2.x, p2.y)
         .lineTo(p3.x, p3.y)
         .lineTo(p4.x, p4.y)
         .lineTo(p5.x, p5.y)
         .lineTo(p6.x, p6.y)
-        .fill(r + v, g + v, b + v)
-        .stroke(false)
-        .closePath();
+        .fill(color)
+        .stroke(false);
+
+      hex.scale(0.25 + color.luminosity());
+
+      anchor.add(hex);
     }
 
     this.r.draw();

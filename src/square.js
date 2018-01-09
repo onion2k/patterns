@@ -36,10 +36,11 @@ export default function() {
       var y = Math.floor(pos / this.imgSize) * (this.cellSize + this.padding);
 
       var v = this.variance / 2 - Math.random() * this.variance;
+      let color = new Rune.Color(r + v, g + v, b + v);
 
       this.r
         .rect(x, y, this.cellSize, this.cellSize)
-        .fill(r + v, g + v, b + v)
+        .fill(color)
         .stroke(false);
     }
 
