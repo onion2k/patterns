@@ -41,7 +41,7 @@ export default function() {
       this.r
         .circle(x, y, this.cellSize / 2)
         .fill(color)
-        .scale(0.25 + color.luminosity())
+        .scale(0.25 + color.luminosity() * 2)
         .stroke(false);
     }
 
