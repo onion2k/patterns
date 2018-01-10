@@ -1,10 +1,16 @@
 import Rune from "rune.js";
+import MosaicWorker from "./mosaic.worker.js";
 import "./patterns.css";
 
 import triangle from "./triangle";
 import square from "./square";
 import hexagon from "./hex";
 import circle from "./circle";
+
+let mosaicWorker = new MosaicWorker();
+mosaicWorker.addEventListener("message", e => {
+  document.body.innerHTML = e.data;
+});
 
 var getScaledImageData = function(imgSize, img) {
   var c = document.createElement("canvas");
@@ -53,35 +59,49 @@ holder.ondrop = function(e) {
       document.body.classList.remove("starry");
       document.body.classList.add("black");
 
-      let mosaic;
-      switch (shape) {
-        case "triangle":
-          mosaic = new triangle();
-          break;
-        case "square":
-          mosaic = new square();
-          break;
-        case "hex":
-          mosaic = new hexagon();
-          break;
-        case "circle":
-          mosaic = new circle();
-          break;
-        default:
-          mosaic = new triangle();
-          break;
-      }
+      if (window.Worker) {
+        mosaicWorker.postMessage({
+          type: "create",
+          shape,
+          imgSize,
+          cellSize,
+          padding,
+          aspect: img.height / img.width,
+          variance,
+          data,
+          img: img.src
+        });
+      } else {
+        let mosaic;
+        switch (shape) {
+          case "triangle":
+            mosaic = new triangle();
+            break;
+          case "square":
+            mosaic = new square();
+            break;
+          case "hex":
+            mosaic = new hexagon();
+            break;
+          case "circle":
+            mosaic = new circle();
+            break;
+          default:
+            mosaic = new triangle();
+            break;
+        }
 
-      mosaic.init(
-        imgSize,
-        cellSize,
-        padding,
-        img.height / img.width,
-        variance,
-        data,
-        img.src
-      );
-      mosaic.render(data);
+        mosaic.init(
+          imgSize,
+          cellSize,
+          padding,
+          img.height / img.width,
+          variance,
+          data,
+          img.src
+        );
+        mosaic.render(data);
+      }
     });
   };
 
