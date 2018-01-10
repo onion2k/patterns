@@ -54,25 +54,8 @@ export default function() {
       let p5 = { x: this.offsets[4].x, y: this.offsets[4].y };
       let p6 = { x: this.offsets[5].x, y: this.offsets[5].y };
 
-      // this.r
-      //   .path(c.x, c.y)
-      //   .moveTo(p1.x, p1.y)
-      //   .lineTo(p2.x, p2.y)
-      //   .lineTo(p3.x, p3.y)
-      //   .lineTo(p4.x, p4.y)
-      //   .lineTo(p5.x, p5.y)
-      //   .lineTo(p6.x, p6.y)
-      //   .fill(color)
-      //   .stroke(false)
-      //   .closePath();
-
-      let anchor = this.r.group(
-        x * (2 * (this.cellSize + this.padding)) +
-          (y % 2) * 2 * ((this.cellSize + this.padding) / 2),
-        y * 2 * (this.cellSize + this.padding)
-      );
-
-      let hex = new Rune.Polygon(0, 0)
+      this.r
+        .polygon(0, 0)
         .lineTo(p1.x, p1.y)
         .lineTo(p2.x, p2.y)
         .lineTo(p3.x, p3.y)
@@ -80,11 +63,13 @@ export default function() {
         .lineTo(p5.x, p5.y)
         .lineTo(p6.x, p6.y)
         .fill(color)
-        .stroke(false);
-
-      hex.scale(0.25 + color.luminosity());
-
-      anchor.add(hex);
+        .stroke(false)
+        .scale(0.5 + color.luminosity() * 2)
+        .move(
+          x * (2 * (this.cellSize + this.padding)) +
+            (y % 2) * 2 * ((this.cellSize + this.padding) / 2),
+          y * 2 * (this.cellSize + this.padding)
+        );
     }
 
     this.r.draw();
@@ -92,10 +77,10 @@ export default function() {
 
   var render = function(data) {
     // this.r.image(this.img, 0, 0, this.r.width, this.r.height);
-    this.r
-      .rect(0, 0, this.r.width, this.r.height)
-      .fill(0, 0, 0)
-      .stroke(false);
+    // this.r
+    //   .rect(0, 0, this.r.width, this.r.height)
+    //   .fill(0, 0, 0)
+    //   .stroke(false);
     this._chunk(0, this.data.length);
   };
 
@@ -105,24 +90,3 @@ export default function() {
     render: render
   };
 }
-
-// var hex = function() {
-//   var r, imgSize, cellSize, padding, aspect, offsets;
-
-//   var init = function(imgSize, cellSize, padding, aspect, variance) {
-//     this.imgSize = imgSize;
-//     this.cellSize = cellSize;
-//     this.padding = padding;
-//     this.aspect = aspect;
-//     this.variance = variance;
-
-//     this.r = new Rune({
-//       container: "body",
-//       width: this.imgSize * (this.cellSize + this.padding * 2),
-//       height:
-//         Math.floor(
-//           this.imgSize * (this.cellSize + this.padding) * this.aspect
-//         ) * 2
-//     });
-
-//   };

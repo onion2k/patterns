@@ -4,11 +4,7 @@ import "./patterns.css";
 import triangle from "./triangle";
 import square from "./square";
 import hexagon from "./hex";
-
-var circle = {
-  init: function() {},
-  render: function() {}
-};
+import circle from "./circle";
 
 var getScaledImageData = function(imgSize, img) {
   var c = document.createElement("canvas");
@@ -67,6 +63,9 @@ holder.ondrop = function(e) {
           break;
         case "hex":
           mosaic = new hexagon();
+          break;
+        case "circle":
+          mosaic = new circle();
           break;
         default:
           mosaic = new triangle();
