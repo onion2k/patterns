@@ -31,11 +31,16 @@
     </div>
     <div>
       <label>Scaling</label>
-      <input type="number" name="scaling" id="scaling" value="30" disabled />
+      <select name="scaling" id="scaling" disabled>
+        <option value="none">None</option>
+        <option value="additive">Additive</option>
+        <option value="multiply">Multiply</option>
+        <option value="random">Random</option>
+      </select>
     </div>
     <div>
       <label>Offset</label>
-      <input type="number" name="offset" id="offset" value="30" disabled />
+      <input type="checkbox" name="offset" id="offset" value="30" disabled />
     </div>
     <div>
       <label></label>
