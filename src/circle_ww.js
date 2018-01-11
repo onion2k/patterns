@@ -50,7 +50,6 @@ export default function() {
   };
 
   return {
-    _chunk: _chunk,
     init: init,
     render: render
   };

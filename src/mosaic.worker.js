@@ -1,6 +1,6 @@
 // import triangle from "./triangle";
 // import square from "./square";
-// import hexagon from "./hex";
+import hexagon from "./hex_ww";
 import circle from "./circle_ww";
 
 class Mosaic {
@@ -14,8 +14,8 @@ class Mosaic {
       // this.mosaic = new square();
       // break;
       case "hex":
-      // this.mosaic = new hexagon();
-      // break;
+        this.mosaic = new hexagon();
+        break;
       case "circle":
         this.mosaic = new circle();
         break;
