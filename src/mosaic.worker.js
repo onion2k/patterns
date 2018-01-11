@@ -1,4 +1,4 @@
-// import triangle from "./triangle";
+import triangle from "./triangle_ww";
 // import square from "./square";
 import hexagon from "./hex_ww";
 import circle from "./circle_ww";
@@ -8,8 +8,8 @@ class Mosaic {
     // Worker for building mosaics
     switch (data.shape) {
       case "triangle":
-      // this.mosaic = new triangle();
-      // break;
+        this.mosaic = new triangle();
+        break;
       case "square":
       // this.mosaic = new square();
       // break;
