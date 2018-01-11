@@ -13,13 +13,18 @@ export default function() {
     this.offsets = [];
     for (var x = 0; x < 6; x++) {
       this.offsets.push({
-        x: Math.sin(Math.PI * (x * 60 / 180)) * this.cellSize,
-        y: Math.cos(Math.PI * (x * 60 / 180)) * this.cellSize
+        x:
+          Math.round(Math.sin(Math.PI * (x * 60 / 180)) * this.cellSize * 100) /
+          100,
+        y:
+          Math.round(Math.cos(Math.PI * (x * 60 / 180)) * this.cellSize * 100) /
+          100
       });
     }
 
     this.svg = {
-      width: 2 * (this.imgSize + 1) * (this.cellSize + this.padding),
+      width:
+        2 * Math.floor((this.imgSize + 1) * (this.cellSize + this.padding)),
       height:
         2 *
         Math.floor(this.aspect * this.imgSize * (this.cellSize + this.padding)),
@@ -46,7 +51,7 @@ export default function() {
 
       var v = this.variance / 2 - Math.random() * this.variance;
 
-      this.svg.content += `<path d="M ${x} ${y} `;
+      this.svg.content += `<path d="M 0 0 `;
 
       this.svg.content += `l ${this.offsets[0].x} ${this.offsets[0].y} `;
       this.svg.content += `l ${this.offsets[1].x} ${this.offsets[1].y} `;
@@ -57,7 +62,8 @@ export default function() {
 
       this.svg.content += `Z" fill="rgb(${Math.floor(r + v)},${Math.floor(
         g + v
-      )},${Math.floor(b + v)})"/>`;
+      )},${Math.floor(b + v)})" transform="translate(${Math.round(x * 100) /
+        100}, ${Math.round(y * 100) / 100}) scale(1.25)" />`;
     }
   };
 
