@@ -45,23 +45,15 @@ export default function() {
       var a = this.data[i + chunk + 3];
 
       var v = this.variance / 2 - Math.random() * this.variance;
-      // let color = new Rune.Color(r + v, g + v, b + v);
-
-      let p1 = { x: this.offsets[0].x, y: this.offsets[0].y };
-      let p2 = { x: this.offsets[1].x, y: this.offsets[1].y };
-      let p3 = { x: this.offsets[2].x, y: this.offsets[2].y };
-      let p4 = { x: this.offsets[3].x, y: this.offsets[3].y };
-      let p5 = { x: this.offsets[4].x, y: this.offsets[4].y };
-      let p6 = { x: this.offsets[5].x, y: this.offsets[5].y };
 
       this.svg.content += `<path d="M ${x} ${y} `;
 
-      this.svg.content += `l ${p1.x}, ${p1.y} `;
-      this.svg.content += `l ${p2.x}, ${p2.y} `;
-      this.svg.content += `l ${p3.x}, ${p3.y} `;
-      this.svg.content += `l ${p4.x}, ${p4.y} `;
-      this.svg.content += `l ${p5.x}, ${p5.y} `;
-      this.svg.content += `l ${p6.x}, ${p6.y} `;
+      this.svg.content += `l ${this.offsets[0].x} ${this.offsets[0].y} `;
+      this.svg.content += `l ${this.offsets[1].x} ${this.offsets[1].y} `;
+      this.svg.content += `l ${this.offsets[2].x} ${this.offsets[2].y} `;
+      this.svg.content += `l ${this.offsets[3].x} ${this.offsets[3].y} `;
+      this.svg.content += `l ${this.offsets[4].x} ${this.offsets[4].y} `;
+      this.svg.content += `l ${this.offsets[5].x} ${this.offsets[5].y} `;
 
       this.svg.content += `Z" fill="rgb(${Math.floor(r + v)},${Math.floor(
         g + v
