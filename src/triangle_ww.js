@@ -41,7 +41,9 @@ export default function() {
       if (x % 2 === y % 2) {
         continue;
       }
-      let xPos = x * (this.cellSize + this.padding);
+      let xPos =
+        x * (this.cellSize + this.padding) +
+        (y % 4 === 0 || y % 4 === 3) * (this.cellSize + this.padding);
       let yPos =
         y * (this.cellSize + this.padding) + (y % 2) * this.padding / 2;
 
