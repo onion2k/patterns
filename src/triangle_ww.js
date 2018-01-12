@@ -4,45 +4,35 @@ export default function() {
   let init = data => {
     this.imgSize = data.imgSize;
     this.cellSize = data.cellSize;
-    this.padding = data.padding * 0.8 - 1;
+    this.padding = data.padding - 1;
     this.aspect = data.aspect;
     this.variance = data.variance;
     this.data = data.data;
     this.img = data.img;
 
-    this.offsets = [
-      {
-        x: Math.sin(Math.PI * ((0 * 180 + 0 + 90) / 180)) * this.cellSize * 4,
-        y: Math.cos(Math.PI * ((0 * 180 + 0 + 90) / 180)) * this.cellSize * 4
-      },
-      {
-        x: Math.sin(Math.PI * ((0 * 180 + 120 + 90) / 180)) * this.cellSize * 4,
-        y: Math.cos(Math.PI * ((0 * 180 + 120 + 90) / 180)) * this.cellSize * 4
-      },
-      {
-        x: Math.sin(Math.PI * ((0 * 180 + 240 + 90) / 180)) * this.cellSize * 4,
-        y: Math.cos(Math.PI * ((0 * 180 + 240 + 90) / 180)) * this.cellSize * 4
-      },
-      {
-        x: Math.sin(Math.PI * ((1 * 180 + 0 + 90) / 180)) * this.cellSize * 4,
-        y: Math.cos(Math.PI * ((1 * 180 + 0 + 90) / 180)) * this.cellSize * 4
-      },
-      {
-        x: Math.sin(Math.PI * ((1 * 180 + 120 + 90) / 180)) * this.cellSize * 4,
-        y: Math.cos(Math.PI * ((1 * 180 + 120 + 90) / 180)) * this.cellSize * 4
-      },
-      {
-        x: Math.sin(Math.PI * ((1 * 180 + 240 + 90) / 180)) * this.cellSize * 4,
-        y: Math.cos(Math.PI * ((1 * 180 + 240 + 90) / 180)) * this.cellSize * 4
-      }
-    ];
+    this.h = this.cellSize / Math.cos(60 / 180 * Math.PI);
+
+    this.offsetsA = [];
+    for (var x = 0; x < 3; x++) {
+      this.offsetsA.push({
+        x: this.h * Math.sin((90 + x * 120) / 180 * Math.PI),
+        y: this.h * Math.cos((90 + x * 120) / 180 * Math.PI)
+      });
+    }
+
+    this.offsetsB = [];
+    for (var x = 0; x < 3; x++) {
+      this.offsetsB.push({
+        x: this.h * Math.sin((270 + x * 120) / 180 * Math.PI),
+        y: this.h * Math.cos((270 + x * 120) / 180 * Math.PI)
+      });
+    }
 
     this.svg = {
-      width:
-        2 * Math.floor((this.imgSize + 1) * (this.cellSize + this.padding)),
-      height:
-        2 *
-        Math.floor(this.aspect * this.imgSize * (this.cellSize + this.padding)),
+      width: Math.floor((this.imgSize + 1) * (this.cellSize + this.padding)),
+      height: Math.floor(
+        this.aspect * this.imgSize * (this.cellSize + this.padding)
+      ),
       content: ""
     };
 
@@ -56,63 +46,57 @@ export default function() {
       var x = Math.floor(pos % this.imgSize);
       var y = Math.floor(pos / this.imgSize);
 
-      let xPos =
-        x * (this.cellSize + this.padding) +
-        (y % 4 === 2 || y % 4 === 0) * (this.cellSize + this.padding);
-      let yPos =
-        y * (this.cellSize + this.padding) +
-        (y % 2) * (this.cellSize + this.padding);
+      let xPos = x * (this.cellSize + this.padding);
+      let yPos = y * (this.cellSize + this.padding);
 
       if (x % 2 === y % 2) {
         continue;
       }
 
-      var r = this.data[i + chunk];
-      var g = this.data[i + chunk + 1];
-      var b = this.data[i + chunk + 2];
-      var a = this.data[i + chunk + 3];
+      var r = this.data[i];
+      var g = this.data[i + 1];
+      var b = this.data[i + 2];
+      var a = this.data[i + 3];
 
       var v = this.variance / 2 - Math.random() * this.variance;
 
       if (Math.floor(pos % this.imgSize) % 2 === 0) {
         var p1 = {
-          x: this.offsets[0].x,
-          y: this.offsets[0].y
+          x: this.offsetsA[0].x,
+          y: this.offsetsA[0].y
         };
         var p2 = {
-          x: this.offsets[1].x,
-          y: this.offsets[1].y
+          x: this.offsetsA[1].x,
+          y: this.offsetsA[1].y
         };
         var p3 = {
-          x: this.offsets[2].x,
-          y: this.offsets[2].y
+          x: this.offsetsA[2].x,
+          y: this.offsetsA[2].y
         };
       } else {
         var p1 = {
-          x: this.offsets[3].x,
-          y: this.offsets[3].y
+          x: this.offsetsB[0].x,
+          y: this.offsetsB[0].y
         };
         var p2 = {
-          x: this.offsets[4].x,
-          y: this.offsets[4].y
+          x: this.offsetsB[1].x,
+          y: this.offsetsB[1].y
         };
         var p3 = {
-          x: this.offsets[5].x,
-          y: this.offsets[5].y
+          x: this.offsetsB[2].x,
+          y: this.offsetsB[2].y
         };
       }
 
-      this.svg.content += `<path d="M 0 0 `;
-
-      this.svg.content += `l ${p1.x} ${p1.y} `;
+      this.svg.content += `<path d="M 0 0 l ${p1.x} ${p1.y} `;
       this.svg.content += `l ${p2.x} ${p2.y} `;
       this.svg.content += `l ${p3.x} ${p3.y} `;
 
-      this.svg.content += `Z" fill="rgb(${Math.floor(r + v)},${Math.floor(
-        g + v
-      )},${Math.floor(b + v)})" transform="translate(${2 *
-        (Math.round(xPos * 100) / 100)}, ${2 *
-        (Math.round(yPos * 100) / 100)})" />`;
+      // ${Math.floor(r + v)},${Math.floor(
+      //   g + v
+      // )},${Math.floor(b + v)}
+
+      this.svg.content += `Z" fill="rgb(255,255,255)" transform="translate(${xPos}, ${yPos})" />`;
     }
   };
 
