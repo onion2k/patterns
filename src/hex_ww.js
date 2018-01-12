@@ -63,7 +63,7 @@ export default function() {
       this.svg.content += `Z" fill="rgb(${Math.floor(r + v)},${Math.floor(
         g + v
       )},${Math.floor(b + v)})" transform="translate(${Math.round(x * 100) /
-        100}, ${Math.round(y * 100) / 100}) scale(1.25)" />`;
+        100}, ${Math.round(y * 100) / 100})" />`;
     }
   };
 
