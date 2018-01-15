@@ -1,0 +1,53 @@
+<html>
+
+<head><link href="/patterns.css" rel="stylesheet"></head>
+
+<body class="starry">
+  <div id="svg"></div>
+  <form>
+    <div>
+      <label>Shape</label>
+      <select name="shape" id="shape">
+        <option value="hex">Hex</option>
+        <option value="triangle" selected>Triangle</option>
+        <option value="square">Square</option>
+        <option value="circle">Circle</option>
+      </select>
+    </div>
+    <div>
+      <label>Size</label>
+      <input type="number" name="size" id="size" value="128" />
+    </div>
+    <div>
+      <label>Cellsize</label>
+      <input type="number" name="cellsize" id="cellsize" value="10" />
+    </div>
+    <div>
+      <label>Gap</label>
+      <input type="number" name="gap" id="gap" value="10" />
+    </div>
+    <div>
+      <label>Variance</label>
+      <input type="number" name="variance" id="variance" value="30" />
+    </div>
+    <div>
+      <label>Scaling</label>
+      <select name="scaling" id="scaling" disabled>
+        <option value="none">None</option>
+        <option value="additive">Additive</option>
+        <option value="multiply">Multiply</option>
+        <option value="random">Random</option>
+      </select>
+    </div>
+    <div>
+      <label>Offset</label>
+      <input type="checkbox" name="offset" id="offset" value="30" disabled />
+    </div>
+    <div>
+      <label></label>
+      <p>Drop an image on the page to generate</p>
+    </div>
+  </form>
+<script type="text/javascript" src="/index.js"></script></body>
+
+</html>

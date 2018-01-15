@@ -6,6 +6,7 @@ import circle from "./circle_ww";
 class Mosaic {
   constructor(data) {
     // Worker for building mosaics
+    // Add some defaults?
     switch (data.shape) {
       case "triangle":
         this.mosaic = new triangle();
