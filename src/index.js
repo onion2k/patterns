@@ -9,7 +9,8 @@ import circle from "./circle";
 
 let mosaicWorker = new MosaicWorker();
 mosaicWorker.addEventListener("message", e => {
-  document.body.innerHTML = e.data;
+  let svg = document.getElementById("svg");
+  svg.innerHTML = e.data;
 });
 
 var getScaledImageData = function(imgSize, img) {
@@ -55,11 +56,10 @@ holder.ondrop = function(e) {
     img.addEventListener("load", () => {
       var data = getScaledImageData(imgSize, img);
 
-      document.body.innerHTML = "";
-      document.body.classList.remove("starry");
-      document.body.classList.add("black");
-
       if (window.Worker) {
+        document.body.classList.remove("starry");
+        document.body.classList.add("black");
+
         mosaicWorker.postMessage({
           type: "create",
           shape,
@@ -72,6 +72,8 @@ holder.ondrop = function(e) {
           img: img.src
         });
       } else {
+        document.body.innerHTML = "";
+
         let mosaic;
         switch (shape) {
           case "triangle":
