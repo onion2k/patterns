@@ -2,11 +2,6 @@ import Rune from "rune.js";
 import MosaicWorker from "./mosaic.worker.js";
 import "./patterns.css";
 
-import triangle from "./triangle";
-import square from "./square";
-import hexagon from "./hex";
-import circle from "./circle";
-
 let mosaicWorker = new MosaicWorker();
 mosaicWorker.addEventListener("message", e => {
   let svg = document.getElementById("svg");
@@ -72,37 +67,7 @@ holder.ondrop = function(e) {
           img: img.src
         });
       } else {
-        document.body.innerHTML = "";
-
-        let mosaic;
-        switch (shape) {
-          case "triangle":
-            mosaic = new triangle();
-            break;
-          case "square":
-            mosaic = new square();
-            break;
-          case "hex":
-            mosaic = new hexagon();
-            break;
-          case "circle":
-            mosaic = new circle();
-            break;
-          default:
-            mosaic = new triangle();
-            break;
-        }
-
-        mosaic.init(
-          imgSize,
-          cellSize,
-          padding,
-          img.height / img.width,
-          variance,
-          data,
-          img.src
-        );
-        mosaic.render(data);
+        document.body.innerHTML = "Sorry, you need web workers.";
       }
     });
   };
@@ -111,3 +76,29 @@ holder.ondrop = function(e) {
 
   return false;
 };
+
+var c = document.createElement("canvas");
+var aspect = 600 / 800;
+c.width = 128;
+c.height = Math.floor(128 * aspect);
+
+var ctx = c.getContext("2d");
+
+var linearGradient1 = ctx.createLinearGradient(128 / aspect, 0, 0, 128);
+linearGradient1.addColorStop(0, "rgb(255, 255, 255)");
+linearGradient1.addColorStop(1, "rgb(  0, 0, 0)");
+ctx.fillStyle = linearGradient1;
+ctx.fillRect(0, 0, 128, 128);
+
+let data = ctx.getImageData(0, 0, c.width, c.height).data;
+
+mosaicWorker.postMessage({
+  type: "create",
+  shape: "hex",
+  imgSize: 128,
+  cellSize: 6,
+  padding: 3,
+  aspect: 600 / 800,
+  variance: 30,
+  data: data
+});

@@ -10,14 +10,6 @@ body {
   margin: 0;
 }
 
-.starry {
-  background: url(starry.png);
-  background: url(starry.svg), linear-gradient(transparent, transparent);
-  background-repeat: no-repeat;
-  background-size: auto 100vh;
-  background-position: center center;
-}
-
 .black {
   background-color: black;
 }
@@ -32,6 +24,7 @@ form {
   margin: 20px;
   border: 1px solid #888;
   border-radius: 5px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 h1 {

@@ -1,7 +1,7 @@
-import triangle from "./triangle_ww";
-import square from "./square_ww";
-import hexagon from "./hex_ww";
-import circle from "./circle_ww";
+import triangle from "./generators/triangle_ww";
+import square from "./generators/square_ww";
+import hexagon from "./generators/hex_ww";
+import circle from "./generators/circle_ww";
 
 class Mosaic {
   constructor(data) {
