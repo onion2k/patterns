@@ -35,16 +35,19 @@ export default function() {
 
       var v = this.variance / 2 - Math.random() * this.variance;
 
-      this.svg.content += `<circle cx="${x}" cy="${y}" r="${this.cellSize /
-        2}" fill="rgb(${Math.floor(r + v)},${Math.floor(g + v)},${Math.floor(
+      this.svg.content += `<use xlink:href="#h" fill="rgb(${Math.floor(
+        r + v
+      )},${Math.floor(g + v)},${Math.floor(
         b + v
-      )})" />`;
+      )})" transform="translate(${x}, ${y})" />`;
     }
   };
 
   let render = data => {
     _chunk(0, this.data.length);
-    return `<svg width="${this.svg.width}" height="${this.svg.height}">${
+    return `<svg width="${this.svg.width}" height="${
+      this.svg.height
+    }"><defs><circle id="h" cx="0" cy="0" r="${this.cellSize / 2}"></defs>${
       this.svg.content
     }</svg>`;
   };

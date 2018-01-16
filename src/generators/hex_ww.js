@@ -51,25 +51,21 @@ export default function() {
 
       var v = this.variance / 2 - Math.random() * this.variance;
 
-      this.svg.content += `<path d="M 0 0 `;
-
-      this.svg.content += `l ${this.offsets[0].x} ${this.offsets[0].y} `;
-      this.svg.content += `l ${this.offsets[1].x} ${this.offsets[1].y} `;
-      this.svg.content += `l ${this.offsets[2].x} ${this.offsets[2].y} `;
-      this.svg.content += `l ${this.offsets[3].x} ${this.offsets[3].y} `;
-      this.svg.content += `l ${this.offsets[4].x} ${this.offsets[4].y} `;
-      this.svg.content += `l ${this.offsets[5].x} ${this.offsets[5].y} `;
-
-      this.svg.content += `Z" fill="rgb(${Math.floor(r + v)},${Math.floor(
-        g + v
-      )},${Math.floor(b + v)})" transform="translate(${Math.round(x * 100) /
-        100}, ${Math.round(y * 100) / 100})" />`;
+      this.svg.content += `<use xlink:href="#h" fill="rgb(${Math.floor(
+        r + v
+      )},${Math.floor(g + v)},${Math.floor(
+        b + v
+      )})" transform="translate(${Math.round(x * 100) / 100}, ${Math.round(
+        y * 100
+      ) / 100})" />`;
     }
   };
 
   let render = data => {
     _chunk(0, this.data.length);
-    return `<svg width="${this.svg.width}" height="${this.svg.height}">${
+    return `<svg width="${this.svg.width}" height="${
+      this.svg.height
+    }"><defs><path id="h" d="M 0 0 l 0 6 l 5.2 3 l 5.2 -3 l 0 -6 l -5.2 -3 l -5.2 3 Z"></path></defs>${
       this.svg.content
     }</svg>`;
   };

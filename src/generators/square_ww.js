@@ -35,11 +35,9 @@ export default function() {
 
       var v = this.variance / 2 - Math.random() * this.variance;
 
-      this.svg.content += `<rect x="${-1 * this.cellSize / 2}" y="${-1 *
-        this.cellSize /
-        2}" width="${this.cellSize}" height="${
-        this.cellSize
-      }" fill="rgb(${Math.floor(r + v)},${Math.floor(g + v)},${Math.floor(
+      this.svg.content += `<use xlink:href="#h" fill="rgb(${Math.floor(
+        r + v
+      )},${Math.floor(g + v)},${Math.floor(
         b + v
       )})" transform="translate(${x}, ${y})" />`;
     }
@@ -47,7 +45,11 @@ export default function() {
 
   let render = data => {
     _chunk(0, this.data.length);
-    return `<svg width="${this.svg.width}" height="${this.svg.height}">${
+    return `<svg width="${this.svg.width}" height="${
+      this.svg.height
+    }"><defs><rect id="h" x="${-1 * this.cellSize / 2}" y="${-1 *
+      this.cellSize /
+      2}" width="${this.cellSize}" height="${this.cellSize}"></defs>${
       this.svg.content
     }</svg>`;
   };
