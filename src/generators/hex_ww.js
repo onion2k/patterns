@@ -35,6 +35,11 @@ export default function() {
   };
 
   let _chunk = (chunk, total) => {
+    postMessage({
+      type: "progress",
+      progress: 50
+    });
+
     for (var i = 0, n = this.data.length; i < n; i += 4) {
       var pos = (i + chunk) / 4;
 
@@ -63,11 +68,23 @@ export default function() {
 
   let render = data => {
     _chunk(0, this.data.length);
+    let path = "M 0 0 ";
+    for (var x = 0; x < 6; x++) {
+      path += "l ";
+      path +=
+        Math.round(Math.sin(Math.PI * (x * 60 / 180)) * this.cellSize * 100) /
+          100 +
+        " ";
+      path +=
+        Math.round(Math.cos(Math.PI * (x * 60 / 180)) * this.cellSize * 100) /
+          100 +
+        " ";
+    }
+    path += "Z";
+
     return `<svg width="${this.svg.width}" height="${
       this.svg.height
-    }"><defs><path id="h" d="M 0 0 l 0 6 l 5.2 3 l 5.2 -3 l 0 -6 l -5.2 -3 l -5.2 3 Z"></path></defs>${
-      this.svg.content
-    }</svg>`;
+    }"><defs><path id="h" d="${path}"></path></defs>${this.svg.content}</svg>`;
   };
 
   return {

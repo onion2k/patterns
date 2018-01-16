@@ -2,10 +2,25 @@ import Rune from "rune.js";
 import MosaicWorker from "./mosaic.worker.js";
 import "./patterns.css";
 
+let progress = 0;
+
 let mosaicWorker = new MosaicWorker();
 mosaicWorker.addEventListener("message", e => {
-  let svg = document.getElementById("svg");
-  svg.innerHTML = e.data;
+  if (e.data.type === "complete") {
+    document.getElementById("progress").style.display = "none";
+    let svg = document.getElementById("svg");
+    svg.style.display = "grid";
+    svg.innerHTML = e.data.svg;
+  } else if (e.data.type === "progress") {
+    document.getElementById("progress").style.display = "grid";
+    document.getElementById("svg").style.display = "none";
+    progress = e.data.progress;
+    let progressCircle = document.getElementById("progressCircle");
+    progressCircle.setAttribute(
+      "transform",
+      "translate(50,50) scale(" + progress / 2 + ")"
+    );
+  }
 });
 
 var getScaledImageData = function(imgSize, img) {
@@ -37,7 +52,6 @@ holder.ondrop = function(e) {
   var reader = new FileReader();
 
   reader.onload = function(event) {
-    var distortion = 1.5;
     let shapeSelect = document.getElementById("shape");
     let shape = shapeSelect.options[shapeSelect.selectedIndex].value;
     var cellSize = parseInt(document.getElementById("cellsize").value) || 5;
@@ -52,9 +66,7 @@ holder.ondrop = function(e) {
       var data = getScaledImageData(imgSize, img);
 
       if (window.Worker) {
-        document.body.classList.remove("starry");
         document.body.classList.add("black");
-
         mosaicWorker.postMessage({
           type: "create",
           shape,

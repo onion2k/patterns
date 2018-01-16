@@ -4,13 +4,18 @@
 
 <body class="black">
   <div id="svg"></div>
+  <div id="progress">
+    <svg width="100" height="100">
+      <circle id="progressCircle" cx="0" cy="0" r="1" fill="rgb(255,255,255)" transform=""></circle>
+    </svg>
+  </div>
   <form>
     <h1>Pictato</h1>
     <div>
       <label>Shape</label>
       <select name="shape" id="shape">
         <option value="hex">Hex</option>
-        <option value="triangle" selected>Triangle</option>
+        <option value="triangle">Triangle</option>
         <option value="square">Square</option>
         <option value="circle">Circle</option>
       </select>
@@ -45,6 +50,10 @@
       <p>Drop an image on the page to generate</p>
     </div>
   </form>
+
+  <div id="share">
+    Share Pictato | Download SVG
+  </div>
 </body>
 
 </html>

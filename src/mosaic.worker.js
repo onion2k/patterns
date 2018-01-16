@@ -38,7 +38,10 @@ self.addEventListener("message", event => {
       console.warn("No worker instance");
     } else {
       let svg = mos.render();
-      postMessage(svg);
+      postMessage({
+        type: "complete",
+        svg: svg
+      });
     }
   }
 });
