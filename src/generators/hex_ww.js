@@ -45,7 +45,7 @@ export default function() {
       // if (prog > pprog) {
       //   postMessage({
       //     type: "progress",
-      //     progress: prog
+      //     progress: prog * 10
       //   });
       // }
       // pprog = prog;

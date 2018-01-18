@@ -16,15 +16,23 @@ mosaicWorker.addEventListener("message", e => {
     elSvg.style.display = "grid";
     elSvg.innerHTML = e.data.svg;
   } else if (e.data.type === "progress") {
-    elProgress.style.display = "grid";
-    elSvg.style.display = "none";
-    progress = e.data.progress;
-    elProgressCircle.setAttribute(
-      "transform",
-      "translate(50,50) scale(" + progress / 2 + ")"
-    );
+    // progress = e.data.progress;
+    // elProgressCircle.setAttribute(
+    //   "transform",
+    //   "translate(50,50) scale(" + progress / 2 + ")"
+    // );
   }
 });
+
+// let renderProgress = function() {
+//   console.log(progress);
+//   elProgressCircle.setAttribute(
+//     "transform",
+//     "translate(50,50) scale(" + progress / 2 + ")"
+//   );
+//   requestAnimationFrame(renderProgress);
+// };
+// renderProgress();
 
 var getScaledImageData = function(imgSize) {
   var c = document.createElement("canvas");
@@ -74,6 +82,9 @@ holder.ondrop = function(e) {
 };
 
 let createSVG = function() {
+  elProgress.style.display = "grid";
+  elSvg.style.display = "none";
+
   let shapeSelect = document.getElementById("shape");
   let shape = shapeSelect.options[shapeSelect.selectedIndex].value;
   var cellSize = parseInt(document.getElementById("cellsize").value) || 5;
