@@ -5,19 +5,21 @@ import "./patterns.css";
 let progress = 0;
 let imgCache;
 
+let elProgress = document.getElementById("progress");
+let elSvg = document.getElementById("svg");
+let elProgressCircle = document.getElementById("progressCircle");
+
 let mosaicWorker = new MosaicWorker();
 mosaicWorker.addEventListener("message", e => {
   if (e.data.type === "complete") {
-    document.getElementById("progress").style.display = "none";
-    let svg = document.getElementById("svg");
-    svg.style.display = "grid";
-    svg.innerHTML = e.data.svg;
+    elProgress.style.display = "none";
+    elSvg.style.display = "grid";
+    elSvg.innerHTML = e.data.svg;
   } else if (e.data.type === "progress") {
-    document.getElementById("progress").style.display = "grid";
-    document.getElementById("svg").style.display = "none";
+    elProgress.style.display = "grid";
+    elSvg.style.display = "none";
     progress = e.data.progress;
-    let progressCircle = document.getElementById("progressCircle");
-    progressCircle.setAttribute(
+    elProgressCircle.setAttribute(
       "transform",
       "translate(50,50) scale(" + progress / 2 + ")"
     );
@@ -125,9 +127,9 @@ mosaicWorker.postMessage({
   data: data.data
 });
 
-document.getElementById("shape").addEventListener("change", createSVG);
-document.getElementById("cellsize").addEventListener("change", createSVG);
-document.getElementById("size").addEventListener("change", createSVG);
-document.getElementById("gap").addEventListener("change", createSVG);
-document.getElementById("variance").addEventListener("change", createSVG);
-document.getElementById("scaling").addEventListener("change", createSVG);
+// document.getElementById("shape").addEventListener("change", createSVG);
+// document.getElementById("size").addEventListener("change", createSVG);
+// document.getElementById("cellsize").addEventListener("change", createSVG);
+// document.getElementById("gap").addEventListener("change", createSVG);
+// document.getElementById("variance").addEventListener("change", createSVG);
+// document.getElementById("scaling").addEventListener("change", createSVG);

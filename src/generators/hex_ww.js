@@ -34,14 +34,21 @@ export default function() {
     return r;
   };
 
-  let _chunk = (chunk, total) => {
-    postMessage({
-      type: "progress",
-      progress: 50
-    });
+  let _chunk = () => {
+    let prog = 0;
+    let pprog = 0;
+    let total = this.data.length;
+    for (var i = 0, n = total; i < n; i += 4) {
+      var pos = i / 4;
 
-    for (var i = 0, n = this.data.length; i < n; i += 4) {
-      var pos = (i + chunk) / 4;
+      // prog = Math.floor(Math.floor(i / total * 100) / 10);
+      // if (prog > pprog) {
+      //   postMessage({
+      //     type: "progress",
+      //     progress: prog
+      //   });
+      // }
+      // pprog = prog;
 
       var y =
         2 * Math.floor(pos / this.imgSize) * (this.cellSize + this.padding);
@@ -49,10 +56,10 @@ export default function() {
         2 * Math.floor(pos % this.imgSize) * (this.cellSize + this.padding) +
         (Math.floor(pos / this.imgSize) % 2) * (this.cellSize + this.padding);
 
-      var r = this.data[i + chunk];
-      var g = this.data[i + chunk + 1];
-      var b = this.data[i + chunk + 2];
-      var a = this.data[i + chunk + 3];
+      var r = this.data[i];
+      var g = this.data[i + 1];
+      var b = this.data[i + 2];
+      var a = this.data[i + 3];
 
       var v = this.variance / 2 - Math.random() * this.variance;
 
@@ -67,7 +74,7 @@ export default function() {
   };
 
   let render = data => {
-    _chunk(0, this.data.length);
+    _chunk();
     let path = "M 0 0 ";
     for (var x = 0; x < 6; x++) {
       path += "l ";

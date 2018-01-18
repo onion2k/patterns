@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Playfair+Display");
+/* @import url("https://fonts.googleapis.com/css?family=Playfair+Display"); */
 
 body {
-  font-family: "Playfair Display", cursive;
+  font-family: "Playfair Display", "Verdana", cursive;
   font-size: 1.1em;
   width: 100vw;
   height: 100vh;
