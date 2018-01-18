@@ -33,6 +33,10 @@ export default function() {
   };
 
   let _chunk = (chunk, total) => {
+    postMessage({
+      type: "progress",
+      progress: 50
+    });
     for (var i = 0, n = total; i < n; i += 4) {
       var pos = (i + chunk) / 4;
 
@@ -54,13 +58,7 @@ export default function() {
 
       var v = this.variance / 2 - Math.random() * this.variance;
 
-      this.svg.content += `<path d="M  ${this.offsets[0].x} ${
-        this.offsets[0].y
-      } `;
-      this.svg.content += `L ${this.offsets[1].x} ${this.offsets[1].y} `;
-      this.svg.content += `L ${this.offsets[2].x} ${this.offsets[2].y} `;
-
-      this.svg.content += `Z" fill="rgb(${r},${g},${b})" stroke="rgb(0,0,0)" transform="translate(${xPos}, ${yPos}) rotate(${30 +
+      this.svg.content += `<use xlink:href="#h" fill="rgb(${r},${g},${b})" transform="translate(${xPos}, ${yPos}) rotate(${30 +
         (x % 2) * 180})" />`;
       // this.svg.debug += `<circle x="${xPos}" y="${yPos}" r="2" fill="rgb(255,255,255)" transform="translate(${xPos}, ${yPos})" />`;
     }
@@ -68,9 +66,13 @@ export default function() {
 
   let render = data => {
     _chunk(0, this.data.length);
-    return `<svg width="${this.svg.width}" height="${this.svg.height}">${
-      this.svg.content
-    }${this.svg.debug}</svg>`;
+    return `<svg width="${this.svg.width}" height="${
+      this.svg.height
+    }"><defs><path id="h" d="M ${this.offsets[0].x} ${this.offsets[0].y} L ${
+      this.offsets[1].x
+    } ${this.offsets[1].y} L ${this.offsets[2].x} ${
+      this.offsets[2].y
+    } Z"></path></defs>${this.svg.content}${this.svg.debug}</svg>`;
   };
 
   return {
