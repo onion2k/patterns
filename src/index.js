@@ -2,6 +2,8 @@ import Rune from "rune.js";
 import MosaicWorker from "./mosaic.worker.js";
 import "./patterns.css";
 
+import filesaver from "file-saver";
+
 let progress = 0;
 let imgCache;
 
@@ -13,8 +15,8 @@ let mosaicWorker = new MosaicWorker();
 mosaicWorker.addEventListener("message", e => {
   if (e.data.type === "complete") {
     elProgress.style.display = "none";
-    elSvg.style.display = "grid";
     elSvg.innerHTML = e.data.svg;
+    elSvg.style.display = "grid";
   } else if (e.data.type === "progress") {
     // progress = e.data.progress;
     // elProgressCircle.setAttribute(
@@ -23,16 +25,6 @@ mosaicWorker.addEventListener("message", e => {
     // );
   }
 });
-
-// let renderProgress = function() {
-//   console.log(progress);
-//   elProgressCircle.setAttribute(
-//     "transform",
-//     "translate(50,50) scale(" + progress / 2 + ")"
-//   );
-//   requestAnimationFrame(renderProgress);
-// };
-// renderProgress();
 
 var getScaledImageData = function(imgSize) {
   var c = document.createElement("canvas");
@@ -138,9 +130,17 @@ mosaicWorker.postMessage({
   data: data.data
 });
 
-// document.getElementById("shape").addEventListener("change", createSVG);
-// document.getElementById("size").addEventListener("change", createSVG);
-// document.getElementById("cellsize").addEventListener("change", createSVG);
-// document.getElementById("gap").addEventListener("change", createSVG);
-// document.getElementById("variance").addEventListener("change", createSVG);
-// document.getElementById("scaling").addEventListener("change", createSVG);
+document.getElementById("regen").addEventListener("click", e => {
+  e.preventDefault();
+  createSVG();
+});
+
+document.getElementById("download").addEventListener("click", e => {
+  e.preventDefault();
+  let svg = new File(
+    [document.getElementById("svg").innerHTML],
+    "pictato.svg",
+    { type: "image/svg+xml" }
+  );
+  filesaver.saveAs(svg);
+});
