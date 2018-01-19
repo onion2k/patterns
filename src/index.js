@@ -102,8 +102,11 @@ let createSVG = function() {
   }
 };
 
+const w = document.body.clientWidth;
+const h = document.body.clientHeight;
+
 var c = document.createElement("canvas");
-var aspect = 600 / 800;
+var aspect = h / w;
 c.width = 128;
 c.height = Math.floor(128 * aspect);
 
