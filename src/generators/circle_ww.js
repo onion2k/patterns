@@ -45,11 +45,10 @@ export default function() {
 
   let render = data => {
     _chunk(0, this.data.length);
-    return `<svg width="${this.svg.width}" height="${
+    return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${this.svg.width} ${
       this.svg.height
-    }"><defs><circle id="h" cx="0" cy="0" r="${this.cellSize / 2}"></defs>${
-      this.svg.content
-    }</svg>`;
+    }" preserveAspectRatio="xMidYMid meet"><svg><defs><circle id="h" cx="0" cy="0" r="${this.cellSize / 2}"></path></defs><rect width="100%" height="100%" fill="black"/>${this.svg.content}</svg>`;
+
   };
 
   return {
