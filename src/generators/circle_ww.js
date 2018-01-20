@@ -1,7 +1,18 @@
+import base from "./base";
+
+class Circle extends base {
+  init() {
+    console.log("Init triangle");
+  }
+  render() {}
+}
+
 export default function() {
   var r, imgSize, cellSize, padding, aspect;
 
   let init = data => {
+    this.t = new Circle();
+    this.t.init();
     this.imgSize = data.imgSize;
     this.cellSize = data.cellSize;
     this.padding = data.padding * 0.8 - 1;
@@ -45,10 +56,12 @@ export default function() {
 
   let render = data => {
     _chunk(0, this.data.length);
-    return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${this.svg.width} ${
-      this.svg.height
-    }" preserveAspectRatio="xMidYMid meet"><svg><defs><circle id="h" cx="0" cy="0" r="${this.cellSize / 2}"></path></defs><rect width="100%" height="100%" fill="black"/>${this.svg.content}</svg>`;
-
+    return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${this
+      .svg.width} ${this.svg
+      .height}" preserveAspectRatio="xMidYMid meet"><svg><defs><circle id="h" cx="0" cy="0" r="${this
+      .cellSize /
+      2}"></path></defs><rect width="100%" height="100%" fill="black"/>${this
+      .svg.content}</svg>`;
   };
 
   return {

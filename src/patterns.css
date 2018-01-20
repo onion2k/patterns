@@ -76,7 +76,7 @@ select {
   position: absolute;
   top: 0;
   left: 0;
-  width: 200vw;
+  width: 100vw;
   overflow: scroll;
   z-index: 0;
   display: grid;
