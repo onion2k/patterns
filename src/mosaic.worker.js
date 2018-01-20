@@ -9,22 +9,22 @@ class Mosaic {
     // Add some defaults?
     switch (data.shape) {
       case "triangle":
-        this.mosaic = new triangle();
+        this.mosaic = new triangle(data);
         break;
       case "square":
-        this.mosaic = new square();
+        this.mosaic = new square(data);
         break;
       case "hex":
-        this.mosaic = new hexagon();
+        this.mosaic = new hexagon(data);
         break;
       case "circle":
-        this.mosaic = new circle();
+        this.mosaic = new circle(data);
         break;
       default:
-        this.mosaic = new circle();
+        this.mosaic = new circle(data);
         break;
     }
-    this.mosaic.init(data);
+    // this.mosaic.init(data);
   }
   render() {
     return this.mosaic.render(this.data);
