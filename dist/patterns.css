@@ -1,19 +1,13 @@
-@import url(https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister);body {
-  font-family: "Love Ya Like A Sister", cursive;
+/* @import url("https://fonts.googleapis.com/css?family=Playfair+Display"); */
+
+body {
+  font-family: "Playfair Display", "Verdana", cursive;
   font-size: 1.1em;
   width: 100vw;
   height: 100vh;
   background-color: #fff;
   padding: 0;
   margin: 0;
-}
-
-.starry {
-  background: url(starry.png);
-  background: url(starry.svg), linear-gradient(transparent, transparent);
-  background-repeat: no-repeat;
-  background-size: auto 100vh;
-  background-position: center center;
 }
 
 .black {
@@ -26,10 +20,31 @@ form {
   left: 0;
   z-index: 1;
   background-color: rgb(255, 255, 255);
-  padding: 30px;
-  margin: 50px;
+  padding: 20px;
+  margin: 20px;
   border: 1px solid #888;
-  border-radius: 15px;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+#share {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+h1 {
+  font-size: 4.2rem;
+  padding: 0 0 30px 0;
+  margin: 0;
+  text-align: center;
 }
 
 div {
@@ -45,7 +60,8 @@ label {
 }
 
 input,
-p {
+p,
+button {
   flex: 2;
   padding: 10px;
 }
@@ -60,6 +76,18 @@ select {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100vw;
   overflow: scroll;
   z-index: 0;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+#progress {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-items: center;
 }

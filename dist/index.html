@@ -2,15 +2,21 @@
 
 <head><link href="/patterns.css" rel="stylesheet"></head>
 
-<body class="starry">
+<body class="black">
   <div id="svg"></div>
+  <div id="progress">
+    <svg width="100" height="100">
+      <circle id="progressCircle" cx="0" cy="0" r="1" fill="rgb(255,255,255)" transform=""></circle>
+    </svg>
+  </div>
   <form>
+    <h1>Pictato</h1>
     <div>
       <label>Shape</label>
       <select name="shape" id="shape">
         <option value="hex">Hex</option>
-        <option value="triangle" selected>Triangle</option>
-        <option value="square">Square</option>
+        <option value="triangle">Triangle</option>
+        <option value="square" selected>Square</option>
         <option value="circle">Circle</option>
       </select>
     </div>
@@ -20,11 +26,11 @@
     </div>
     <div>
       <label>Cellsize</label>
-      <input type="number" name="cellsize" id="cellsize" value="10" />
+      <input type="number" name="cellsize" id="cellsize" value="7" />
     </div>
     <div>
       <label>Gap</label>
-      <input type="number" name="gap" id="gap" value="10" />
+      <input type="number" name="gap" id="gap" value="3" />
     </div>
     <div>
       <label>Variance</label>
@@ -40,14 +46,22 @@
       </select>
     </div>
     <div>
-      <label>Offset</label>
-      <input type="checkbox" name="offset" id="offset" value="30" disabled />
+      <label></label>
+      <button id="regen">Regenerate</button>
     </div>
     <div>
       <label></label>
-      <p>Drop an image on the page to generate</p>
+      <button id="download">Download SVG</button>
+    </div>
+    <div>
+      <label></label>
+      <p>Drop any image on the page to generate a new picture</p>
     </div>
   </form>
+
+  <div id="share">
+    Share Pictato
+  </div>
 <script type="text/javascript" src="/index.js"></script></body>
 
 </html>
