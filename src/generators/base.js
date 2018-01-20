@@ -28,4 +28,8 @@ export default class {
         ${content}
       </svg>`;
   }
+  render() {
+    this._chunk(0, this.data.length);
+    return this.svg(this.content);
+  }
 }
