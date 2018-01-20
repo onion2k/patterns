@@ -1,8 +1,8 @@
 import base from "./base";
 
 class Circle extends base {
-  init() {
-    console.log("Init triangle");
+  constructor(data) {
+    super(data);
   }
   render() {}
 }
@@ -11,8 +11,7 @@ export default function() {
   var r, imgSize, cellSize, padding, aspect;
 
   let init = data => {
-    this.t = new Circle();
-    this.t.init();
+    this.t = new Circle(data);
     this.imgSize = data.imgSize;
     this.cellSize = data.cellSize;
     this.padding = data.padding * 0.8 - 1;

@@ -1,8 +1,16 @@
 export default class {
-  constructor() {
-    console.log("base");
+  constructor(data) {
+    console.log("base", data);
     this.width = 0;
     this.height = 0;
+
+    this.imgSize = data.imgSize;
+    this.cellSize = data.cellSize;
+    this.padding = data.padding;
+    this.aspect = data.aspect;
+    this.variance = data.variance;
+    this.data = data.data;
+    this.img = data.img;
   }
   svg(defs, content) {
     let defs = defs.join();
