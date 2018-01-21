@@ -15,6 +15,9 @@ export default class {
       this.aspect * this.imgSize * (this.cellSize + this.padding)
     );
   }
+  round(n) {
+    return Math.round(n * 100) / 100;
+  }
   addDef(def) {
     this.defs.push(def);
   }

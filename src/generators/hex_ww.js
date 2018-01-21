@@ -6,41 +6,34 @@ export default class Hex extends base {
 
     this.imgSize = data.imgSize;
     this.cellSize = data.cellSize;
-    this.padding = data.padding;
+    this.padding = data.padding - 2;
     this.variance = data.variance;
     this.data = data.data;
 
     this.content = "";
 
+    this.w = this.cellSize + this.padding;
+    this.h = Math.sqrt(3) / 2 * this.cellSize + this.padding;
+
     let path = "M 0 0 ";
     for (var x = 0; x < 6; x++) {
+      let r = Math.PI / 180 * (x * 60 + 30);
       path += "l ";
-      path +=
-        Math.round(Math.sin(Math.PI * (x * 60 / 180)) * this.cellSize * 100) /
-          100 +
-        " ";
-      path +=
-        Math.round(Math.cos(Math.PI * (x * 60 / 180)) * this.cellSize * 100) /
-          100 +
-        " ";
+      path += this.round(Math.cos(r) * this.cellSize / 2) + " ";
+      path += this.round(Math.sin(r) * this.cellSize / 2) + " ";
     }
     path += "Z";
 
     this.addDef(`<path id="h" d="${path}"></path>`);
   }
-
   _chunk() {
-    let prog = 0;
-    let pprog = 0;
-    let total = this.data.length;
-    for (var i = 0, n = total; i < n; i += 4) {
+    for (var i = 0, n = this.data.length; i < n; i += 4) {
       var pos = i / 4;
 
-      var y =
-        2 * Math.floor(pos / this.imgSize) * (this.cellSize + this.padding);
       var x =
-        2 * Math.floor(pos % this.imgSize) * (this.cellSize + this.padding) +
-        (Math.floor(pos / this.imgSize) % 2) * (this.cellSize + this.padding);
+        Math.floor(pos % this.imgSize) * this.w +
+        (Math.floor(pos / this.imgSize) % 2 === 0) * this.w / 2;
+      var y = Math.floor(pos / this.imgSize) * this.h;
 
       var r = this.data[i];
       var g = this.data[i + 1];
@@ -53,9 +46,7 @@ export default class Hex extends base {
         r + v
       )},${Math.floor(g + v)},${Math.floor(
         b + v
-      )})" transform="translate(${Math.round(x * 100) / 100}, ${Math.round(
-        y * 100
-      ) / 100})" />`;
+      )})" transform="translate(${this.round(x)}, ${this.round(y)})" />`;
     }
   }
 }

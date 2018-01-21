@@ -124,10 +124,10 @@ let data = getScaledImageData(128);
 
 mosaicWorker.postMessage({
   type: "create",
-  shape: "triangle",
+  shape: "hex",
   imgSize: 128,
-  cellSize: 6,
-  padding: 3,
+  cellSize: 20,
+  padding: 0,
   aspect: data.height / data.width,
   variance: 30,
   data: data.data
