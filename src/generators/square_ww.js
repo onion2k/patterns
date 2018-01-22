@@ -25,11 +25,26 @@ export default class Square extends base {
 
       var v = this.variance / 2 - Math.random() * this.variance;
 
-      this.content += `<use xlink:href="#h" fill="rgb(${Math.floor(
-        r + v
-      )},${Math.floor(g + v)},${Math.floor(
+      let col = `rgb(${Math.floor(r + v)},${Math.floor(g + v)},${Math.floor(
         b + v
-      )})" transform="translate(${x}, ${y})" />`;
+      )})`;
+
+      let translate = `translate(${this.round(x)}, ${this.round(y)})`;
+      let scale = "";
+
+      switch (this.scaling) {
+        case "additive":
+          scale = `scale(${0.25 + 2.0 * this.brightness(r, g, b) / 196})`;
+          break;
+        case "multiply":
+          scale = `scale(${2.0 * this.brightness(r, g, b) / 196})`;
+          break;
+        case "random":
+          scale = `scale(${2.0 * Math.random()})`;
+          break;
+      }
+
+      this.content += `<use xlink:href="#h" fill="${col}" transform="${translate} ${scale}" />`;
     }
   }
 }

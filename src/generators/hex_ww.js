@@ -40,15 +40,16 @@ export default class Hex extends base {
 
       let translate = `translate(${this.round(x)}, ${this.round(y)})`;
       let scale = "";
+
       switch (this.scaling) {
         case "additive":
-          scale = `scale(${0.25 + this.brightness(r, g, b) / 255})`;
+          scale = `scale(${0.25 + 2.0 * this.brightness(r, g, b) / 196})`;
           break;
         case "multiply":
-          scale = `scale(${1 * this.brightness(r, g, b) / 255})`;
+          scale = `scale(${2.0 * this.brightness(r, g, b) / 196})`;
           break;
         case "random":
-          scale = `scale(${Math.random() * 1})`;
+          scale = `scale(${2.0 * Math.random()})`;
           break;
       }
 

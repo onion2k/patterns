@@ -42,7 +42,26 @@ export default class Triangle extends base {
 
       var v = this.variance / 2 - Math.random() * this.variance;
 
-      this.content += `<use xlink:href="#h" fill="rgb(${r},${g},${b})" transform="translate(${xPos}, ${yPos}) rotate(${30 +
+      let col = `rgb(${Math.floor(r + v)},${Math.floor(g + v)},${Math.floor(
+        b + v
+      )})`;
+
+      let translate = `translate(${this.round(xPos)}, ${this.round(yPos)})`;
+      let scale = "";
+
+      switch (this.scaling) {
+        case "additive":
+          scale = `scale(${0.25 + 2.0 * this.brightness(r, g, b) / 196})`;
+          break;
+        case "multiply":
+          scale = `scale(${2.0 * this.brightness(r, g, b) / 196})`;
+          break;
+        case "random":
+          scale = `scale(${2.0 * Math.random()})`;
+          break;
+      }
+
+      this.content += `<use xlink:href="#h" fill="${col}" transform="${translate} ${scale} rotate(${30 +
         (x % 2) * 180})" />`;
     }
   }
