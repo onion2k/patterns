@@ -34,11 +34,15 @@ export default class Hex extends base {
 
       var v = this.variance / 2 - Math.random() * this.variance;
 
-      this.content += `<use xlink:href="#h" fill="rgb(${Math.floor(
-        r + v
-      )},${Math.floor(g + v)},${Math.floor(
+      let col = `rgb(${Math.floor(r + v)},${Math.floor(g + v)},${Math.floor(
         b + v
-      )})" transform="translate(${this.round(x)}, ${this.round(y)})" />`;
+      )})`;
+
+      let scale = `scale(${0.25 + this.brightness(r, g, b) / 255})`;
+
+      this.content += `<use xlink:href="#h" fill="${col}" transform="translate(${this.round(
+        x
+      )}, ${this.round(y)}) ${scale}" />`;
     }
   }
 }
