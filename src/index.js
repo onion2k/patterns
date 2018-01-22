@@ -140,7 +140,7 @@ mosaicWorker.postMessage({
   variance: 30,
   scaling: "additive",
   data: data.data,
-  background: "white"
+  background: "black"
 });
 
 document.getElementById("regen").addEventListener("click", e => {
