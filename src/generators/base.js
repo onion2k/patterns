@@ -9,6 +9,8 @@ export default class {
     this.variance = data.variance;
     this.data = data.data;
     this.scaling = data.scaling;
+    this.img = data.img;
+    this.background = data.background;
 
     this.w = this.cellSize + this.padding;
     this.h = this.cellSize + this.padding;
@@ -25,7 +27,7 @@ export default class {
     let height = Math.floor(this.aspect * this.imgSize * this.h);
     return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid slice" width="${width}" height="${height}">
         <defs>${_defs}</defs>
-        <rect width="100%" height="100%" fill="black"/>
+        <rect width="100%" height="100%" fill="${this.background}"/>
         ${content}
       </svg>`;
   }

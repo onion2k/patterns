@@ -79,13 +79,17 @@ let createSVG = function() {
 
   let shapeSelect = document.getElementById("shape");
   let shape = shapeSelect.options[shapeSelect.selectedIndex].value;
-  var cellSize = parseInt(document.getElementById("cellsize").value) || 5;
-  var imgSize = parseInt(document.getElementById("size").value) || 48;
-  var padding = parseInt(document.getElementById("gap").value) || 0;
-  var variance = parseInt(document.getElementById("variance").value) || 30;
+  let cellSize = parseInt(document.getElementById("cellsize").value) || 5;
+  let imgSize = parseInt(document.getElementById("size").value) || 48;
+  let padding = parseInt(document.getElementById("gap").value) || 0;
+  let variance = parseInt(document.getElementById("variance").value) || 30;
   let scalingSelect = document.getElementById("scaling");
   let scaling = scalingSelect.options[scalingSelect.selectedIndex].value;
-  var data = getScaledImageData(imgSize);
+  let backgroundSelect = document.getElementById("background");
+  let background =
+    backgroundSelect.options[backgroundSelect.selectedIndex].value;
+
+  let data = getScaledImageData(imgSize);
 
   if (window.Worker) {
     document.body.classList.add("black");
@@ -98,7 +102,8 @@ let createSVG = function() {
       aspect: data.height / data.width,
       variance,
       scaling,
-      data: data.data
+      data: data.data,
+      background
     });
   } else {
     document.body.innerHTML = "Sorry, you need web workers.";
@@ -134,7 +139,8 @@ mosaicWorker.postMessage({
   aspect: data.height / data.width,
   variance: 30,
   scaling: "additive",
-  data: data.data
+  data: data.data,
+  background: "white"
 });
 
 document.getElementById("regen").addEventListener("click", e => {
