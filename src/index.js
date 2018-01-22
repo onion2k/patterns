@@ -150,10 +150,8 @@ document.getElementById("regen").addEventListener("click", e => {
 
 document.getElementById("download").addEventListener("click", e => {
   e.preventDefault();
-  let svg = new File(
-    [document.getElementById("svg").innerHTML],
-    "pictato.svg",
-    { type: "image/svg+xml" }
-  );
+  let svg = new File([document.getElementById("svg").innerHTML], "imgsvg.svg", {
+    type: "image/svg+xml"
+  });
   filesaver.saveAs(svg);
 });
