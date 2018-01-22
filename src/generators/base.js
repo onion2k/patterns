@@ -8,7 +8,7 @@ export default class {
     this.aspect = data.aspect;
     this.variance = data.variance;
     this.data = data.data;
-    this.img = data.img;
+    this.scaling = data.scaling;
 
     this.w = this.cellSize + this.padding;
     this.h = this.cellSize + this.padding;

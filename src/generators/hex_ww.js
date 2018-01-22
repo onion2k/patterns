@@ -38,11 +38,21 @@ export default class Hex extends base {
         b + v
       )})`;
 
-      let scale = `scale(${0.25 + this.brightness(r, g, b) / 255})`;
+      let translate = `translate(${this.round(x)}, ${this.round(y)})`;
+      let scale = "";
+      switch (this.scaling) {
+        case "additive":
+          scale = `scale(${0.25 + this.brightness(r, g, b) / 255})`;
+          break;
+        case "multiply":
+          scale = `scale(${1 * this.brightness(r, g, b) / 255})`;
+          break;
+        case "random":
+          scale = `scale(${Math.random() * 1})`;
+          break;
+      }
 
-      this.content += `<use xlink:href="#h" fill="${col}" transform="translate(${this.round(
-        x
-      )}, ${this.round(y)}) ${scale}" />`;
+      this.content += `<use xlink:href="#h" fill="${col}" transform="${translate} ${scale}" />`;
     }
   }
 }

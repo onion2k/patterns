@@ -83,6 +83,8 @@ let createSVG = function() {
   var imgSize = parseInt(document.getElementById("size").value) || 48;
   var padding = parseInt(document.getElementById("gap").value) || 0;
   var variance = parseInt(document.getElementById("variance").value) || 30;
+  let scalingSelect = document.getElementById("scaling");
+  let scaling = scalingSelect.options[scalingSelect.selectedIndex].value;
   var data = getScaledImageData(imgSize);
 
   if (window.Worker) {
@@ -95,6 +97,7 @@ let createSVG = function() {
       padding,
       aspect: data.height / data.width,
       variance,
+      scaling,
       data: data.data
     });
   } else {
@@ -130,6 +133,7 @@ mosaicWorker.postMessage({
   padding: 1,
   aspect: data.height / data.width,
   variance: 30,
+  scaling: "additive",
   data: data.data
 });
 
