@@ -126,8 +126,8 @@ mosaicWorker.postMessage({
   type: "create",
   shape: "hex",
   imgSize: 128,
-  cellSize: 20,
-  padding: 0,
+  cellSize: 12,
+  padding: 1,
   aspect: data.height / data.width,
   variance: 30,
   data: data.data

@@ -4,14 +4,6 @@ export default class Triangle extends base {
   constructor(data) {
     super(data);
 
-    this.imgSize = data.imgSize;
-    this.cellSize = data.cellSize;
-    this.padding = data.padding;
-    this.variance = data.variance;
-    this.data = data.data;
-
-    this.content = "";
-
     this.h = this.cellSize / Math.cos(60 * 0.0174533);
 
     let offsets = [];

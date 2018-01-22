@@ -4,14 +4,6 @@ export default class Circle extends base {
   constructor(data) {
     super(data);
 
-    this.imgSize = data.imgSize;
-    this.cellSize = data.cellSize;
-    this.padding = data.padding;
-    this.variance = data.variance;
-    this.data = data.data;
-
-    this.content = "";
-
     this.addDef(
       `<circle id="h" x="${-1 * this.cellSize / 2}" y="${-1 *
         this.cellSize /

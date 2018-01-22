@@ -10,10 +10,8 @@ export default class {
     this.data = data.data;
     this.img = data.img;
 
-    this.width = this.imgSize * (this.cellSize + this.padding);
-    this.height = Math.floor(
-      this.aspect * this.imgSize * (this.cellSize + this.padding)
-    );
+    this.w = this.cellSize + this.padding;
+    this.h = this.cellSize + this.padding;
   }
   round(n) {
     return Math.round(n * 100) / 100;
@@ -23,9 +21,9 @@ export default class {
   }
   svg(content) {
     let _defs = this.defs.join();
-    return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${this
-      .width} ${this.height}" preserveAspectRatio="xMidYMid slice" width="${this
-      .width}" height="${this.height}">
+    let width = this.imgSize * this.w;
+    let height = Math.floor(this.aspect * this.imgSize * this.h);
+    return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid slice" width="${width}" height="${height}">
         <defs>${_defs}</defs>
         <rect width="100%" height="100%" fill="black"/>
         ${content}

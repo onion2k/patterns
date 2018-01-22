@@ -4,14 +4,6 @@ export default class Hex extends base {
   constructor(data) {
     super(data);
 
-    this.imgSize = data.imgSize;
-    this.cellSize = data.cellSize;
-    this.padding = data.padding - 2;
-    this.variance = data.variance;
-    this.data = data.data;
-
-    this.content = "";
-
     this.w = this.cellSize + this.padding;
     this.h = Math.sqrt(3) / 2 * this.cellSize + this.padding;
 
