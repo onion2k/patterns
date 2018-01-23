@@ -135,7 +135,7 @@ mosaicWorker.postMessage({
   shape: "hexflower",
   imgSize: 128,
   cellSize: 30,
-  padding: 30,
+  padding: 0,
   aspect: data.height / data.width,
   variance: 30,
   scaling: "none",

@@ -4,19 +4,19 @@ export default class Hex extends base {
   constructor(data) {
     super(data);
 
-    this.w = this.cellSize + this.padding;
-    this.h = Math.sqrt(3) / 2 * this.cellSize + this.padding;
+    this.w = Math.sqrt(3) / 2 * this.cellSize + this.padding;
+    this.h = this.cellSize + this.padding;
 
     let path = "M 0 0 ";
     for (var x = 0; x < 18; x++) {
       let r = Math.PI / 180 * (x * (360 / 18));
-      let c = x % 3 ? this.cellSize : this.cellSize * 0.75;
+      let c = x % 3 ? this.cellSize / 2 : this.cellSize / 2 * 0.75;
       path += "L ";
       path += this.round(Math.cos(r) * c) + " ";
       path += this.round(Math.sin(r) * c) + " ";
     }
     let r = Math.PI / 180 * (0 * (360 / 18));
-    let c = 0 % 3 ? this.cellSize : this.cellSize * 0.8;
+    let c = 0 % 3 ? this.cellSize / 2 : this.cellSize / 2 * 0.75;
     path += "L ";
     path += this.round(Math.cos(r) * c) + " ";
     path += this.round(Math.sin(r) * c) + " ";
@@ -29,7 +29,9 @@ export default class Hex extends base {
       var pos = i / 4;
 
       var x = Math.floor(pos % this.imgSize) * this.w;
-      var y = Math.floor(pos / this.imgSize) * this.h;
+      var y =
+        Math.floor(pos / this.imgSize) * this.h +
+        (Math.floor(pos % this.imgSize) % 2) * this.h / 2;
 
       var r = this.data[i];
       var g = this.data[i + 1];
