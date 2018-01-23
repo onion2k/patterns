@@ -15,8 +15,9 @@ export default class Triangle extends base {
     }
 
     this.addDef(
-      `<path id="h" d="M ${offsets[0].x} ${offsets[0].y} L ${offsets[1]
-        .x} ${offsets[1].y} L ${offsets[2].x} ${offsets[2].y} Z" />`
+      `<path id="h" d="M ${offsets[0].x} ${offsets[0].y} L ${offsets[1].x} ${
+        offsets[1].y
+      } L ${offsets[2].x} ${offsets[2].y} Z" />`
     );
   }
 
@@ -47,22 +48,18 @@ export default class Triangle extends base {
       )})`;
 
       let translate = `translate(${this.round(xPos)}, ${this.round(yPos)})`;
-      let scale = "";
 
-      switch (this.scaling) {
-        case "additive":
-          scale = `scale(${0.25 + 2.0 * this.brightness(r, g, b) / 196})`;
-          break;
-        case "multiply":
-          scale = `scale(${2.0 * this.brightness(r, g, b) / 196})`;
-          break;
-        case "random":
-          scale = `scale(${2.0 * Math.random()})`;
-          break;
+      let s = this.round(this.scale(r, g, b));
+      let scale = "";
+      if (s) {
+        scale = `scale(${s})`;
       }
 
-      this.content += `<use xlink:href="#h" fill="${col}" transform="${translate} ${scale} rotate(${30 +
-        (x % 2) * 180})" />`;
+      this.add(
+        s,
+        `<use xlink:href="#h" fill="${col}" transform="${translate} ${scale} rotate(${30 +
+          (x % 2) * 180})" />`
+      );
     }
   }
 }

@@ -30,21 +30,16 @@ export default class Square extends base {
       )})`;
 
       let translate = `translate(${this.round(x)}, ${this.round(y)})`;
+      let s = this.round(this.scale(r, g, b));
       let scale = "";
-
-      switch (this.scaling) {
-        case "additive":
-          scale = `scale(${0.25 + 2.0 * this.brightness(r, g, b) / 196})`;
-          break;
-        case "multiply":
-          scale = `scale(${2.0 * this.brightness(r, g, b) / 196})`;
-          break;
-        case "random":
-          scale = `scale(${2.0 * Math.random()})`;
-          break;
+      if (s) {
+        scale = `scale(${s})`;
       }
 
-      this.content += `<use xlink:href="#h" fill="${col}" transform="${translate} ${scale}" />`;
+      this.add(
+        s,
+        `<use xlink:href="#h" fill="${col}" transform="${translate} ${scale}" />`
+      );
     }
   }
 }
