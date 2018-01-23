@@ -132,13 +132,13 @@ let data = getScaledImageData(128);
 
 mosaicWorker.postMessage({
   type: "create",
-  shape: "hex",
+  shape: "hexflower",
   imgSize: 128,
-  cellSize: 12,
-  padding: 1,
+  cellSize: 30,
+  padding: 30,
   aspect: data.height / data.width,
   variance: 30,
-  scaling: "additive",
+  scaling: "none",
   data: data.data,
   background: "black"
 });
