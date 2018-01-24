@@ -9,13 +9,13 @@ export default class Hex extends base {
 
     let path = "M 0 0 ";
     for (var x = 0; x < 18; x++) {
-      let r = Math.PI / 180 * (x * (360 / 18) + 12.5);
+      let r = Math.PI / 180 * (x * (360 / 18) + 12);
       let c = x % 3 ? this.cellSize / 2 : this.cellSize / 2 * 0.74;
       path += "L ";
       path += this.round(Math.cos(r) * c) + " ";
       path += this.round(Math.sin(r) * c) + " ";
     }
-    let r = Math.PI / 180 * (0 * (360 / 18) + 12.5);
+    let r = Math.PI / 180 * (0 * (360 / 18) + 12);
     let c = 0 % 3 ? this.cellSize / 2 : this.cellSize / 2 * 0.74;
     path += "L ";
     path += this.round(Math.cos(r) * c) + " ";
