@@ -1,8 +1,9 @@
 import triangle from "./generators/triangle_ww";
 import square from "./generators/square_ww";
 import hexagon from "./generators/hex_ww";
-import hexflower from "./generators/hexflower_ww";
+import flower from "./generators/flower_ww";
 import circle from "./generators/circle_ww";
+import pentagon from "./generators/pentagon_ww";
 
 class Mosaic {
   constructor(data) {
@@ -18,11 +19,14 @@ class Mosaic {
       case "hex":
         this.mosaic = new hexagon(data);
         break;
-      case "hexflower":
-        this.mosaic = new hexflower(data);
+      case "flower":
+        this.mosaic = new flower(data);
         break;
       case "circle":
         this.mosaic = new circle(data);
+        break;
+      case "pentagon":
+        this.mosaic = new pentagon(data);
         break;
       default:
         this.mosaic = new circle(data);
