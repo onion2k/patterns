@@ -33,10 +33,10 @@ export default class {
     let pos = Object.keys(this.z);
     pos.sort();
     let content = pos.reduce((s, z) => {
-      return s + this.z[z].join();
+      return s + this.z[z].join("");
     }, "");
 
-    let _defs = this.defs.join();
+    let _defs = this.defs.join("");
     let width = this.imgSize * this.w;
     let height = Math.floor(this.aspect * this.imgSize * this.h);
     return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid slice" width="${width}" height="${height}">
