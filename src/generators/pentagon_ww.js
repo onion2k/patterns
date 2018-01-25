@@ -4,10 +4,9 @@ export default class Hex extends base {
   constructor(data) {
     super(data);
 
-    this.w = this.cellSize + this.padding;
-    this.h = this.cellSize + this.padding;
+    this.w = this.cellSize / 1.25 + this.padding;
+    this.h = this.cellSize / 1.25 + this.padding;
 
-    // sqrt(3)-1,1,1,1,1
     let dist = [
       (Math.sqrt(3) - 1) * this.cellSize / 2,
       this.cellSize / 2,
@@ -40,7 +39,7 @@ export default class Hex extends base {
       var pos = i / 4;
 
       var x = Math.floor(pos % this.imgSize) * this.w;
-      var y = Math.floor(pos / this.imgSize) * this.h * 2;
+      var y = Math.floor(pos / this.imgSize) * this.h;
 
       x += (Math.floor(pos / this.imgSize) % 2) * this.w * 2;
 
