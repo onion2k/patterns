@@ -5,7 +5,7 @@ export default class Hex extends base {
     super(data);
 
     this.w = this.cellSize / 1.25 + this.padding;
-    this.h = this.cellSize / 1.25 + this.padding;
+    this.h = this.cellSize / 1 + this.padding;
 
     let dist = [
       (Math.sqrt(3) - 1) * this.cellSize / 2,
