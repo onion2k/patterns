@@ -7,14 +7,19 @@ export default class Hex extends base {
     this.w = this.cellSize + this.padding;
     this.h = this.cellSize + this.padding;
 
+    // sqrt(3)-1,1,1,1,1
+    let angles = [60, 75, 75, 75, 75];
+
     let path = "M 0 0 ";
+    let ia = 0;
     for (var x = 0; x < 5; x++) {
-      let r = Math.PI / 180 * (x * 72 + 90);
+      ia = ia + angles[x];
+      let r = Math.PI / 180 * (ia + 240);
       path += "L ";
       path += this.round(Math.cos(r) * this.cellSize / 2) + " ";
       path += this.round(Math.sin(r) * this.cellSize / 2) + " ";
     }
-    let r = Math.PI / 180 * (0 * 72 + 90);
+    let r = Math.PI / 180 * (angles[0] + 240);
     let c = this.cellSize / 2;
     path += "L ";
     path += this.round(Math.cos(r) * c) + " ";
