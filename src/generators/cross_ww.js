@@ -28,14 +28,19 @@ export default class Hex extends base {
     for (var i = 0, n = this.data.length; i < n; i += 4) {
       var pos = i / 4;
 
-      var x = Math.floor(pos % this.imgSize) * this.w;
-      var y = Math.floor(pos / this.imgSize) * this.h;
+      var x =
+        Math.floor(pos % this.imgSize) * this.w +
+        (Math.floor(pos / this.imgSize) % 3) * this.w / 1.5 +
+        (Math.floor(pos / this.imgSize) % 2) * this.w;
+      var y =
+        Math.floor(pos / this.imgSize) * this.h -
+        (Math.floor(pos % this.imgSize) % 2) * this.h / 3;
 
-      switch (Math.floor(pos % this.imgSize) % 2) {
+      switch (Math.floor(pos % this.imgSize) % 3) {
         case 0:
           break;
         case 1:
-          y -= this.h / 2;
+          y += this.h / 3;
           break;
       }
 
