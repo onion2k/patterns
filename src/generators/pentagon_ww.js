@@ -8,6 +8,13 @@ export default class Hex extends base {
     this.h = this.cellSize + this.padding;
 
     // sqrt(3)-1,1,1,1,1
+    let dist = [
+      (Math.sqrt(3) - 1) * this.cellSize / 2,
+      this.cellSize / 2,
+      this.cellSize / 2,
+      this.cellSize / 2,
+      (Math.sqrt(3) - 1) * this.cellSize / 2
+    ];
     let angles = [60, 75, 75, 75, 75];
 
     let path = "M 0 0 ";
@@ -16,11 +23,11 @@ export default class Hex extends base {
       ia = ia + angles[x];
       let r = Math.PI / 180 * (ia + 240);
       path += "L ";
-      path += this.round(Math.cos(r) * this.cellSize / 2) + " ";
-      path += this.round(Math.sin(r) * this.cellSize / 2) + " ";
+      path += this.round(Math.cos(r) * dist[x]) + " ";
+      path += this.round(Math.sin(r) * dist[x]) + " ";
     }
     let r = Math.PI / 180 * (angles[0] + 240);
-    let c = this.cellSize / 2;
+    let c = dist[0];
     path += "L ";
     path += this.round(Math.cos(r) * c) + " ";
     path += this.round(Math.sin(r) * c) + " ";
