@@ -63,6 +63,7 @@ export default class {
     }
     return scale;
   }
+
   render() {
     this._chunk(0, this.data.length);
     return this.svg(this.z);
