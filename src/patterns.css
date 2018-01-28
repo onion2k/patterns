@@ -27,19 +27,6 @@ form {
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-#share {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  background-color: rgb(255, 255, 255);
-  padding: 20px;
-  margin: 20px;
-  border: 1px solid #888;
-  border-radius: 5px;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-}
-
 h1 {
   font-size: 4.2rem;
   padding: 0 0 30px 0;
