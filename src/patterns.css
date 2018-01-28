@@ -25,6 +25,11 @@ form {
   border: 1px solid #888;
   border-radius: 5px;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  transform: translateX(-90%);
+  transition: 0.5s ease-in-out;
+}
+form:hover {
+  transform: translateX(0);
 }
 
 h1 {
@@ -79,6 +84,7 @@ select {
   justify-items: center;
   animation: spin 1s linear infinite;
 }
+
 @keyframes spin {
   100% {
     -webkit-transform: rotate(360deg);
