@@ -6,18 +6,23 @@
   <div id="svg"></div>
   <div id="progress">
     <svg width="100" height="100">
-      <circle id="progressCircle" cx="0" cy="0" r="1" fill="rgb(255,255,255)" transform=""></circle>
+      <circle cx="50" cy="50" r="40" fill="none" stroke="#666666" stroke-width="12" />
+      <circle cx="50" cy="50" r="40" fill="none" stroke="#dddddd" stroke-width="12" stroke-dasharray="200.0" stroke-dashoffset="100.0"
+      />
     </svg>
   </div>
   <form>
-    <h1>Pictato</h1>
+    <h1>IMGSVG</h1>
     <div>
       <label>Shape</label>
       <select name="shape" id="shape">
         <option value="hex">Hex</option>
         <option value="triangle">Triangle</option>
-        <option value="square" selected>Square</option>
+        <option value="square">Square</option>
         <option value="circle">Circle</option>
+        <option value="flower">Flower</option>
+        <option value="pentagon">Pentagon</option>
+        <option value="cross" selected>Cross</option>
       </select>
     </div>
     <div>
@@ -26,11 +31,11 @@
     </div>
     <div>
       <label>Cellsize</label>
-      <input type="number" name="cellsize" id="cellsize" value="7" />
+      <input type="number" name="cellsize" id="cellsize" value="14" />
     </div>
     <div>
       <label>Gap</label>
-      <input type="number" name="gap" id="gap" value="3" />
+      <input type="number" name="gap" id="gap" value="1" />
     </div>
     <div>
       <label>Variance</label>
@@ -38,11 +43,19 @@
     </div>
     <div>
       <label>Scaling</label>
-      <select name="scaling" id="scaling" disabled>
+      <select name="scaling" id="scaling">
         <option value="none">None</option>
         <option value="additive">Additive</option>
         <option value="multiply">Multiply</option>
         <option value="random">Random</option>
+      </select>
+    </div>
+    <div>
+      <label>Background</label>
+      <select name="background" id="background">
+        <option value="black" selected>Black</option>
+        <option value="grey">Grey</option>
+        <option value="white">White</option>
       </select>
     </div>
     <div>
@@ -60,7 +73,7 @@
   </form>
 
   <div id="share">
-    Share Pictato
+    Share IMGSVG
   </div>
 <script type="text/javascript" src="/index.js"></script></body>
 

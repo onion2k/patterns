@@ -4,6 +4,8 @@ const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const SriPlugin = require("webpack-subresource-integrity");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+
 // const Jarvis = require("webpack-jarvis");
 
 module.exports = {
@@ -38,7 +40,8 @@ module.exports = {
   plugins: [
     new WebpackCleanupPlugin(),
     new HtmlWebpackPlugin({ template: "src/index.html" }),
-    new ExtractTextPlugin("patterns.css")
+    new ExtractTextPlugin("patterns.css"),
+    new UglifyJsPlugin()
     // new Jarvis()
   ],
   node: {

@@ -26,6 +26,7 @@
     "worker-loader": "^1.1.0"
   },
   "devDependencies": {
+    "uglifyjs-webpack-plugin": "^1.1.6",
     "webpack-jarvis": "^0.1.1"
   }
 }

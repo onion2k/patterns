@@ -90,4 +90,11 @@ select {
   display: grid;
   align-items: center;
   justify-items: center;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
