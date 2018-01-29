@@ -1,7 +1,5 @@
-import Rune from "rune.js";
 import MosaicWorker from "./mosaic.worker.js";
 import "./patterns.css";
-
 import filesaver from "file-saver";
 
 let progress = 0;
@@ -17,12 +15,6 @@ mosaicWorker.addEventListener("message", e => {
     elProgress.style.display = "none";
     elSvg.innerHTML = e.data.svg;
     elSvg.style.display = "grid";
-  } else if (e.data.type === "progress") {
-    // progress = e.data.progress;
-    // elProgressCircle.setAttribute(
-    //   "transform",
-    //   "translate(50,50) scale(" + progress / 2 + ")"
-    // );
   }
 });
 
