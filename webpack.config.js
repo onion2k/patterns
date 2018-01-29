@@ -39,7 +39,10 @@ module.exports = {
   },
   plugins: [
     new WebpackCleanupPlugin(),
-    new HtmlWebpackPlugin({ template: "src/index.html" }),
+    new HtmlWebpackPlugin({
+      template: "src/index.html",
+      favicon: "src/favicon.ico"
+    }),
     new ExtractTextPlugin("patterns.css"),
     new UglifyJsPlugin()
     // new Jarvis()
