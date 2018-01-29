@@ -37,7 +37,7 @@ export default class {
     }, "");
 
     let _defs = this.defs.join("");
-    let width = this.imgSize * this.w;
+    let width = this.imgSize * this.w / 1.75;
     let height = Math.floor(this.aspect * this.imgSize * this.h);
     return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid slice" width="${width}" height="${height}">
         <defs>${_defs}</defs>

@@ -9,6 +9,10 @@ let elProgress = document.getElementById("progress");
 let elSvg = document.getElementById("svg");
 let elProgressCircle = document.getElementById("progressCircle");
 
+let distortion = {
+  cross: { x: 1.5, y: 1 }
+};
+
 let mosaicWorker = new MosaicWorker();
 mosaicWorker.addEventListener("message", e => {
   if (e.data.type === "complete") {
@@ -18,15 +22,17 @@ mosaicWorker.addEventListener("message", e => {
   }
 });
 
-var getScaledImageData = function(imgSize) {
+var getScaledImageData = function(imgSize, dX, dY) {
+  let distX = dX || 1;
+  let distY = dY || 1;
   var c = document.createElement("canvas");
   var aspect = imgCache.height / imgCache.width;
-  c.width = imgSize;
-  c.height = Math.floor(imgSize * aspect);
+  c.width = imgSize * distX;
+  c.height = Math.floor(imgSize * aspect * distY);
 
   var ctx = c.getContext("2d");
 
-  ctx.drawImage(imgCache, 1, 1, imgSize, Math.floor(imgSize * aspect));
+  ctx.drawImage(imgCache, 1, 1, c.width, c.height);
 
   return {
     data: ctx.getImageData(0, 0, c.width, c.height).data,
@@ -81,14 +87,18 @@ let createSVG = function() {
   let background =
     backgroundSelect.options[backgroundSelect.selectedIndex].value;
 
-  let data = getScaledImageData(imgSize);
+  let data = getScaledImageData(
+    imgSize,
+    distortion["cross"].x,
+    distortion["cross"].y
+  );
 
   if (window.Worker) {
     document.body.classList.add("black");
     mosaicWorker.postMessage({
       type: "create",
       shape,
-      imgSize,
+      imgSize: data.width,
       cellSize,
       padding,
       aspect: data.height / data.width,
