@@ -4,6 +4,9 @@ export default class Circle extends base {
   constructor(data) {
     super(data);
 
+    this.mX = this.cellSize + this.padding;
+    this.mY = this.cellSize + this.padding;
+
     this.addDef(
       `<circle id="h" x="${-1 * this.cellSize / 2}" y="${-1 *
         this.cellSize /
@@ -20,8 +23,8 @@ export default class Circle extends base {
 
       var pos = i / 4;
 
-      var x = Math.floor(pos % this.imgSize) * (this.cellSize + this.padding);
-      var y = Math.floor(pos / this.imgSize) * (this.cellSize + this.padding);
+      var x = Math.floor(pos % this.imgSize) * this.mX;
+      var y = Math.floor(pos / this.imgSize) * this.mY;
 
       var v = this.variance / 2 - Math.random() * this.variance;
 

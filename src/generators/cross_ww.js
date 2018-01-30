@@ -11,6 +11,10 @@ export default class Hex extends base {
     for (var x = 0; x < 12; x++) {
       let r = Math.PI / 180 * (x * 30 + 45);
       let c = x % 3 ? this.cellSize / 2 : this.cellSize / 5;
+
+      this.extents.x.push(this.round(Math.cos(r) * c));
+      this.extents.y.push(this.round(Math.sin(r) * c));
+
       path += "L ";
       path += this.round(Math.cos(r) * c) + " ";
       path += this.round(Math.sin(r) * c) + " ";
@@ -21,6 +25,11 @@ export default class Hex extends base {
     path += this.round(Math.cos(r) * c) + " ";
     path += this.round(Math.sin(r) * c) + " ";
     path += "Z";
+
+    this.mX =
+      Math.max(...this.extents.x) + Math.abs(Math.min(...this.extents.x));
+    this.mY =
+      Math.max(...this.extents.y) + Math.abs(Math.min(...this.extents.y));
 
     this.addDef(`<path id="h" d="${path}"></path>`);
   }
@@ -36,16 +45,18 @@ export default class Hex extends base {
       }
 
       var x =
-        Math.floor(pos % this.imgSize) * this.w / 3 * 2 +
-        (Math.floor(pos / this.imgSize) % 2 === 0) * this.w / 3 -
-        Math.floor((pos % this.imgSize) / 3) * this.w / 3;
+        Math.floor(pos % this.imgSize) * (this.mY + this.padding) / 3 * 2 +
+        (Math.floor(pos / this.imgSize) % 2 === 0) *
+          (this.mY + this.padding) /
+          3 -
+        Math.floor((pos % this.imgSize) / 3) * (this.mY + this.padding) / 3;
 
       var y =
-        Math.floor(pos / this.imgSize) * this.h -
+        Math.floor(pos / this.imgSize) * (this.mX + this.padding) -
         (Math.floor(pos / this.imgSize) - Math.floor(pos / this.imgSize) % 2) /
           2 *
-          (this.h / 3) -
-        (Math.floor(pos % this.imgSize) % 3) * this.h / 3;
+          ((this.mX + this.padding) / 3) -
+        (Math.floor(pos % this.imgSize) % 3) * (this.mX + this.padding) / 3;
 
       var r = this.data[i];
       var g = this.data[i + 1];

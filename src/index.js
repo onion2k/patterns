@@ -10,7 +10,13 @@ let elSvg = document.getElementById("svg");
 let elProgressCircle = document.getElementById("progressCircle");
 
 let distortion = {
-  cross: { x: 1.5, y: 1 }
+  hex: { x: 1, y: 1, cx: 1, cy: 1 },
+  triangle: { x: 1, y: 1, cx: 0.66, cy: 0.575 },
+  square: { x: 1, y: 1, cx: 1, cy: 1 },
+  circle: { x: 1, y: 1, cx: 1, cy: 1 },
+  flower: { x: 1, y: 1, cx: 1, cy: 1 },
+  pentagon: { x: 1, y: 1, cx: 2, cy: 2 },
+  cross: { x: 1.5, y: 1, cx: 0.66, cy: 0.575 }
 };
 
 let mosaicWorker = new MosaicWorker();
@@ -89,8 +95,8 @@ let createSVG = function() {
 
   let data = getScaledImageData(
     imgSize,
-    distortion["cross"].x,
-    distortion["cross"].y
+    distortion[shape].x,
+    distortion[shape].y
   );
 
   if (window.Worker) {
@@ -105,7 +111,8 @@ let createSVG = function() {
       variance,
       scaling,
       data: data.data,
-      background
+      background,
+      distortion: distortion[shape]
     });
   } else {
     document.body.innerHTML = "Sorry, you need web workers.";
@@ -129,12 +136,12 @@ ctx.fillStyle = linearGradient1;
 ctx.fillRect(0, 0, 128, 128);
 
 imgCache = c;
-
-let data = getScaledImageData(128);
+let shape = "triangle";
+let data = getScaledImageData(128, distortion[shape].x, distortion[shape].y);
 
 mosaicWorker.postMessage({
   type: "create",
-  shape: "hex",
+  shape,
   imgSize: 128,
   cellSize: 10,
   padding: 1,
@@ -142,7 +149,8 @@ mosaicWorker.postMessage({
   variance: 30,
   scaling: "none",
   data: data.data,
-  background: "black"
+  background: "black",
+  distortion: distortion[shape]
 });
 
 document.getElementById("regen").addEventListener("click", e => {

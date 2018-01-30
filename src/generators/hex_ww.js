@@ -10,11 +10,18 @@ export default class Hex extends base {
     let path = "M 0 0 ";
     for (var x = 0; x < 6; x++) {
       let r = Math.PI / 180 * (x * 60 + 30);
+      this.extents.x.push(this.round(Math.cos(r) * this.cellSize / 2));
+      this.extents.y.push(this.round(Math.sin(r) * this.cellSize / 2));
       path += "l ";
       path += this.round(Math.cos(r) * this.cellSize / 2) + " ";
       path += this.round(Math.sin(r) * this.cellSize / 2) + " ";
     }
     path += "Z";
+
+    this.mX =
+      Math.max(...this.extents.x) + Math.abs(Math.min(...this.extents.x));
+    this.mY =
+      Math.max(...this.extents.y) + Math.abs(Math.min(...this.extents.y));
 
     this.addDef(`<path id="h" d="${path}"></path>`);
   }
@@ -23,9 +30,11 @@ export default class Hex extends base {
       var pos = i / 4;
 
       var x =
-        Math.floor(pos % this.imgSize) * this.w +
-        (Math.floor(pos / this.imgSize) % 2 === 0) * this.w / 2;
-      var y = Math.floor(pos / this.imgSize) * this.h;
+        Math.floor(pos % this.imgSize) * (this.mY + this.padding) +
+        (Math.floor(pos / this.imgSize) % 2 === 0) *
+          (this.mY + this.padding) /
+          2;
+      var y = Math.floor(pos / this.imgSize) * (this.mX + this.padding);
 
       var r = this.data[i];
       var g = this.data[i + 1];

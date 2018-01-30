@@ -21,6 +21,8 @@ export default class Hex extends base {
     for (var x = 0; x < 5; x++) {
       ia = ia + angles[x];
       let r = Math.PI / 180 * (ia + 240);
+      this.extents.x.push(this.round(Math.cos(r) * dist[x]));
+      this.extents.y.push(this.round(Math.sin(r) * dist[x]));
       path += "L ";
       path += this.round(Math.cos(r) * dist[x]) + " ";
       path += this.round(Math.sin(r) * dist[x]) + " ";
@@ -31,6 +33,9 @@ export default class Hex extends base {
     path += this.round(Math.cos(r) * c) + " ";
     path += this.round(Math.sin(r) * c) + " ";
     path += "Z";
+
+    this.mX = Math.max(...this.extents.x);
+    this.mY = Math.max(...this.extents.y);
 
     this.addDef(`<path id="h" d="${path}"></path>`);
   }
