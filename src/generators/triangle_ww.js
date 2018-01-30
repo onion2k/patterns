@@ -20,15 +20,15 @@ export default class Triangle extends base {
       Math.max(...this.extents.y) + Math.abs(Math.min(...this.extents.y));
 
     this.addDef(
-      `<path id="h" d="M 0 0 L ${offsets[0].x} ${offsets[0].y} L ${
-        offsets[1].x
-      } ${offsets[1].y} L ${offsets[2].x} ${offsets[2].y} L ${offsets[0].x} ${
-        offsets[0].y
-      } Z" />`
+      `<path id="h" d="M 0 0 L ${offsets[0].x} ${offsets[0].y} L ${offsets[1]
+        .x} ${offsets[1].y} L ${offsets[2].x} ${offsets[2].y} L ${offsets[0]
+        .x} ${offsets[0].y} Z" />`
     );
   }
 
   _chunk() {
+    let maxXpos = 0;
+    let maxYpos = 0;
     for (var i = 0, n = this.data.length; i < n; i += 4) {
       var pos = i / 4;
 
@@ -38,9 +38,16 @@ export default class Triangle extends base {
         continue;
       }
       let xPos =
-        x * (this.mX / 2 + this.padding) +
-        (y % 4 === 0 || y % 4 === 3) * (this.mX / 2 + this.padding);
-      let yPos = y * (this.mX / 2 + this.padding);
+        x * (this.mY / 2 + this.padding) +
+        (y % 4 === 0 || y % 4 === 3) * (this.mY / 2 + this.padding);
+      let yPos = y * (this.mX / 2 + this.padding) + (y % 2) * this.padding / 2;
+
+      if (xPos > maxXpos) {
+        maxXpos = xPos;
+      }
+      if (yPos > maxYpos) {
+        maxYpos = yPos;
+      }
 
       var r = this.data[i];
       var g = this.data[i + 1];
@@ -68,5 +75,8 @@ export default class Triangle extends base {
         `<use xlink:href="#h" fill="${col}" transform="${translate} ${scale} ${rotate}" />`
       );
     }
+
+    this.cWidth = maxXpos + this.mX / 2 + this.padding;
+    this.cHeight = maxYpos + this.mY / 2 + this.padding;
   }
 }

@@ -15,6 +15,8 @@ export default class Square extends base {
   }
 
   _chunk() {
+    let maxXpos = 0;
+    let maxYpos = 0;
     for (var i = 0, n = this.data.length; i < n; i += 4) {
       var r = this.data[i];
       var g = this.data[i + 1];
@@ -26,6 +28,12 @@ export default class Square extends base {
       var x = Math.floor(pos % this.imgSize) * this.mX;
       var y = Math.floor(pos / this.imgSize) * this.mX;
 
+      if (x > maxXpos) {
+        maxXpos = x;
+      }
+      if (y > maxYpos) {
+        maxYpos = y;
+      }
       var v = this.variance / 2 - Math.random() * this.variance;
 
       let col = `rgb(${Math.floor(r + v)},${Math.floor(g + v)},${Math.floor(
@@ -44,5 +52,7 @@ export default class Square extends base {
         `<use xlink:href="#h" fill="${col}" transform="${translate} ${scale}" />`
       );
     }
+    this.cWidth = maxXpos + this.mX / 2;
+    this.cHeight = maxYpos + this.mY / 2;
   }
 }

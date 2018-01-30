@@ -19,6 +19,9 @@ export default class {
     this.mX = 0;
     this.mY = 0;
 
+    this.cWidth = 0;
+    this.cHeight = 0;
+
     this.w = this.cellSize + this.padding;
     this.h = this.cellSize + this.padding;
   }
@@ -43,10 +46,8 @@ export default class {
     }, "");
 
     let _defs = this.defs.join("");
-    let width = this.imgSize * this.mY * this.distortion.cx;
-    let height = Math.floor(
-      this.aspect * this.imgSize * this.mX * this.distortion.cy
-    );
+    let width = this.cWidth; //this.imgSize * (this.mX + this.padding) * this.distortion.cx;
+    let height = this.cHeight; // Math.floor(this.aspect * this.imgSize * (this.mY + this.padding) * this.distortion.cy);
     return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid slice" width="${width}" height="${height}">
         <defs>${_defs}</defs>
         <rect width="100%" height="100%" fill="${this.background}"/>

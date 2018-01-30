@@ -40,13 +40,15 @@ export default class Hex extends base {
     this.addDef(`<path id="h" d="${path}"></path>`);
   }
   _chunk() {
+    let maxXpos = 0;
+    let maxYpos = 0;
     for (var i = 0, n = this.data.length; i < n; i += 4) {
       var pos = i / 4;
 
-      var x = Math.floor(pos % this.imgSize) * this.w;
-      var y = Math.floor(pos / this.imgSize) * this.h;
+      var x = Math.floor(pos % this.imgSize) * this.mX;
+      var y = Math.floor(pos / this.imgSize) * this.mY;
 
-      x += (Math.floor(pos / this.imgSize) % 2) * this.w * 2;
+      x += (Math.floor(pos / this.imgSize) % 2) * this.mX;
 
       var r = this.data[i];
       var g = this.data[i + 1];
@@ -70,26 +72,33 @@ export default class Hex extends base {
         case 0:
           rotate = `rotate(270)`;
           // col = "rgb(255,0,0)";
-          x += this.w / 2;
+          x += this.mX / 2;
           break;
         case 1:
           rotate = `rotate(180)`;
           // col = "rgb(255,255,255)";
-          x += this.w / 2;
-          y -= this.h / 2;
+          x += this.mX / 2;
+          y -= this.mY / 2;
           break;
         case 2:
           rotate = `rotate(0)`;
           // col = "rgb(255,255,0)";
-          x -= this.w / 2;
-          y += this.h / 2;
+          x -= this.mX / 2;
+          y += this.mY / 2;
           break;
         case 3:
           rotate = `rotate(90)`;
           // col = "rgb(255,0,255)";
-          x -= this.w / 2;
+          x -= this.mX / 2;
           //y += this.h;
           break;
+      }
+
+      if (x > maxXpos) {
+        maxXpos = x;
+      }
+      if (y > maxYpos) {
+        maxYpos = y;
       }
       let translate = `translate(${this.round(x)}, ${this.round(y)})`;
 
@@ -98,5 +107,7 @@ export default class Hex extends base {
         `<use xlink:href="#h" fill="${col}" transform="${translate} ${scale} ${rotate}" />`
       );
     }
+    this.cWidth = maxXpos + this.mX / 2 + this.padding;
+    this.cHeight = maxYpos + this.mY / 2 + this.padding;
   }
 }

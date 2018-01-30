@@ -11,7 +11,7 @@ let elProgressCircle = document.getElementById("progressCircle");
 
 let distortion = {
   hex: { x: 1, y: 1, cx: 1, cy: 1 },
-  triangle: { x: 1, y: 1, cx: 0.66, cy: 0.575 },
+  triangle: { x: 1, y: 1, cx: 0.5, cy: 0.525 },
   square: { x: 1, y: 1, cx: 1, cy: 1 },
   circle: { x: 1, y: 1, cx: 1, cy: 1 },
   flower: { x: 1, y: 1, cx: 1, cy: 1 },
