@@ -35,7 +35,7 @@ export default class Hex extends base {
     let maxXpos = 0;
     let maxYpos = 0;
     for (var i = 0, n = this.data.length; i < n; i += 4) {
-      var pos = i / 4;
+      let { r, g, b, a, pos, v } = this.getPixel(i);
 
       var x = Math.floor(pos % this.imgSize) * (this.mX + this.padding);
       var y = Math.floor(pos / this.imgSize) * (this.mY + this.padding);
@@ -48,12 +48,6 @@ export default class Hex extends base {
       if (y > maxYpos) {
         maxYpos = y;
       }
-      var r = this.data[i];
-      var g = this.data[i + 1];
-      var b = this.data[i + 2];
-      var a = this.data[i + 3];
-
-      var v = this.variance / 2 - Math.random() * this.variance;
 
       let col = `rgb(${Math.floor(r + v)},${Math.floor(g + v)},${Math.floor(
         b + v

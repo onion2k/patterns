@@ -25,6 +25,16 @@ export default class {
     this.w = this.cellSize + this.padding;
     this.h = this.cellSize + this.padding;
   }
+  getPixel(i) {
+    return {
+      r: this.data[i],
+      g: this.data[i + 1],
+      b: this.data[i + 2],
+      a: this.data[i + 3],
+      pos: i / 4,
+      v: this.variance / 2 - Math.random() * this.variance
+    };
+  }
   round(n) {
     return Math.round(n * 100) / 100;
   }
