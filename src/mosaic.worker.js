@@ -5,6 +5,7 @@ import flower from "./generators/flower_ww";
 import circle from "./generators/circle_ww";
 import pentagon from "./generators/pentagon_ww";
 import cross from "./generators/cross_ww";
+import paint from "./generators/paint";
 
 class Mosaic {
   constructor(data) {
@@ -31,6 +32,9 @@ class Mosaic {
         break;
       case "cross":
         this.mosaic = new cross(data);
+        break;
+      case "paint":
+        this.mosaic = new paint(data);
         break;
       default:
         this.mosaic = new circle(data);
