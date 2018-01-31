@@ -10,6 +10,25 @@ body {
   margin: 0;
 }
 
+.dropoverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  font-size: 4rem;
+  display: none;
+  z-index: 99;
+  align-items: center;
+  justify-items: center;
+}
+
+body.drophover > .dropoverlay {
+  display: grid;
+}
+
 .black {
   background-color: black;
 }
@@ -65,6 +84,7 @@ select {
   top: 0;
   left: 0;
   width: 100vw;
+  height: 100vh;
   overflow: scroll;
   z-index: 0;
   display: grid;

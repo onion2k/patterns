@@ -10,8 +10,8 @@ let elSvg = document.getElementById("svg");
 let elProgressCircle = document.getElementById("progressCircle");
 
 let distortion = {
-  hex: { x: 1, y: 1 },
-  triangle: { x: 2, y: 2 },
+  hex: { x: 1, y: 1.25 },
+  triangle: { x: 1, y: 1 },
   square: { x: 1, y: 1 },
   circle: { x: 1, y: 1 },
   flower: { x: 1, y: 1 },
@@ -49,15 +49,28 @@ var getScaledImageData = function(imgSize, dX, dY) {
 
 var holder = document.body;
 
+holder.ondragenter = function() {
+  document.body.classList.add("drophover");
+  return false;
+};
 holder.ondragover = function() {
   return false;
 };
 holder.ondragend = function() {
   return false;
 };
+holder.ondragleave = function(e) {
+  if (e.target.id !== "dropoverlay") {
+    return;
+  }
+  document.body.classList.remove("drophover");
+  return false;
+};
 
 holder.ondrop = function(e) {
   e.preventDefault();
+
+  document.body.classList.remove("drophover");
 
   var file = e.dataTransfer.files[0];
   var reader = new FileReader();
@@ -125,7 +138,7 @@ const h = document.body.clientHeight;
 var c = document.createElement("canvas");
 var aspect = h / w;
 c.width = 128;
-c.height = Math.floor(128 * aspect);
+c.height = 128;
 
 var ctx = c.getContext("2d");
 
@@ -137,12 +150,12 @@ ctx.fillRect(0, 0, 128, 128);
 
 imgCache = c;
 let shape = "triangle";
-let data = getScaledImageData(128, distortion[shape].x, distortion[shape].y);
+let data = getScaledImageData(32, distortion[shape].x, distortion[shape].y);
 
 mosaicWorker.postMessage({
   type: "create",
   shape,
-  imgSize: 128,
+  imgSize: data.width,
   cellSize: 10,
   padding: 1,
   aspect: data.height / data.width,
