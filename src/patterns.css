@@ -68,7 +68,8 @@ label {
 
 input,
 p,
-button {
+button,
+textarea {
   flex: 2;
   padding: 10px;
 }
@@ -106,4 +107,12 @@ select {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+.shape-option {
+  display: none;
+}
+
+.show-option {
+  display: flex;
 }

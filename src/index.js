@@ -180,3 +180,20 @@ document.getElementById("download").addEventListener("click", e => {
   });
   filesaver.saveAs(svg);
 });
+
+let shapeSelect = document.getElementById("shape");
+shapeSelect.addEventListener("change", () => {
+  let shape = shapeSelect.options[shapeSelect.selectedIndex].value;
+
+  console.log(shape);
+
+  [].map.call(document.querySelectorAll(".shape-option"), function(el) {
+    el.classList.remove("show-option");
+  });
+
+  [].map.call(document.querySelectorAll(".shape-option-for-" + shape), function(
+    el
+  ) {
+    el.classList.add("show-option");
+  });
+});
