@@ -17,7 +17,8 @@ let distortion = {
   flower: { x: 1, y: 1 },
   pentagon: { x: 1, y: 1 },
   cross: { x: 1.5, y: 1 },
-  paint: { x: 1, y: 1 }
+  paint: { x: 1, y: 1 },
+  words: { x: 1, y: 1 }
 };
 
 let mosaicWorker = new MosaicWorker();
@@ -150,7 +151,7 @@ ctx.fillStyle = linearGradient1;
 ctx.fillRect(0, 0, 128, 128);
 
 imgCache = c;
-let shape = "paint";
+let shape = "words";
 let data = getScaledImageData(32, distortion[shape].x, distortion[shape].y);
 
 mosaicWorker.postMessage({
