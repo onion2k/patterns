@@ -4,6 +4,9 @@ export default class Paint extends base {
   constructor(data) {
     super(data);
 
+    this.oWidth = this.imgSize / 2;
+    this.oHeight = this.imgSize * this.aspect / 2;
+
     this.mX = this.cellSize + this.padding;
     this.mY = this.cellSize + this.padding;
 
@@ -79,7 +82,12 @@ export default class Paint extends base {
         scale = `scale(${s})`;
       }
 
-      let rotate = `rotate(${this.brightness(r, g, b) / 255 * 45})`;
+      let angle = Math.atan2(
+        this.oWidth - Math.floor(pos % this.imgSize),
+        this.oHeight - Math.floor(pos / this.imgSize)
+      );
+
+      let rotate = `rotate(${angle * (180 / Math.PI)})`;
 
       this.add(
         s,

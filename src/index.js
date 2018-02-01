@@ -150,8 +150,8 @@ ctx.fillStyle = linearGradient1;
 ctx.fillRect(0, 0, 128, 128);
 
 imgCache = c;
-let shape = "hex";
-let data = getScaledImageData(128, distortion[shape].x, distortion[shape].y);
+let shape = "paint";
+let data = getScaledImageData(32, distortion[shape].x, distortion[shape].y);
 
 mosaicWorker.postMessage({
   type: "create",
