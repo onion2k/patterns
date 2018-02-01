@@ -108,6 +108,19 @@ let createSVG = function() {
   let background =
     backgroundSelect.options[backgroundSelect.selectedIndex].value;
 
+  let shapeData = {};
+
+  if (shape === "words") {
+    let text = document.getElementById("text").value || "IMGSVG";
+
+    let fontSelect = document.getElementById("font");
+    let font = fontSelect.options[fontSelect.selectedIndex].value;
+
+    shapeData = {
+      text,
+      font
+    };
+  }
   let data = getScaledImageData(
     imgSize,
     distortion[shape].x,
@@ -127,7 +140,8 @@ let createSVG = function() {
       scaling,
       data: data.data,
       background,
-      distortion: distortion[shape]
+      distortion: distortion[shape],
+      shapeData
     });
   } else {
     document.body.innerHTML = "Sorry, you need web workers.";
@@ -151,8 +165,8 @@ ctx.fillStyle = linearGradient1;
 ctx.fillRect(0, 0, 128, 128);
 
 imgCache = c;
-let shape = "words";
-let data = getScaledImageData(32, distortion[shape].x, distortion[shape].y);
+let shape = "hex";
+let data = getScaledImageData(96, distortion[shape].x, distortion[shape].y);
 
 mosaicWorker.postMessage({
   type: "create",
@@ -165,7 +179,8 @@ mosaicWorker.postMessage({
   scaling: "none",
   data: data.data,
   background: "black",
-  distortion: distortion[shape]
+  distortion: distortion[shape],
+  shapeData: { text: "IMGSVG", font: "Ubuntu Mono" }
 });
 
 document.getElementById("regen").addEventListener("click", e => {
@@ -184,8 +199,6 @@ document.getElementById("download").addEventListener("click", e => {
 let shapeSelect = document.getElementById("shape");
 shapeSelect.addEventListener("change", () => {
   let shape = shapeSelect.options[shapeSelect.selectedIndex].value;
-
-  console.log(shape);
 
   [].map.call(document.querySelectorAll(".shape-option"), function(el) {
     el.classList.remove("show-option");
