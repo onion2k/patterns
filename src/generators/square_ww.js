@@ -7,12 +7,18 @@ export default class Square extends base {
     this.mX = this.cellSize * this.shapeData.length + this.padding;
     this.mY = this.cellSize + this.padding;
 
+    console.log(this.shapeData);
+
+    let rotate = `rotate(${this.shapeData.rotation})`;
+
     this.addDef(
       `<rect id="h" x="${-1 *
         this.cellSize *
         this.shapeData.length /
         2}" y="${-1 * this.cellSize / 2}" width="${this.cellSize *
-        this.shapeData.length}" height="${this.cellSize}">`
+        this.shapeData.length}" height="${
+        this.cellSize
+      }" transform="${rotate}">`
     );
   }
 

@@ -18,6 +18,7 @@ class Mosaic {
         break;
       case "square":
       case "bricks":
+      case "tapestry":
         this.mosaic = new square(data);
         break;
       case "hex":

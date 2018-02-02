@@ -19,7 +19,8 @@ let distortion = {
   cross: { x: 1.5, y: 1 },
   paint: { x: 1, y: 1 },
   words: { x: 1, y: 1 },
-  bricks: { x: 0.5, y: 1 }
+  bricks: { x: 0.5, y: 1 },
+  tapestry: { x: 1, y: 1 }
 };
 
 let mosaicWorker = new MosaicWorker();
@@ -126,14 +127,24 @@ let createSVG = function() {
   if (shape === "square") {
     shapeData = {
       length: 1,
-      offset: 0
+      offset: 0,
+      rotation: 0
     };
   }
 
   if (shape === "bricks") {
     shapeData = {
       length: 2,
-      offset: 0.5
+      offset: 0.5,
+      rotation: 0
+    };
+  }
+
+  if (shape === "tapestry") {
+    shapeData = {
+      length: 1,
+      offset: 0.4,
+      rotation: -45
     };
   }
 
@@ -181,7 +192,7 @@ ctx.fillStyle = linearGradient1;
 ctx.fillRect(0, 0, 128, 128);
 
 imgCache = c;
-let shape = "bricks";
+let shape = "tapestry";
 let data = getScaledImageData(96, distortion[shape].x, distortion[shape].y);
 
 mosaicWorker.postMessage({
@@ -196,7 +207,7 @@ mosaicWorker.postMessage({
   data: data.data,
   background: "black",
   distortion: distortion[shape],
-  shapeData: { offset: 0.5, length: 2 }
+  shapeData: { offset: 0.5, length: 1, rotation: -45 }
 });
 
 document.getElementById("regen").addEventListener("click", e => {
