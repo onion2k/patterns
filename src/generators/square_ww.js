@@ -4,13 +4,15 @@ export default class Square extends base {
   constructor(data) {
     super(data);
 
-    this.mX = this.cellSize + this.padding;
+    this.mX = this.cellSize * this.shapeData.length + this.padding;
     this.mY = this.cellSize + this.padding;
 
     this.addDef(
-      `<rect id="h" x="${-1 * this.cellSize / 2}" y="${-1 *
-        this.cellSize /
-        2}" width="${this.cellSize}" height="${this.cellSize}">`
+      `<rect id="h" x="${-1 *
+        this.cellSize *
+        this.shapeData.length /
+        2}" y="${-1 * this.cellSize / 2}" width="${this.cellSize *
+        this.shapeData.length}" height="${this.cellSize}">`
     );
   }
 
@@ -20,8 +22,10 @@ export default class Square extends base {
     for (var i = 0, n = this.data.length; i < n; i += 4) {
       let { r, g, b, a, pos, v } = this.getPixel(i);
 
-      var x = Math.floor(pos % this.imgSize) * this.mX;
-      var y = Math.floor(pos / this.imgSize) * this.mX;
+      var x =
+        Math.floor(pos % this.imgSize) * this.mX +
+        (Math.floor(pos / this.imgSize) % 2) * this.mX * this.shapeData.offset;
+      var y = Math.floor(pos / this.imgSize) * this.mY;
 
       if (x > maxXpos) {
         maxXpos = x;
