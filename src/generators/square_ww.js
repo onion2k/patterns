@@ -4,21 +4,20 @@ export default class Square extends base {
   constructor(data) {
     super(data);
 
-    this.mX = this.cellSize * this.shapeData.length + this.padding;
-    this.mY = this.cellSize + this.padding;
-
-    console.log(this.shapeData);
+    this.mX = this.cellSize * this.shapeData.length[0] + this.padding;
+    this.mY = this.cellSize * this.shapeData.length[1] + this.padding;
 
     let rotate = `rotate(${this.shapeData.rotation})`;
 
     this.addDef(
       `<rect id="h" x="${-1 *
-        this.cellSize *
-        this.shapeData.length /
-        2}" y="${-1 * this.cellSize / 2}" width="${this.cellSize *
-        this.shapeData.length}" height="${
-        this.cellSize
-      }" transform="${rotate}">`
+        (this.cellSize * this.shapeData.length[0]) /
+        2}" y="${-1 *
+        (this.cellSize * this.shapeData.length[1]) /
+        2}" width="${this.cellSize * this.shapeData.length[0]}" height="${this
+        .cellSize * this.shapeData.length[1]}" rx="${this.shapeData
+        .borderRadius[0]}" ry="${this.shapeData
+        .borderRadius[1]}" transform="${rotate}">`
     );
   }
 

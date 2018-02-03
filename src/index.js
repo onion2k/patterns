@@ -126,25 +126,28 @@ let createSVG = function() {
 
   if (shape === "square") {
     shapeData = {
-      length: 1,
+      length: [1, 1],
       offset: 0,
-      rotation: 0
+      rotation: 0,
+      borderRadius: [0, 0]
     };
   }
 
   if (shape === "bricks") {
     shapeData = {
-      length: 2,
+      length: [2, 1],
       offset: 0.5,
-      rotation: 0
+      rotation: 0,
+      borderRadius: [0, 0]
     };
   }
 
   if (shape === "tapestry") {
     shapeData = {
-      length: 1,
-      offset: 0.4,
-      rotation: -45
+      offset: 0.25,
+      length: [1.5, 1],
+      rotation: -30,
+      borderRadius: [4, 4]
     };
   }
 
@@ -207,7 +210,12 @@ mosaicWorker.postMessage({
   data: data.data,
   background: "black",
   distortion: distortion[shape],
-  shapeData: { offset: 0.5, length: 1, rotation: -45 }
+  shapeData: {
+    offset: 0.25,
+    length: [1.5, 1],
+    rotation: -30,
+    borderRadius: [4, 4]
+  }
 });
 
 document.getElementById("regen").addEventListener("click", e => {
