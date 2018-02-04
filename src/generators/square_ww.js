@@ -29,7 +29,9 @@ export default class Square extends base {
 
       var x =
         Math.floor(pos % this.imgSize) * this.mX +
-        (Math.floor(pos / this.imgSize) % 2) * this.mX * this.shapeData.offset;
+        (Math.floor(pos / this.imgSize) % this.shapeData.offsetMod) *
+          this.mX *
+          this.shapeData.offset;
       var y = Math.floor(pos / this.imgSize) * this.mY;
 
       if (x > maxXpos) {

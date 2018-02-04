@@ -20,7 +20,7 @@ let distortion = {
   paint: { x: 1, y: 1 },
   words: { x: 1, y: 1 },
   bricks: { x: 0.5, y: 1 },
-  tapestry: { x: 1, y: 1 }
+  tapestry: { x: 0.75, y: 1 }
 };
 
 let mosaicWorker = new MosaicWorker();
@@ -129,7 +129,8 @@ let createSVG = function() {
       length: [1, 1],
       offset: 0,
       rotation: 0,
-      borderRadius: [0, 0]
+      borderRadius: [0, 0],
+      offsetMod: 1
     };
   }
 
@@ -138,7 +139,8 @@ let createSVG = function() {
       length: [2, 1],
       offset: 0.5,
       rotation: 0,
-      borderRadius: [0, 0]
+      borderRadius: [0, 0],
+      offsetMod: 2
     };
   }
 
@@ -147,7 +149,8 @@ let createSVG = function() {
       offset: 0.25,
       length: [1.5, 1],
       rotation: -30,
-      borderRadius: [4, 4]
+      borderRadius: [4, 4],
+      offsetMod: 4
     };
   }
 
@@ -214,7 +217,8 @@ mosaicWorker.postMessage({
     offset: 0.25,
     length: [1.5, 1],
     rotation: -30,
-    borderRadius: [4, 4]
+    borderRadius: [4, 4],
+    offsetMod: 4
   }
 });
 
