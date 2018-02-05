@@ -11,8 +11,8 @@ let elSvg = document.getElementById("svg");
 let elProgressCircle = document.getElementById("progressCircle");
 
 let distortion = {
-  hex: { x: 1, y: 1.25, data: {} },
-  triangle: { x: 1, y: 1, data: {} },
+  hex: { x: 1, y: 1.25, meta: {} },
+  triangle: { x: 1, y: 1, meta: {} },
   square: {
     x: 1,
     y: 1,
@@ -24,12 +24,19 @@ let distortion = {
       offsetMod: 1
     }
   },
-  circle: { x: 1, y: 1, data: {} },
-  flower: { x: 1, y: 1, data: {} },
-  pentagon: { x: 1, y: 1, data: {} },
-  cross: { x: 1.5, y: 1, data: {} },
-  paint: { x: 1, y: 1, data: {} },
-  words: { x: 1, y: 1, data: {} },
+  circle: { x: 1, y: 1, meta: {} },
+  flower: { x: 1, y: 1, meta: {} },
+  pentagon: { x: 1, y: 1, meta: {} },
+  cross: { x: 1.5, y: 1, meta: {} },
+  paint: { x: 1, y: 1, meta: {} },
+  words: {
+    x: 1,
+    y: 1,
+    meta: {
+      text: "IMGSVG",
+      font: "Ubuntu Mono"
+    }
+  },
   bricks: {
     x: 0.5,
     y: 1,
@@ -48,9 +55,14 @@ let distortion = {
       offset: 0.25,
       length: [1.6, 1],
       rotation: -45,
-      borderRadius: [6, 4],
+      borderRadius: [7, 3],
       offsetMod: 4
     }
+  },
+  crossstitch: {
+    x: 1,
+    y: 1,
+    meta: {}
   }
 };
 
@@ -211,7 +223,7 @@ shapeSelect.addEventListener("change", () => {
 });
 
 imgCache = default_image();
-let shape = "tapestry";
+let shape = "crossstitch";
 let data = getScaledImageData(96, distortion[shape].x, distortion[shape].y);
 
 mosaicWorker.postMessage({
