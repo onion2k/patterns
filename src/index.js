@@ -1,6 +1,7 @@
 import MosaicWorker from "./mosaic.worker.js";
 import "./patterns.css";
 import filesaver from "file-saver";
+import default_image from "./default_gen.js";
 
 let progress = 0;
 let imgCache;
@@ -45,8 +46,8 @@ let distortion = {
     y: 1,
     meta: {
       offset: 0.25,
-      length: [1.5, 1],
-      rotation: -30,
+      length: [1.6, 1],
+      rotation: -45,
       borderRadius: [4, 4],
       offsetMod: 4
     }
@@ -154,36 +155,6 @@ let createSVG = function() {
     };
   }
 
-  if (shape === "square") {
-    meta = {
-      length: [1, 1],
-      offset: 0,
-      rotation: 0,
-      borderRadius: [0, 0],
-      offsetMod: 1
-    };
-  }
-
-  if (shape === "bricks") {
-    meta = {
-      length: [2, 1],
-      offset: 0.5,
-      rotation: 0,
-      borderRadius: [0, 0],
-      offsetMod: 2
-    };
-  }
-
-  if (shape === "tapestry") {
-    meta = {
-      offset: 0.25,
-      length: [1.5, 1],
-      rotation: -30,
-      borderRadius: [4, 4],
-      offsetMod: 4
-    };
-  }
-
   let data = getScaledImageData(
     imgSize,
     distortion[shape].x,
@@ -204,53 +175,12 @@ let createSVG = function() {
       data: data.data,
       background,
       distortion: distortion[shape],
-      meta
+      meta: distortion[shape].meta
     });
   } else {
     document.body.innerHTML = "Sorry, you need web workers.";
   }
 };
-
-const w = document.body.clientWidth;
-const h = document.body.clientHeight;
-
-var c = document.createElement("canvas");
-var aspect = h / w;
-c.width = 128;
-c.height = 128;
-
-var ctx = c.getContext("2d");
-
-var linearGradient1 = ctx.createLinearGradient(128 / aspect, 0, 0, 128);
-linearGradient1.addColorStop(0, "rgb(255, 255, 255)");
-linearGradient1.addColorStop(1, "rgb(  0, 0, 0)");
-ctx.fillStyle = linearGradient1;
-ctx.fillRect(0, 0, 128, 128);
-
-imgCache = c;
-let shape = "tapestry";
-let data = getScaledImageData(96, distortion[shape].x, distortion[shape].y);
-
-mosaicWorker.postMessage({
-  type: "create",
-  shape,
-  imgSize: data.width,
-  cellSize: 10,
-  padding: 1,
-  aspect: data.height / data.width,
-  variance: 30,
-  scaling: "none",
-  data: data.data,
-  background: "black",
-  distortion: distortion[shape],
-  meta: {
-    offset: 0.25,
-    length: [1.5, 1],
-    rotation: -30,
-    borderRadius: [4, 4],
-    offsetMod: 4
-  }
-});
 
 document.getElementById("regen").addEventListener("click", e => {
   e.preventDefault();
@@ -278,4 +208,23 @@ shapeSelect.addEventListener("change", () => {
   ) {
     el.classList.add("show-option");
   });
+});
+
+imgCache = default_image();
+let shape = "tapestry";
+let data = getScaledImageData(96, distortion[shape].x, distortion[shape].y);
+
+mosaicWorker.postMessage({
+  type: "create",
+  shape,
+  imgSize: data.width,
+  cellSize: 10,
+  padding: 1,
+  aspect: data.height / data.width,
+  variance: 30,
+  scaling: "none",
+  data: data.data,
+  background: "black",
+  distortion: distortion[shape],
+  meta: distortion[shape].meta
 });
