@@ -48,7 +48,7 @@ let distortion = {
       offset: 0.25,
       length: [1.6, 1],
       rotation: -45,
-      borderRadius: [4, 4],
+      borderRadius: [6, 4],
       offsetMod: 4
     }
   }
