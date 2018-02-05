@@ -12,9 +12,7 @@ export default class Words extends base {
     </style>`);
 
     this.addDef(
-      `<text id="a" font-family="${
-        this.shapeData.font
-      }" font-size="15">A</text>`
+      `<text id="a" font-family="${this.meta.font}" font-size="15">A</text>`
     );
     this.addDef(
       `<text id="b" font-family="Ubuntu Mono" font-size="15">B</text>`
@@ -127,7 +125,7 @@ export default class Words extends base {
     let maxXpos = 0;
     let maxYpos = 0;
 
-    let letters = this.shapeData.text
+    let letters = this.meta.text
       .toLowerCase()
       .replace(/\W/g, "")
       .split("");

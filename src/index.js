@@ -10,17 +10,47 @@ let elSvg = document.getElementById("svg");
 let elProgressCircle = document.getElementById("progressCircle");
 
 let distortion = {
-  hex: { x: 1, y: 1.25 },
-  triangle: { x: 1, y: 1 },
-  square: { x: 1, y: 1 },
-  circle: { x: 1, y: 1 },
-  flower: { x: 1, y: 1 },
-  pentagon: { x: 1, y: 1 },
-  cross: { x: 1.5, y: 1 },
-  paint: { x: 1, y: 1 },
-  words: { x: 1, y: 1 },
-  bricks: { x: 0.5, y: 1 },
-  tapestry: { x: 0.75, y: 1 }
+  hex: { x: 1, y: 1.25, data: {} },
+  triangle: { x: 1, y: 1, data: {} },
+  square: {
+    x: 1,
+    y: 1,
+    meta: {
+      length: [1, 1],
+      offset: 0,
+      rotation: 0,
+      borderRadius: [0, 0],
+      offsetMod: 1
+    }
+  },
+  circle: { x: 1, y: 1, data: {} },
+  flower: { x: 1, y: 1, data: {} },
+  pentagon: { x: 1, y: 1, data: {} },
+  cross: { x: 1.5, y: 1, data: {} },
+  paint: { x: 1, y: 1, data: {} },
+  words: { x: 1, y: 1, data: {} },
+  bricks: {
+    x: 0.5,
+    y: 1,
+    meta: {
+      length: [2, 1],
+      offset: 0.5,
+      rotation: 0,
+      borderRadius: [0, 0],
+      offsetMod: 2
+    }
+  },
+  tapestry: {
+    x: 0.75,
+    y: 1,
+    meta: {
+      offset: 0.25,
+      length: [1.5, 1],
+      rotation: -30,
+      borderRadius: [4, 4],
+      offsetMod: 4
+    }
+  }
 };
 
 let mosaicWorker = new MosaicWorker();
@@ -110,7 +140,7 @@ let createSVG = function() {
   let background =
     backgroundSelect.options[backgroundSelect.selectedIndex].value;
 
-  let shapeData = {};
+  let meta = {};
 
   if (shape === "words") {
     let text = document.getElementById("text").value || "IMGSVG";
@@ -118,14 +148,14 @@ let createSVG = function() {
     let fontSelect = document.getElementById("font");
     let font = fontSelect.options[fontSelect.selectedIndex].value;
 
-    shapeData = {
+    meta = {
       text,
       font
     };
   }
 
   if (shape === "square") {
-    shapeData = {
+    meta = {
       length: [1, 1],
       offset: 0,
       rotation: 0,
@@ -135,7 +165,7 @@ let createSVG = function() {
   }
 
   if (shape === "bricks") {
-    shapeData = {
+    meta = {
       length: [2, 1],
       offset: 0.5,
       rotation: 0,
@@ -145,7 +175,7 @@ let createSVG = function() {
   }
 
   if (shape === "tapestry") {
-    shapeData = {
+    meta = {
       offset: 0.25,
       length: [1.5, 1],
       rotation: -30,
@@ -174,7 +204,7 @@ let createSVG = function() {
       data: data.data,
       background,
       distortion: distortion[shape],
-      shapeData
+      meta
     });
   } else {
     document.body.innerHTML = "Sorry, you need web workers.";
@@ -213,7 +243,7 @@ mosaicWorker.postMessage({
   data: data.data,
   background: "black",
   distortion: distortion[shape],
-  shapeData: {
+  meta: {
     offset: 0.25,
     length: [1.5, 1],
     rotation: -30,

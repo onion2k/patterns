@@ -13,7 +13,7 @@ export default class {
     this.img = data.img;
     this.background = data.background;
     this.distortion = data.distortion;
-    this.shapeData = data.shapeData;
+    this.meta = data.meta;
 
     this.extents = { x: [], y: [] };
 
