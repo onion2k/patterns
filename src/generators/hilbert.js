@@ -3,25 +3,30 @@ import base from "./base";
 export default class Hilbert extends base {
   constructor(data) {
     super(data);
+    this.w = this.cellSize * this.imgSize;
+    this.h = this.cellSize * this.imgSize;
     this.px = 0;
     this.py = 0;
+    this.pc = this.getPixelColor(0, 0);
+    this.gradientCounter = 0;
   }
 
   hilbert(x, y, xi, xj, yi, yj, n) {
-    /* x and y are the coordinates of the bottom left corner */
-    /* xi & xj are the i & j components of the unit x vector of the frame */
-    /* similarly yi and yj */
     if (n <= 0) {
-      // LineTo(x + (xi + yi) / 2, y + (xj + yj) / 2);
-      // this.add(1, `<line fill="${col}" />`);
+      let cx = Math.floor(x + (xi + yi) / 2);
+      let cy = Math.floor(y + (xj + yj) / 2);
+      let color = this.getPixelColor(cx / this.w, cy / this.h);
+
       this.add(
         1,
-        `<line x1="${this.px}" y1="${this.py}" x2="${x +
-          (xi + yi) / 2}" y2="${y +
-          (xj + yj) / 2}" stroke-width="2" stroke="white"/>`
+        `<line x1="${this.px}" y1="${
+          this.py
+        }" x2="${cx}" y2="${cy}" stroke-width="1" stroke="rgb(${color.r},${
+          color.g
+        },${color.b})"/>`
       );
-      this.px = x + (xi + yi) / 2;
-      this.py = y + (xj + yj) / 2;
+      this.px = cx;
+      this.py = cy;
     } else {
       this.hilbert(x, y, yi / 2, yj / 2, xi / 2, xj / 2, n - 1);
       this.hilbert(
@@ -55,40 +60,8 @@ export default class Hilbert extends base {
   }
 
   _chunk() {
-    let maxXpos = 0;
-    let maxYpos = 0;
-
-    this.hilbert(0, 0, 800, 0, 0, 800, 6);
-    // for (var i = 0, n = this.data.length; i < n; i += 4) {
-    //   let { r, g, b, a, pos, v } = this.getPixel(i);
-
-    //   var x = Math.floor(pos % this.imgSize) * this.mX;
-    //   var y = Math.floor(pos / this.imgSize) * this.mY;
-
-    //   if (x > maxXpos) {
-    //     maxXpos = x;
-    //   }
-    //   if (y > maxYpos) {
-    //     maxYpos = y;
-    //   }
-
-    //   let col = `rgb(${Math.floor(r + v)},${Math.floor(g + v)},${Math.floor(
-    //     b + v
-    //   )})`;
-
-    //   let translate = `translate(${this.round(x)}, ${this.round(y)})`;
-    //   let s = this.round(this.scale(r, g, b));
-    //   let scale = "";
-    //   if (s) {
-    //     scale = `scale(${s})`;
-    //   }
-
-    //   this.add(
-    //     s,
-    //     `<use xlink:href="#h" fill="${col}" transform="${translate} ${scale}" />`
-    //   );
-    // }
-    this.cWidth = 800; //maxXpos + this.mX / 2;
-    this.cHeight = 800; //maxYpos + this.mY / 2;
+    this.hilbert(0, 0, this.w, 0, 0, this.h, 8);
+    this.cWidth = this.w;
+    this.cHeight = this.h;
   }
 }

@@ -36,6 +36,13 @@ export default class {
       v: this.variance / 2 - Math.random() * this.variance
     };
   }
+  getPixelColor(x, y) {
+    let cx = Math.floor(this.imgSize * x);
+    let cy = Math.floor(this.imgSize * this.aspect * y);
+
+    let pos = (cy * this.imgSize + cx) * 4;
+    return this.getPixel(pos);
+  }
   round(n) {
     return Math.round(n * 100) / 100;
   }
