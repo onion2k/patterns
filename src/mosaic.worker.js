@@ -8,6 +8,7 @@ import cross from "./generators/cross_ww";
 import paint from "./generators/paint";
 import words from "./generators/words";
 import crossstitch from "./generators/crossstitch";
+import hilbert from "./generators/hilbert";
 
 class Mosaic {
   constructor(data) {
@@ -45,6 +46,9 @@ class Mosaic {
         break;
       case "crossstitch":
         this.mosaic = new crossstitch(data);
+        break;
+      case "hilbert":
+        this.mosaic = new hilbert(data);
         break;
       default:
         this.mosaic = new circle(data);

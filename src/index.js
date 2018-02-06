@@ -63,6 +63,11 @@ let distortion = {
     x: 1,
     y: 1,
     meta: {}
+  },
+  hilbert: {
+    x: 1,
+    y: 1,
+    meta: {}
   }
 };
 
@@ -223,7 +228,7 @@ shapeSelect.addEventListener("change", () => {
 });
 
 imgCache = default_image();
-let shape = "crossstitch";
+let shape = "hilbert";
 let data = getScaledImageData(96, distortion[shape].x, distortion[shape].y);
 
 mosaicWorker.postMessage({
