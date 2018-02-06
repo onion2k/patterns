@@ -90,7 +90,7 @@ var getScaledImageData = function(imgSize, dX, dY) {
 
   var ctx = c.getContext("2d");
 
-  ctx.drawImage(imgCache, 1, 1, c.width, c.height);
+  ctx.drawImage(imgCache, 0, 0, c.width, c.height);
 
   return {
     data: ctx.getImageData(0, 0, c.width, c.height).data,
