@@ -18,13 +18,15 @@ export default class Square extends base {
       `<g id='h'>
         <rect x="${-1 * this.cellSize / 2}" y="${-1 *
         this.cellSize /
-        2}" width="${this.cellSize}" height="${this.cellSize / 4}"
+        2}" width="${this.cellSize}" height="${this.cellSize / 4}" rx="${this
+        .cellSize / 8}" ry="${this.cellSize / 8}"
           }" transform="rotate(45) translate(${this.cellSize / 2 -
             this.cellSize / 2}, ${this.cellSize / 2 -
         this.cellSize / 4 / 2})" />
         <rect x="${-1 * this.cellSize / 2}" y="${-1 *
         this.cellSize /
-        2}" width="${this.cellSize}" height="${this.cellSize / 4}"
+        2}" width="${this.cellSize}" height="${this.cellSize / 4}" rx="${this
+        .cellSize / 8}" ry="${this.cellSize / 8}"
             }" transform="rotate(135) translate(${this.cellSize / 2 -
               this.cellSize / 2}, ${this.cellSize / 2 -
         this.cellSize / 4 / 2})" />
