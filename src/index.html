@@ -17,19 +17,25 @@
     <div>
       <label>Shape</label>
       <select name="shape" id="shape">
-        <option value="hex">Hex</option>
-        <option value="triangle">Triangle</option>
-        <option value="square">Square</option>
-        <option value="circle">Circle</option>
-        <option value="flower">Flower</option>
-        <option value="pentagon">Pentagon</option>
-        <option value="cross">Cross</option>
-        <option value="paint">Paint</option>
-        <option value="words">Words</option>
-        <option value="bricks">Bricks</option>
-        <option value="tapestry">Tapestry</option>
-        <option value="crossstitch">Cross Stitch</option>
-        <option value="hilbert" selected>Hilbert</option>
+        <optgroup label="Tessellations">
+          <option value="hex" selected>Hex</option>
+          <option value="triangle">Triangle</option>
+          <option value="cross">Cross</option>
+          <option value="flower">Flower</option>
+          <option value="pentagon">Pentagon</option>
+          <option value="bricks">Bricks</option>
+        </optgroup>
+        <optgroup label="Repetitions">
+          <option value="square">Square</option>
+          <option value="circle">Circle</option>
+          <option value="tapestry">Tapestry</option>
+          <option value="crossstitch">Cross Stitch</option>
+        </optgroup>
+        <optgroup label="Experiments">
+          <option value="paint">Paint</option>
+          <option value="words">Words</option>
+          <option value="hilbert">Hilbert</option>
+        </optgroup>
       </select>
     </div>
     <div class="shape-option shape-option-for-words hide-option">
@@ -41,6 +47,10 @@
       <select name="font" id="font">
         <option value="Ubuntu Mono" selected>Ubuntu Mono</option>
       </select>
+    </div>
+    <div class="shape-option shape-option-for-hilbert hide-option">
+      <label>Complexity</label>
+      <input name="factor" id="factor" value="6" />
     </div>
     <div>
       <label>Size</label>
@@ -55,10 +65,6 @@
       <input type="number" name="gap" id="gap" value="1" />
     </div>
     <div>
-      <label>Variance</label>
-      <input type="number" name="variance" id="variance" value="30" />
-    </div>
-    <div>
       <label>Scaling</label>
       <select name="scaling" id="scaling">
         <option value="none">None</option>
@@ -66,6 +72,10 @@
         <option value="multiply">Multiply</option>
         <option value="random">Random</option>
       </select>
+    </div>
+    <div>
+      <label>Color Variance</label>
+      <input type="number" name="variance" id="variance" value="30" />
     </div>
     <div>
       <label>Background</label>

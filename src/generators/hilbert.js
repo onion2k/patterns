@@ -19,11 +19,8 @@ export default class Hilbert extends base {
 
       this.add(
         1,
-        `<line x1="${this.px}" y1="${
-          this.py
-        }" x2="${cx}" y2="${cy}" stroke-width="1" stroke="rgb(${color.r},${
-          color.g
-        },${color.b})"/>`
+        `<line x1="${this.px}" y1="${this
+          .py}" x2="${cx}" y2="${cy}" stroke-width="1" stroke="rgb(${color.r},${color.g},${color.b})"/>`
       );
       this.px = cx;
       this.py = cy;
@@ -60,7 +57,7 @@ export default class Hilbert extends base {
   }
 
   _chunk() {
-    this.hilbert(0, 0, this.w, 0, 0, this.h, 8);
+    this.hilbert(0, 0, this.w, 0, 0, this.h, this.meta.factor);
     this.cWidth = this.w;
     this.cHeight = this.h;
   }

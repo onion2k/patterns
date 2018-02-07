@@ -5,7 +5,7 @@ body {
   font-size: 0.9em;
   width: 100vw;
   height: 100vh;
-  background-color: #fff;
+  background-color: #000000;
   padding: 0;
   margin: 0;
 }
@@ -29,15 +29,11 @@ body.drophover > .dropoverlay {
   display: grid;
 }
 
-.black {
-  background-color: black;
-}
-
 form {
   position: fixed;
   top: 0;
   left: 0;
-  width: 25%;
+  width: 40%;
   z-index: 1;
   background-color: rgb(255, 255, 255);
   padding: 20px;

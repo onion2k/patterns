@@ -67,7 +67,9 @@ let distortion = {
   hilbert: {
     x: 1,
     y: 1,
-    meta: {}
+    meta: {
+      factor: 6
+    }
   }
 };
 
@@ -158,7 +160,7 @@ let createSVG = function() {
   let background =
     backgroundSelect.options[backgroundSelect.selectedIndex].value;
 
-  let meta = {};
+  let meta = distortion[shape].meta;
 
   if (shape === "words") {
     let text = document.getElementById("text").value || "IMGSVG";
@@ -169,6 +171,14 @@ let createSVG = function() {
     meta = {
       text,
       font
+    };
+  }
+
+  if (shape === "hilbert") {
+    let factor = document.getElementById("factor").value || 6;
+
+    meta = {
+      factor
     };
   }
 
@@ -192,7 +202,7 @@ let createSVG = function() {
       data: data.data,
       background,
       distortion: distortion[shape],
-      meta: distortion[shape].meta
+      meta
     });
   } else {
     document.body.innerHTML = "Sorry, you need web workers.";
@@ -228,7 +238,7 @@ shapeSelect.addEventListener("change", () => {
 });
 
 imgCache = default_image();
-let shape = "hilbert";
+let shape = "hex";
 let data = getScaledImageData(96, distortion[shape].x, distortion[shape].y);
 
 mosaicWorker.postMessage({
