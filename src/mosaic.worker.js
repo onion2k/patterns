@@ -7,6 +7,7 @@ import heart from "./generators/heart";
 import pentagon from "./generators/pentagon_ww";
 import cross from "./generators/cross_ww";
 import paint from "./generators/paint";
+import puzzle from "./generators/puzzle";
 import words from "./generators/words";
 import crossstitch from "./generators/crossstitch";
 import hilbert from "./generators/hilbert";
@@ -44,6 +45,9 @@ class Mosaic {
         break;
       case "paint":
         this.mosaic = new paint(data);
+        break;
+      case "puzzle":
+        this.mosaic = new puzzle(data);
         break;
       case "words":
         this.mosaic = new words(data);

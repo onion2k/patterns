@@ -29,6 +29,7 @@ let distortion = {
   pentagon: { x: 1, y: 1, meta: {} },
   cross: { x: 1.5, y: 1, meta: {} },
   paint: { x: 1, y: 1, meta: {} },
+  puzzle: { x: 1, y: 1, meta: {} },
   words: {
     x: 1,
     y: 1,
@@ -245,8 +246,8 @@ shapeSelect.addEventListener("change", () => {
 });
 
 imgCache = default_image();
-let shape = "hex";
-let data = getScaledImageData(96, distortion[shape].x, distortion[shape].y);
+let shape = "puzzle";
+let data = getScaledImageData(128, distortion[shape].x, distortion[shape].y);
 
 mosaicWorker.postMessage({
   type: "create",
