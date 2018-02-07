@@ -87,6 +87,8 @@ mosaicWorker.addEventListener("message", e => {
   }
 });
 
+elProgress.style.display = "none";
+
 var getScaledImageData = function(imgSize, dX, dY) {
   let distX = dX || 1;
   let distY = dY || 1;
