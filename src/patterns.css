@@ -63,7 +63,6 @@ label {
 }
 
 input,
-p,
 button,
 textarea {
   flex: 2;
@@ -111,4 +110,25 @@ select {
 
 .show-option {
   display: flex;
+}
+
+ul {
+}
+
+li {
+  display: grid;
+  grid-template-columns: [col1-start] 1fr [col2-start] 4fr [col2-end];
+  grid-template-rows: [row1-start] auto [row2-start] auto [row2-end];
+}
+li > i {
+  grid-column: col1-start;
+  grid-row: row1-start / row2-end;
+}
+li > b {
+  grid-column: col2-start;
+  grid-row: row1-start;
+}
+li > p {
+  grid-column: col2-start;
+  grid-row: row2-start;
 }

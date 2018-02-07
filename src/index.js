@@ -64,6 +64,11 @@ let distortion = {
     y: 1,
     meta: {}
   },
+  heart: {
+    x: 1,
+    y: 1,
+    meta: {}
+  },
   hilbert: {
     x: 1,
     y: 1,

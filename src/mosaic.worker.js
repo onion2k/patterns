@@ -3,6 +3,7 @@ import square from "./generators/square_ww";
 import hexagon from "./generators/hex_ww";
 import flower from "./generators/flower_ww";
 import circle from "./generators/circle_ww";
+import heart from "./generators/heart";
 import pentagon from "./generators/pentagon_ww";
 import cross from "./generators/cross_ww";
 import paint from "./generators/paint";
@@ -22,6 +23,9 @@ class Mosaic {
       case "bricks":
       case "tapestry":
         this.mosaic = new square(data);
+        break;
+      case "heart":
+        this.mosaic = new heart(data);
         break;
       case "hex":
         this.mosaic = new hexagon(data);
