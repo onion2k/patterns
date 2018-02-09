@@ -162,8 +162,6 @@ export default class Paint extends base {
       );
     }
 
-    console.log(this.mX);
-
     this.cWidth = maxXpos + this.mX * (this.cellSize / 10);
     this.cHeight = maxYpos + this.mY * (this.cellSize / 10);
   }
