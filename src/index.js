@@ -247,7 +247,7 @@ shapeSelect.addEventListener("change", () => {
 
 imgCache = default_image();
 let shape = "puzzle";
-let data = getScaledImageData(128, distortion[shape].x, distortion[shape].y);
+let data = getScaledImageData(12, distortion[shape].x, distortion[shape].y);
 
 mosaicWorker.postMessage({
   type: "create",
