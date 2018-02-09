@@ -49,6 +49,7 @@ export default class Paint extends base {
   _chunk() {
     let maxXpos = 0;
     let maxYpos = 0;
+    let board = [];
     for (var i = 0, n = this.data.length; i < n; i += 4) {
       let { r, g, b, a, pos, v } = this.getPixel(i);
 
@@ -76,14 +77,91 @@ export default class Paint extends base {
 
       scale = `scale(${this.scaleOverride})`;
 
-      let piece = this.pieces[Math.floor(Math.random() * this.pieces.length)];
+      let px = Math.floor(pos % this.imgSize);
+      let py = Math.floor(pos / this.imgSize);
+
+      let maxpx = this.imgSize;
+      let maxpy = this.data.length / 4 / this.imgSize;
+
+      let piece = [];
+
+      if (py === 0) {
+        board[px] = [];
+        board[px][py] = [];
+      }
+
+      if (py === 0) {
+        piece.push("e");
+      } else {
+        piece.push(!board[px][py - 1][2] * 1);
+      }
+      if (px === maxpx) {
+        piece.push("e");
+      } else {
+        piece.push(Math.round(Math.random()));
+      }
+      if (py === maxpy) {
+        piece.push("e");
+      } else {
+        piece.push(Math.round(Math.random()));
+      }
+      if (px === 0) {
+        piece.push("e");
+      } else {
+        piece.push(!board[px - 1][py][1] * 1);
+      }
+
+      board[px][py] = piece;
+
+      let pieceID = piece.join("");
+
+      let rotate = "";
+
+      switch (pieceID) {
+        case "1001":
+          pieceID = "1100";
+          rotate = "rotate(180)";
+        case "0101":
+          pieceID = "1010";
+          rotate = "rotate(180)";
+        case "0100":
+          pieceID = "1000";
+          rotate = "rotate(-90)";
+        case "0010":
+          pieceID = "1000";
+          rotate = "rotate(90)";
+        case "0001":
+          pieceID = "1000";
+          rotate = "rotate(180)";
+        case "0110":
+          pieceID = "1100";
+          rotate = "rotate(-90)";
+        case "0011":
+          pieceID = "1100";
+          rotate = "rotate(-90)";
+        case "0111":
+          pieceID = "1110";
+          rotate = "rotate(-90)";
+        case "1011":
+          pieceID = "1110";
+          rotate = "rotate(-90)";
+        case "1101":
+          pieceID = "1110";
+          rotate = "rotate(-90)";
+      }
+
+      rotate = "";
+
+      // if (this.pieces.indexOf(pieceID) === -1) {
+      //   console.log(pieceID, piece);
+      // }
 
       this.add(
         s,
-        `<use xlink:href="#${piece}" fill="${col}" transform="${translate} ${scale}" />`
+        `<use xlink:href="#${pieceID}" fill="${col}" transform="${translate} ${scale} ${rotate}" />`
       );
     }
-    this.cWidth = maxXpos + this.mX / 2;
-    this.cHeight = maxYpos + this.mY / 2;
+    this.cWidth = maxXpos + this.mX;
+    this.cHeight = maxYpos + this.mY;
   }
 }

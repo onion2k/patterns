@@ -15,109 +15,109 @@ export default class Words extends base {
       `<text id="a" font-family="${this.meta.font}" font-size="15">A</text>`
     );
     this.addDef(
-      `<text id="b" font-family="Ubuntu Mono" font-size="15">B</text>`
+      `<text id="b" font-family="${this.meta.font}" font-size="15">B</text>`
     );
     this.addDef(
-      `<text id="c" font-family="Ubuntu Mono" font-size="15">C</text>`
+      `<text id="c" font-family="${this.meta.font}" font-size="15">C</text>`
     );
     this.addDef(
-      `<text id="d" font-family="Ubuntu Mono" font-size="15">D</text>`
+      `<text id="d" font-family="${this.meta.font}" font-size="15">D</text>`
     );
     this.addDef(
-      `<text id="e" font-family="Ubuntu Mono" font-size="15">E</text>`
+      `<text id="e" font-family="${this.meta.font}" font-size="15">E</text>`
     );
     this.addDef(
-      `<text id="f" font-family="Ubuntu Mono" font-size="15">F</text>`
+      `<text id="f" font-family="${this.meta.font}" font-size="15">F</text>`
     );
     this.addDef(
-      `<text id="g" font-family="Ubuntu Mono" font-size="15">G</text>`
+      `<text id="g" font-family="${this.meta.font}" font-size="15">G</text>`
     );
     this.addDef(
-      `<text id="h" font-family="Ubuntu Mono" font-size="15">H</text>`
+      `<text id="h" font-family="${this.meta.font}" font-size="15">H</text>`
     );
     this.addDef(
-      `<text id="i" font-family="Ubuntu Mono" font-size="15">I</text>`
+      `<text id="i" font-family="${this.meta.font}" font-size="15">I</text>`
     );
     this.addDef(
-      `<text id="j" font-family="Ubuntu Mono" font-size="15">J</text>`
+      `<text id="j" font-family="${this.meta.font}" font-size="15">J</text>`
     );
     this.addDef(
-      `<text id="k" font-family="Ubuntu Mono" font-size="15">K</text>`
+      `<text id="k" font-family="${this.meta.font}" font-size="15">K</text>`
     );
     this.addDef(
-      `<text id="l" font-family="Ubuntu Mono" font-size="15">L</text>`
+      `<text id="l" font-family="${this.meta.font}" font-size="15">L</text>`
     );
     this.addDef(
-      `<text id="m" font-family="Ubuntu Mono" font-size="15">M</text>`
+      `<text id="m" font-family="${this.meta.font}" font-size="15">M</text>`
     );
     this.addDef(
-      `<text id="n" font-family="Ubuntu Mono" font-size="15">N</text>`
+      `<text id="n" font-family="${this.meta.font}" font-size="15">N</text>`
     );
     this.addDef(
-      `<text id="o" font-family="Ubuntu Mono" font-size="15">O</text>`
+      `<text id="o" font-family="${this.meta.font}" font-size="15">O</text>`
     );
     this.addDef(
-      `<text id="p" font-family="Ubuntu Mono" font-size="15">P</text>`
+      `<text id="p" font-family="${this.meta.font}" font-size="15">P</text>`
     );
     this.addDef(
-      `<text id="q" font-family="Ubuntu Mono" font-size="15">Q</text>`
+      `<text id="q" font-family="${this.meta.font}" font-size="15">Q</text>`
     );
     this.addDef(
-      `<text id="r" font-family="Ubuntu Mono" font-size="15">R</text>`
+      `<text id="r" font-family="${this.meta.font}" font-size="15">R</text>`
     );
     this.addDef(
-      `<text id="s" font-family="Ubuntu Mono" font-size="15">S</text>`
+      `<text id="s" font-family="${this.meta.font}" font-size="15">S</text>`
     );
     this.addDef(
-      `<text id="t" font-family="Ubuntu Mono" font-size="15">T</text>`
+      `<text id="t" font-family="${this.meta.font}" font-size="15">T</text>`
     );
     this.addDef(
-      `<text id="u" font-family="Ubuntu Mono" font-size="15">U</text>`
+      `<text id="u" font-family="${this.meta.font}" font-size="15">U</text>`
     );
     this.addDef(
-      `<text id="v" font-family="Ubuntu Mono" font-size="15">V</text>`
+      `<text id="v" font-family="${this.meta.font}" font-size="15">V</text>`
     );
     this.addDef(
-      `<text id="w" font-family="Ubuntu Mono" font-size="15">W</text>`
+      `<text id="w" font-family="${this.meta.font}" font-size="15">W</text>`
     );
     this.addDef(
-      `<text id="x" font-family="Ubuntu Mono" font-size="15">X</text>`
+      `<text id="x" font-family="${this.meta.font}" font-size="15">X</text>`
     );
     this.addDef(
-      `<text id="y" font-family="Ubuntu Mono" font-size="15">Y</text>`
+      `<text id="y" font-family="${this.meta.font}" font-size="15">Y</text>`
     );
     this.addDef(
-      `<text id="z" font-family="Ubuntu Mono" font-size="15">Z</text>`
+      `<text id="z" font-family="${this.meta.font}" font-size="15">Z</text>`
     );
     this.addDef(
-      `<text id="0" font-family="Ubuntu Mono" font-size="15">0</text>`
+      `<text id="0" font-family="${this.meta.font}" font-size="15">0</text>`
     );
     this.addDef(
-      `<text id="1" font-family="Ubuntu Mono" font-size="15">1</text>`
+      `<text id="1" font-family="${this.meta.font}" font-size="15">1</text>`
     );
     this.addDef(
-      `<text id="2" font-family="Ubuntu Mono" font-size="15">2</text>`
+      `<text id="2" font-family="${this.meta.font}" font-size="15">2</text>`
     );
     this.addDef(
-      `<text id="3" font-family="Ubuntu Mono" font-size="15">3</text>`
+      `<text id="3" font-family="${this.meta.font}" font-size="15">3</text>`
     );
     this.addDef(
-      `<text id="4" font-family="Ubuntu Mono" font-size="15">4</text>`
+      `<text id="4" font-family="${this.meta.font}" font-size="15">4</text>`
     );
     this.addDef(
-      `<text id="5" font-family="Ubuntu Mono" font-size="15">5</text>`
+      `<text id="5" font-family="${this.meta.font}" font-size="15">5</text>`
     );
     this.addDef(
-      `<text id="6" font-family="Ubuntu Mono" font-size="15">6</text>`
+      `<text id="6" font-family="${this.meta.font}" font-size="15">6</text>`
     );
     this.addDef(
-      `<text id="7" font-family="Ubuntu Mono" font-size="15">7</text>`
+      `<text id="7" font-family="${this.meta.font}" font-size="15">7</text>`
     );
     this.addDef(
-      `<text id="8" font-family="Ubuntu Mono" font-size="15">8</text>`
+      `<text id="8" font-family="${this.meta.font}" font-size="15">8</text>`
     );
     this.addDef(
-      `<text id="9" font-family="Ubuntu Mono" font-size="15">9</text>`
+      `<text id="9" font-family="${this.meta.font}" font-size="15">9</text>`
     );
   }
 
