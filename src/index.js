@@ -82,23 +82,28 @@ let distortion = {
 let mosaicWorker = new MosaicWorker();
 mosaicWorker.addEventListener("message", e => {
   if (e.data.type === "complete") {
-    elProgress.style.display = "none";
     elSvg.innerHTML = e.data.svg;
+    elProgress.style.display = "none";
     elSvg.style.display = "grid";
+  } else if (e.data.type === "tick") {
+    console.log("tick");
+  } else if (e.data.type === "generated") {
+    console.log("generated");
   }
 });
 
 elProgress.style.display = "none";
 
-var getScaledImageData = function(imgSize, dX, dY) {
-  let distX = dX || 1;
-  let distY = dY || 1;
-  var c = document.createElement("canvas");
-  var aspect = imgCache.height / imgCache.width;
+const getScaledImageData = function(imgSize, dX, dY) {
+  const distX = dX || 1;
+  const distY = dY || 1;
+  const c = document.createElement("canvas");
+  const aspect = imgCache.height / imgCache.width;
+
   c.width = imgSize * distX;
   c.height = Math.floor(imgSize * aspect * distY);
 
-  var ctx = c.getContext("2d");
+  const ctx = c.getContext("2d");
 
   ctx.drawImage(imgCache, 0, 0, c.width, c.height);
 
@@ -253,8 +258,8 @@ mosaicWorker.postMessage({
   type: "create",
   shape,
   imgSize: data.width,
-  cellSize: 10,
-  padding: 1,
+  cellSize: 50,
+  padding: 2,
   aspect: data.height / data.width,
   variance: 30,
   scaling: "none",

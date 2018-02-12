@@ -4,10 +4,8 @@ export default class Paint extends base {
   constructor(data) {
     super(data);
 
-    this.cellSize = 50;
-
-    this.mX = 1 + this.cellSize + this.padding;
-    this.mY = 1 + this.cellSize + this.padding;
+    this.mX = this.cellSize + this.padding;
+    this.mY = this.cellSize + this.padding;
 
     this.pieces = {
       "0001": { pieceID: "1000", rotate: 270, rx: 0, ry: 0 },

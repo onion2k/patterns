@@ -27,6 +27,12 @@ export default class {
     this.h = this.cellSize + this.padding;
   }
   getPixel(i) {
+    if (i % 250 === 0) {
+      postMessage({
+        type: "tick"
+      });
+    }
+
     return {
       r: this.data[i],
       g: this.data[i + 1],
@@ -62,6 +68,10 @@ export default class {
     let content = pos.reduce((s, z) => {
       return s + this.z[z].join("");
     }, "");
+
+    postMessage({
+      type: "generated"
+    });
 
     let _defs = this.defs.join("");
     let width = this.cWidth; //this.imgSize * (this.mX + this.padding) * this.distortion.cx;
