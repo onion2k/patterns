@@ -6,11 +6,11 @@ export default class Paint extends base {
 
     this.cellSize = 50;
 
-    this.mX = this.cellSize + this.padding;
-    this.mY = this.cellSize + this.padding;
+    this.mX = 1 + this.cellSize + this.padding;
+    this.mY = 1 + this.cellSize + this.padding;
 
     this.pieces = {
-      "0001": { pieceID: "1000", rotate: 90, rx: 0, ry: 0 },
+      "0001": { pieceID: "1000", rotate: 270, rx: 0, ry: 0 },
       "000e": { pieceID: "e000", rotate: 270, rx: 0, ry: 0 },
       "0010": { pieceID: "1000", rotate: 180, rx: 0, ry: 0 },
       "0011": { pieceID: "1100", rotate: 180, rx: 0, ry: 0 },
@@ -35,7 +35,7 @@ export default class Paint extends base {
       "0ee1": { pieceID: "e10e", rotate: 180, rx: 0, ry: 0 },
       "1001": { pieceID: "1100", rotate: 270, rx: 0, ry: 0 },
       "100e": { pieceID: "e100", rotate: 270, rx: 0, ry: 0 },
-      "1011": { pieceID: "1110", rotate: 270, rx: 0, ry: 0 },
+      "1011": { pieceID: "1110", rotate: 180, rx: 0, ry: 0 },
       "101e": { pieceID: "e101", rotate: 270, rx: 0, ry: 0 },
       "101e": { pieceID: "e101", rotate: 270, rx: 0, ry: 0 },
       "10e0": { pieceID: "e010", rotate: 180, rx: 0, ry: 0 },
@@ -147,13 +147,19 @@ export default class Paint extends base {
 
       let pieceID = piece.join("");
 
+      // if (px === 11 && py === 0) {
+      //   pieceID = "0100";
+      // } else {
+      //   pieceID = "0000";
+      // }
+
       let rotate = "";
 
       if (this.pieces[pieceID]) {
         let _pieceID = pieceID;
         pieceID = this.pieces[_pieceID].pieceID;
-        rotate = `rotate(${this.pieces[_pieceID].rotate}, ${8 +
-          this.pieces[_pieceID].rx}, ${8 + this.pieces[_pieceID].ry} )`;
+        rotate = `rotate(${this.pieces[_pieceID].rotate}, ${9 +
+          this.pieces[_pieceID].rx}, ${9 + this.pieces[_pieceID].ry} )`;
       }
 
       this.add(
