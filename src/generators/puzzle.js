@@ -4,8 +4,8 @@ export default class Paint extends base {
   constructor(data) {
     super(data);
 
-    this.mX = this.cellSize + this.padding;
-    this.mY = this.cellSize + this.padding;
+    this.mX = this.cellSize * 10 + this.padding;
+    this.mY = this.cellSize * 10 + this.padding;
 
     this.pieces = {
       "0001": { pieceID: "1000", rotate: 270, rx: 0, ry: 0 },
@@ -102,7 +102,7 @@ export default class Paint extends base {
 
       let s = this.round(this.scale(r, g, b));
       let scale = "";
-      s = this.cellSize / 10;
+      s = this.cellSize;
       if (s) {
         scale = `scale(${s})`;
       }
@@ -156,8 +156,7 @@ export default class Paint extends base {
       if (this.pieces[pieceID]) {
         let _pieceID = pieceID;
         pieceID = this.pieces[_pieceID].pieceID;
-        rotate = `rotate(${this.pieces[_pieceID].rotate}, ${9 +
-          this.pieces[_pieceID].rx}, ${9 + this.pieces[_pieceID].ry} )`;
+        rotate = `rotate(${this.pieces[_pieceID].rotate}, 9, 9 )`;
       }
 
       this.add(

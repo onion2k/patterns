@@ -73,13 +73,11 @@ export default class {
       return s + this.z[z].join("");
     }, "");
 
-    postMessage({
-      type: "generated"
-    });
+    postMessage({ type: "generated" });
 
     let _defs = this.defs.join("");
-    let width = this.cWidth; //this.imgSize * (this.mX + this.padding) * this.distortion.cx;
-    let height = this.cHeight; // Math.floor(this.aspect * this.imgSize * (this.mY + this.padding) * this.distortion.cy);
+    let width = this.cWidth;
+    let height = this.cHeight;
     return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid slice" width="${width}" height="${height}">
         <defs>${_defs}</defs>
         <rect width="100%" height="100%" fill="${this.background}"/>
