@@ -95,13 +95,15 @@ select {
   display: grid;
   align-items: center;
   justify-items: center;
-  animation: spin 1s linear infinite;
+  animation: dash 5s linear infinite;
 }
 
-@keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+@keyframes dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 1000;
   }
 }
 

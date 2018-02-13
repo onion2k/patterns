@@ -79,6 +79,12 @@ let distortion = {
   }
 };
 
+let progressPath = document.querySelector("#progress > svg > path");
+let progressPathLength = progressPath.getTotalLength();
+
+progressPath.style.strokeDasharray = 50 + " " + progressPathLength;
+// progressPath.style.strokeDashoffset = 0;
+
 let mosaicWorker = new MosaicWorker();
 mosaicWorker.addEventListener("message", e => {
   if (e.data.type === "complete") {
@@ -86,7 +92,7 @@ mosaicWorker.addEventListener("message", e => {
     elProgress.style.display = "none";
     elSvg.style.display = "grid";
   } else if (e.data.type === "tick") {
-    console.log("tick");
+    console.log("tock", e.data.percent);
   } else if (e.data.type === "generated") {
     console.log("generated");
   }

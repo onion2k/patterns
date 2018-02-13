@@ -15,6 +15,8 @@ export default class {
     this.distortion = data.distortion;
     this.meta = data.meta;
 
+    // this.tick = Math.round(this.data.length / 100);
+
     this.extents = { x: [], y: [] };
 
     this.mX = 0;
@@ -27,11 +29,13 @@ export default class {
     this.h = this.cellSize + this.padding;
   }
   getPixel(i) {
-    if (i % 250 === 0) {
-      postMessage({
-        type: "tick"
-      });
-    }
+    // if (i % this.tick === 0) {
+    //   console.log("tick");
+    //   postMessage({
+    //     type: "tick",
+    //     percent: Math.floor(i / this.tick)
+    //   });
+    // }
 
     return {
       r: this.data[i],
