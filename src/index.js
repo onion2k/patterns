@@ -306,13 +306,13 @@ mosaicWorker.postMessage({
   type: "create",
   shape,
   imgSize: data.width,
-  cellSize: cellSize || 5,
-  padding: padding || 2,
+  cellSize: cellSize,
+  padding: padding,
   aspect: data.height / data.width,
-  variance: variance || 30,
-  scaling: scaling || "none",
+  variance: variance,
+  scaling: scaling,
   data: data.data,
-  background: background || "black",
+  background: background,
   distortion: distortion[shape],
   meta: distortion[shape].meta
 });
