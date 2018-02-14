@@ -169,8 +169,8 @@ let createSVG = function() {
 
   let shapeSelect = document.getElementById("shape");
   let shape = shapeSelect.options[shapeSelect.selectedIndex].value;
-  let cellSize = parseInt(document.getElementById("cellsize").value) || 5;
   let imgSize = parseInt(document.getElementById("size").value) || 48;
+  let cellSize = parseInt(document.getElementById("cellsize").value) || 5;
   let padding = parseInt(document.getElementById("gap").value) || 0;
   let variance = parseInt(document.getElementById("variance").value) || 30;
   let scalingSelect = document.getElementById("scaling");
@@ -180,6 +180,8 @@ let createSVG = function() {
     backgroundSelect.options[backgroundSelect.selectedIndex].value;
 
   let meta = distortion[shape].meta;
+
+  window.location.hash = `#${shape},${imgSize},${cellSize},${padding},${variance},${scaling},${background}`;
 
   if (shape === "words") {
     let text = document.getElementById("text").value || "IMGSVG";
@@ -191,6 +193,8 @@ let createSVG = function() {
       text,
       font
     };
+
+    window.location.hash += `,font=${font},text=${text}`;
   }
 
   if (shape === "hilbert") {
@@ -199,6 +203,8 @@ let createSVG = function() {
     meta = {
       factor
     };
+
+    window.location.hash += `,complexity=${factor}`;
   }
 
   let data = getScaledImageData(
@@ -256,21 +262,46 @@ shapeSelect.addEventListener("change", () => {
   });
 });
 
+let [shape, imgSize, cellSize, padding, variance, scaling, background] = [
+  "hex",
+  64,
+  10,
+  1,
+  30,
+  "none",
+  "black"
+];
+
+if (window.location.hash !== "undefined") {
+  [
+    shape,
+    imgSize,
+    cellSize,
+    padding,
+    variance,
+    scaling,
+    background
+  ] = window.location.hash.substr(1).split(",");
+}
+
 imgCache = default_image();
-let shape = "puzzle";
-let data = getScaledImageData(64, distortion[shape].x, distortion[shape].y);
+let data = getScaledImageData(
+  imgSize,
+  distortion[shape].x,
+  distortion[shape].y
+);
 
 mosaicWorker.postMessage({
   type: "create",
   shape,
   imgSize: data.width,
-  cellSize: 5,
-  padding: 2,
+  cellSize: parseInt(cellSize) || 5,
+  padding: parseInt(padding) || 2,
   aspect: data.height / data.width,
-  variance: 30,
-  scaling: "none",
+  variance: parseInt(variance) || 30,
+  scaling: scaling || "none",
   data: data.data,
-  background: "black",
+  background: background || "black",
   distortion: distortion[shape],
   meta: distortion[shape].meta
 });
