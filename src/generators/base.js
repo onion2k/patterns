@@ -3,19 +3,17 @@ export default class {
     this.defs = [];
     this.z = [];
 
-    this.imgSize = data.imgSize;
-    this.cellSize = data.cellSize;
-    this.padding = data.padding;
-    this.aspect = data.aspect;
-    this.variance = data.variance;
+    this.imgSize = parseFloat(data.imgSize);
+    this.cellSize = parseFloat(data.cellSize);
+    this.padding = parseFloat(data.padding);
+    this.aspect = parseFloat(data.aspect);
+    this.variance = parseFloat(data.variance);
     this.data = data.data;
     this.scaling = data.scaling;
     this.img = data.img;
     this.background = data.background;
     this.distortion = data.distortion;
     this.meta = data.meta;
-
-    // this.tick = Math.round(this.data.length / 100);
 
     this.extents = { x: [], y: [] };
 
@@ -29,14 +27,6 @@ export default class {
     this.h = this.cellSize + this.padding;
   }
   getPixel(i) {
-    // if (i % this.tick === 0) {
-    //   console.log("tick");
-    //   postMessage({
-    //     type: "tick",
-    //     percent: Math.floor(i / this.tick)
-    //   });
-    // }
-
     return {
       r: this.data[i],
       g: this.data[i + 1],

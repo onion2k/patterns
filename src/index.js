@@ -261,6 +261,10 @@ shapeSelect.addEventListener("change", () => {
   });
 });
 
+/*
+  Set some defaults
+*/
+
 let [shape, imgSize, cellSize, padding, variance, scaling, background] = [
   "hex",
   64,
@@ -294,13 +298,21 @@ mosaicWorker.postMessage({
   type: "create",
   shape,
   imgSize: data.width,
-  cellSize: parseInt(cellSize) || 5,
-  padding: parseInt(padding) || 2,
+  cellSize: cellSize || 5,
+  padding: padding || 2,
   aspect: data.height / data.width,
-  variance: parseInt(variance) || 30,
+  variance: variance || 30,
   scaling: scaling || "none",
   data: data.data,
   background: background || "black",
   distortion: distortion[shape],
   meta: distortion[shape].meta
 });
+
+document.getElementById("shape").value = shape;
+document.getElementById("size").value = imgSize;
+document.getElementById("cellsize").value = cellSize;
+document.getElementById("gap").value = padding;
+document.getElementById("variance").value = variance;
+document.getElementById("scaling").value = scaling;
+document.getElementById("background").value = background;
