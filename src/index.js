@@ -287,6 +287,14 @@ if (window.location.hash !== "undefined" && window.location.hash) {
   ] = window.location.hash.substr(1).split(",");
 }
 
+document.getElementById("shape").value = shape;
+document.getElementById("size").value = imgSize;
+document.getElementById("cellsize").value = cellSize;
+document.getElementById("gap").value = padding;
+document.getElementById("variance").value = variance;
+document.getElementById("scaling").value = scaling;
+document.getElementById("background").value = background;
+
 imgCache = default_image();
 let data = getScaledImageData(
   imgSize,
@@ -308,11 +316,3 @@ mosaicWorker.postMessage({
   distortion: distortion[shape],
   meta: distortion[shape].meta
 });
-
-document.getElementById("shape").value = shape;
-document.getElementById("size").value = imgSize;
-document.getElementById("cellsize").value = cellSize;
-document.getElementById("gap").value = padding;
-document.getElementById("variance").value = variance;
-document.getElementById("scaling").value = scaling;
-document.getElementById("background").value = background;
