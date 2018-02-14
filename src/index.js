@@ -89,12 +89,11 @@ let mosaicWorker = new MosaicWorker();
 mosaicWorker.addEventListener("message", e => {
   if (e.data.type === "complete") {
     elSvg.innerHTML = e.data.svg;
+  } else if (e.data.type === "tick") {
+    console.log("tock");
+  } else if (e.data.type === "generated") {
     elProgress.style.display = "none";
     elSvg.style.display = "grid";
-  } else if (e.data.type === "tick") {
-    console.log("tock", e.data.percent);
-  } else if (e.data.type === "generated") {
-    console.log("generated");
   }
 });
 
@@ -272,7 +271,7 @@ let [shape, imgSize, cellSize, padding, variance, scaling, background] = [
   "black"
 ];
 
-if (window.location.hash !== "undefined") {
+if (window.location.hash !== "undefined" && window.location.hash) {
   [
     shape,
     imgSize,
