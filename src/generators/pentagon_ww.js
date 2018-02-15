@@ -4,8 +4,8 @@ export default class Hex extends base {
   constructor(data) {
     super(data);
 
-    this.w = this.cellSize / 1.25 + this.padding;
-    this.h = this.cellSize / 1 + this.padding;
+    this.w = this.cellSize + this.padding;
+    this.h = this.cellSize + this.padding;
 
     let dist = [
       this.cellSize * 1,
@@ -46,14 +46,14 @@ export default class Hex extends base {
       let { r, g, b, a, pos, v } = this.getPixel(i);
 
       var x = Math.floor(pos % this.imgSize) * this.mX;
-      var y = Math.floor(pos / this.imgSize) * 200;
+      var y = Math.floor(pos / this.imgSize) * this.mY * 2;
 
       let p =
         (Math.floor(pos % this.imgSize) - Math.floor(pos % this.imgSize) % 4) /
         4;
 
-      x = 100 + p * 100;
-      y += (p % 2) * 100;
+      x = p * this.mX * 0.7;
+      y += (p % 2) * this.mY * 0.9;
 
       let col = `rgb(${Math.floor(r + v)},${Math.floor(g + v)},${Math.floor(
         b + v

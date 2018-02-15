@@ -26,7 +26,7 @@ let distortion = {
   },
   circle: { x: 1, y: 1, meta: {} },
   flower: { x: 1, y: 1, meta: {} },
-  pentagon: { x: 3, y: 1, meta: {} },
+  pentagon: { x: 6, y: 1, meta: {} },
   cross: { x: 1.5, y: 1, meta: {} },
   paint: { x: 1, y: 1, meta: {} },
   puzzle: { x: 1, y: 1, meta: {} },
