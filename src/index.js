@@ -266,9 +266,9 @@ shapeSelect.addEventListener("change", () => {
 */
 
 let [shape, imgSize, cellSize, padding, variance, scaling, background] = [
-  "hex",
-  64,
-  10,
+  "pentagon",
+  4,
+  500,
   1,
   30,
   "none",

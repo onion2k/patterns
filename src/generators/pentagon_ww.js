@@ -8,27 +8,27 @@ export default class Hex extends base {
     this.h = this.cellSize / 1 + this.padding;
 
     let dist = [
-      (Math.sqrt(3) - 1) * this.cellSize / 2,
-      this.cellSize / 2,
-      this.cellSize / 2,
-      this.cellSize / 2,
-      (Math.sqrt(3) - 1) * this.cellSize / 2
+      this.cellSize,
+      this.cellSize,
+      this.cellSize,
+      this.cellSize,
+      this.cellSize
     ];
-    let angles = [60, 75, 75, 75, 75];
+    let angles = [85, 85, 20, 85, 85];
+    let ia = 0;
 
     let path = "M 0 0 ";
-    let ia = 0;
     for (var x = 0; x < 5; x++) {
       ia = ia + angles[x];
-      let r = Math.PI / 180 * (ia + 240);
-      this.extents.x.push(this.round(Math.cos(r) * dist[x]));
-      this.extents.y.push(this.round(Math.sin(r) * dist[x]));
+      let r = Math.PI / 180 * ia;
+      this.extents.x.push(this.round(Math.cos(r) * this.cellSize / 2));
+      this.extents.y.push(this.round(Math.sin(r) * this.cellSize / 2));
       path += "L ";
-      path += this.round(Math.cos(r) * dist[x]) + " ";
-      path += this.round(Math.sin(r) * dist[x]) + " ";
+      path += this.round(Math.cos(r) * this.cellSize / 2) + " ";
+      path += this.round(Math.sin(r) * this.cellSize / 2) + " ";
     }
-    let r = Math.PI / 180 * (angles[0] + 240);
-    let c = dist[0];
+    let r = Math.PI / 180 * angles[0];
+    let c = this.cellSize / 2;
     path += "L ";
     path += this.round(Math.cos(r) * c) + " ";
     path += this.round(Math.sin(r) * c) + " ";
@@ -48,13 +48,14 @@ export default class Hex extends base {
       var x = Math.floor(pos % this.imgSize) * this.mX;
       var y = Math.floor(pos / this.imgSize) * this.mY;
 
-      x += (Math.floor(pos / this.imgSize) % 2) * this.mX;
+      //x += (Math.floor(pos / this.imgSize) % 2) * this.mX;
 
       let col = `rgb(${Math.floor(r + v)},${Math.floor(g + v)},${Math.floor(
         b + v
       )})`;
 
       let s = this.round(this.scale(r, g, b));
+      s = 0.25;
       let scale = "";
       if (s) {
         scale = `scale(${s})`;
@@ -63,27 +64,28 @@ export default class Hex extends base {
       let rotate = "";
       switch (Math.floor(pos % this.imgSize) % 4) {
         case 0:
+          // bottom
           rotate = `rotate(270)`;
           // col = "rgb(255,0,0)";
-          x += this.mX / 2;
+          y += this.mY / 3;
           break;
         case 1:
+          // left
           rotate = `rotate(180)`;
           // col = "rgb(255,255,255)";
-          x += this.mX / 2;
-          y -= this.mY / 2;
+          x -= this.mX / 4;
           break;
         case 2:
+          // right
           rotate = `rotate(0)`;
           // col = "rgb(255,255,0)";
-          x -= this.mX / 2;
-          y += this.mY / 2;
+          x += this.mX / 4;
           break;
         case 3:
+          // top
           rotate = `rotate(90)`;
           // col = "rgb(255,0,255)";
-          x -= this.mX / 2;
-          //y += this.h;
+          y -= this.mY / 3;
           break;
       }
 
@@ -100,7 +102,8 @@ export default class Hex extends base {
         `<use xlink:href="#h" fill="${col}" transform="${translate} ${scale} ${rotate}" />`
       );
     }
-    this.cWidth = maxXpos + this.mX / 2 + this.padding;
-    this.cHeight = maxYpos + this.mY / 2 + this.padding;
+
+    this.cWidth = 200 + maxXpos + this.mX / 2 + this.padding;
+    this.cHeight = 200 + maxYpos + this.mY / 2 + this.padding;
   }
 }
