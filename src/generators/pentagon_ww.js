@@ -14,7 +14,7 @@ export default class Hex extends base {
       this.cellSize,
       this.cellSize
     ];
-    let angles = [85, 85, 20, 85, 85];
+    let angles = [75, 75, 60, 75, 75];
     let ia = 0;
 
     let path = "M 0 0 ";
@@ -46,9 +46,14 @@ export default class Hex extends base {
       let { r, g, b, a, pos, v } = this.getPixel(i);
 
       var x = Math.floor(pos % this.imgSize) * this.mX;
-      var y = Math.floor(pos / this.imgSize) * this.mY;
+      var y = Math.floor(pos / this.imgSize) * 200;
 
-      //x += (Math.floor(pos / this.imgSize) % 2) * this.mX;
+      let p =
+        (Math.floor(pos % this.imgSize) - Math.floor(pos % this.imgSize) % 4) /
+        4;
+
+      x = 100 + p * 100;
+      y += (p % 2) * 100;
 
       let col = `rgb(${Math.floor(r + v)},${Math.floor(g + v)},${Math.floor(
         b + v
@@ -67,7 +72,7 @@ export default class Hex extends base {
           // bottom
           rotate = `rotate(270)`;
           // col = "rgb(255,0,0)";
-          y += this.mY / 3;
+          y += this.mY / 2.5;
           break;
         case 1:
           // left
@@ -85,7 +90,7 @@ export default class Hex extends base {
           // top
           rotate = `rotate(90)`;
           // col = "rgb(255,0,255)";
-          y -= this.mY / 3;
+          y -= this.mY / 2.5;
           break;
       }
 
