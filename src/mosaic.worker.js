@@ -1,6 +1,7 @@
 import triangle from "./generators/triangle_ww";
 import square from "./generators/square_ww";
 import hexagon from "./generators/hex_ww";
+import fans from "./generators/fans";
 import flower from "./generators/flower_ww";
 import circle from "./generators/circle_ww";
 import heart from "./generators/heart";
@@ -31,6 +32,9 @@ class Mosaic {
         break;
       case "hex":
         this.mosaic = new hexagon(data);
+        break;
+      case "fans":
+        this.mosaic = new fans(data);
         break;
       case "flower":
         this.mosaic = new flower(data);

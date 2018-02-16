@@ -12,6 +12,7 @@ let elProgressCircle = document.getElementById("progressCircle");
 
 let distortion = {
   hex: { x: 1, y: 1.25, meta: {} },
+  fans: { x: 1, y: 2, meta: {} },
   triangle: { x: 1, y: 1, meta: {} },
   square: {
     x: 1,
@@ -89,9 +90,6 @@ let mosaicWorker = new MosaicWorker();
 mosaicWorker.addEventListener("message", e => {
   if (e.data.type === "complete") {
     elSvg.innerHTML = e.data.svg;
-  } else if (e.data.type === "tick") {
-    console.log("tock");
-  } else if (e.data.type === "generated") {
     elProgress.style.display = "none";
     elSvg.style.display = "grid";
   }
@@ -266,7 +264,7 @@ shapeSelect.addEventListener("change", () => {
 */
 
 let [shape, imgSize, cellSize, padding, variance, scaling, background] = [
-  "hex",
+  "fans",
   96,
   10,
   1,
