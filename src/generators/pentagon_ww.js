@@ -46,14 +46,14 @@ export default class Hex extends base {
       let { r, g, b, a, pos, v } = this.getPixel(i);
 
       var x = Math.floor(pos % this.imgSize) * this.mX;
-      var y = Math.floor(pos / this.imgSize) * this.mY * 2;
+      var y = Math.floor(pos / this.imgSize) * this.mY * 1.4;
 
       let p =
         (Math.floor(pos % this.imgSize) - Math.floor(pos % this.imgSize) % 4) /
         4;
 
-      x = p * this.mX * 0.7;
-      y += (p % 2) * this.mY * 0.9;
+      x = p * this.mX * 0.9;
+      y += (p % 2) * this.mY * 0.7;
 
       let col = `rgb(${Math.floor(r + v)},${Math.floor(g + v)},${Math.floor(
         b + v
@@ -72,7 +72,7 @@ export default class Hex extends base {
           // bottom
           rotate = `rotate(270)`;
           // col = "rgb(255,0,0)";
-          y += this.mY / 2.7;
+          y += this.mY / 2.5;
           break;
         case 1:
           // left
@@ -90,7 +90,7 @@ export default class Hex extends base {
           // top
           rotate = `rotate(90)`;
           // col = "rgb(255,0,255)";
-          y -= this.mY / 2.7;
+          y -= this.mY / 2.5;
           break;
       }
 
