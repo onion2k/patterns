@@ -10,3 +10,7 @@ An SVG pattern generator. Takes an image as inout and outputs various different 
 * Export to png
 * Print via API
 * UI update to grid
+* Random rectangles
+* Circle packing
+* Halftone
+* Semi regular
