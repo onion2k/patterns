@@ -29,7 +29,7 @@ body.drophover > .dropoverlay {
   display: grid;
 }
 
-form {
+form.basic {
   position: fixed;
   top: 0;
   left: 0;
@@ -54,7 +54,6 @@ div {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  margin-bottom: 1vh;
 }
 
 label {
@@ -115,19 +114,60 @@ select {
   display: flex;
 }
 
+/* New UI */
+
+form.newui {
+  display: none;
+  /* display: grid; */
+  position: fixed;
+  grid-template-columns: [menu] 1fr [options-start] 2fr [options-end];
+  grid-template-rows: auto;
+  top: 0;
+  left: 0;
+  width: 40vw;
+  height: 40vh;
+  z-index: 1;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
 ul {
   padding: 0;
   margin: 0;
 }
 
-li {
+ul.menu {
   display: grid;
+  grid-auto-columns: 1fr;
+  grid-gap: 5px;
+}
+
+ul.menu > li {
+  display: grid;
+  transition: 0.1s linear;
+  padding: 10px;
+  align-items: center;
+}
+
+ul.options {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-rows: max-content;
+  grid-gap: 5px;
+  overflow: scroll;
+}
+
+ul.options > li {
+  display: grid;
+  grid-gap: 5px;
   grid-template-columns: [preview] minmax(70px, auto) [opt1-start] 4fr [opt2-start] 4fr [opt3-start] 4fr [opt3-end];
   grid-template-rows: [top-start] max-content [mid-start] auto[bottom-start] max-content [bottom-end];
   transition: 0.1s linear;
-  border: 1px solid #888888;
-  border-bottom: 0;
-  padding: 10px;
+  padding: 5px;
 }
 li:hover {
   background-color: #f8f8f8;
@@ -156,36 +196,25 @@ li > p {
   padding: 5px 5px;
   margin: 0;
 }
-li > div:nth-of-type(1) {
-  grid-column: opt1-start;
-  grid-row: bottom-start;
-  align-self: flex-start;
-  justify-self: flex-start;
-  padding: 0 5px;
-  margin: 0;
-}
-li > div:nth-of-type(2) {
-  grid-column: opt2-start;
-  grid-row: bottom-start;
-  align-self: flex-start;
-  justify-self: center;
-  padding: 0 5px;
-  margin: 0;
-}
-li > div:nth-of-type(3) {
-  grid-column: opt3-start / icon-end;
-  grid-row: bottom-start;
-  align-self: flex-start;
-  justify-self: flex-end;
-  padding: 0 5px;
-  margin: 0;
-}
-li > div > span {
-  min-width: 60px;
+li > div {
   text-align: center;
-  padding: 3px 8px;
-  font-size: 0.6rem;
   color: #ffffff;
   background-color: #008800;
   border-radius: 3px;
+  font-size: 0.6rem;
+  padding: 3px;
+  align-self: baseline;
+  justify-self: stretch;
+}
+li > div:nth-of-type(1) {
+  grid-column: opt1-start / opt2-start;
+  grid-row: bottom-start;
+}
+li > div:nth-of-type(2) {
+  grid-column: opt2-start / opt3-start;
+  grid-row: bottom-start;
+}
+li > div:nth-of-type(3) {
+  grid-column: opt3-start / opt3-end;
+  grid-row: bottom-start;
 }

@@ -265,7 +265,7 @@ shapeSelect.addEventListener("change", () => {
 
 let [shape, imgSize, cellSize, padding, variance, scaling, background] = [
   "fans",
-  96,
+  12,
   10,
   1,
   30,
