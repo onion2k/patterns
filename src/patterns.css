@@ -30,6 +30,7 @@ body.drophover > .dropoverlay {
 }
 
 form.basic {
+  display: grid;
   position: fixed;
   top: 0;
   left: 0;
@@ -118,10 +119,10 @@ select {
 
 form.newui {
   display: none;
-  /* display: grid; */
   position: fixed;
   grid-template-columns: [menu] 1fr [options-start] 2fr [options-end];
   grid-template-rows: auto;
+  grid-gap: 0px 10px;
   top: 0;
   left: 0;
   width: 40vw;
@@ -143,7 +144,6 @@ ul {
 ul.menu {
   display: grid;
   grid-auto-columns: 1fr;
-  grid-gap: 5px;
 }
 
 ul.menu > li {
@@ -151,6 +151,40 @@ ul.menu > li {
   transition: 0.1s linear;
   padding: 10px;
   align-items: center;
+  background: #e8e8e8;
+  border: 1px solid #d8d8d8;
+  border-bottom: 0;
+}
+ul.menu > li:last-of-type {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+ul.menu > li.active {
+  position: relative;
+  background: #e8e8e8;
+}
+ul.menu > li.active:after,
+ul.menu > li.active:before {
+  left: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+ul.menu > li.active:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-left-color: #e8e8e8;
+  border-width: 10px;
+  margin-top: -10px;
+}
+ul.menu > li.active:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-left-color: #d8d8d8;
+  border-width: 11px;
+  margin-top: -11px;
 }
 
 ul.options {

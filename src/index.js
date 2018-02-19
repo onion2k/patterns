@@ -231,6 +231,23 @@ let createSVG = function() {
   }
 };
 
+document.querySelectorAll("ul.options>li").forEach(el => {
+  el.addEventListener("click", e => {
+    e.preventDefault();
+    console.log(el.getAttribute("rel"));
+  });
+});
+
+document.querySelectorAll("ul.menu>li").forEach(el => {
+  el.addEventListener("click", e => {
+    e.preventDefault();
+    document.querySelectorAll("ul.menu>li.active").forEach(el => {
+      el.classList.remove("active");
+    });
+    el.classList.add("active");
+  });
+});
+
 document.getElementById("regen").addEventListener("click", e => {
   e.preventDefault();
   createSVG();
