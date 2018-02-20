@@ -2,6 +2,10 @@
 
 An SVG pattern generator. Takes an image as inout and outputs various different shapes.
 
+# Usage
+
+Use `npm run atart` to run
+
 # Roadmap
 
 * More shapes
