@@ -261,20 +261,20 @@ document.getElementById("download").addEventListener("click", e => {
   filesaver.saveAs(svg);
 });
 
-let shapeSelect = document.getElementById("shape");
-shapeSelect.addEventListener("change", () => {
-  let shape = shapeSelect.options[shapeSelect.selectedIndex].value;
+// let shapeSelect = document.getElementById("shape");
+// shapeSelect.addEventListener("change", () => {
+//   let shape = shapeSelect.options[shapeSelect.selectedIndex].value;
 
-  [].map.call(document.querySelectorAll(".shape-option"), function(el) {
-    el.classList.remove("show-option");
-  });
+//   [].map.call(document.querySelectorAll(".shape-option"), function(el) {
+//     el.classList.remove("show-option");
+//   });
 
-  [].map.call(document.querySelectorAll(".shape-option-for-" + shape), function(
-    el
-  ) {
-    el.classList.add("show-option");
-  });
-});
+//   [].map.call(document.querySelectorAll(".shape-option-for-" + shape), function(
+//     el
+//   ) {
+//     el.classList.add("show-option");
+//   });
+// });
 
 document.querySelectorAll("form.newui>li.option").forEach(o => {
   o.addEventListener("click", () => {
@@ -285,6 +285,15 @@ document.querySelectorAll("form.newui>li.option").forEach(o => {
 
     let el = document.querySelector('ul.options[rel="' + op + '"]');
     el.style.display = "grid";
+  });
+});
+
+[].map.call(document.querySelectorAll("form.newui>ul.options>li"), o => {
+  o.addEventListener("click", () => {
+    [].map.call(document.querySelectorAll("form.newui>ul.options>li"), o => {
+      o.classList.remove("active");
+    });
+    o.classList.add("active");
   });
 });
 
@@ -314,13 +323,13 @@ if (window.location.hash !== "undefined" && window.location.hash) {
   ] = window.location.hash.substr(1).split(",");
 }
 
-document.getElementById("shape").value = shape;
-document.getElementById("size").value = imgSize;
-document.getElementById("cellsize").value = cellSize;
-document.getElementById("gap").value = padding;
-document.getElementById("variance").value = variance;
-document.getElementById("scaling").value = scaling;
-document.getElementById("background").value = background;
+// document.getElementById("shape").value = shape;
+// document.getElementById("size").value = imgSize;
+// document.getElementById("cellsize").value = cellSize;
+// document.getElementById("gap").value = padding;
+// document.getElementById("variance").value = variance;
+// document.getElementById("scaling").value = scaling;
+// document.getElementById("background").value = background;
 
 imgCache = default_image();
 let data = getScaledImageData(

@@ -30,7 +30,7 @@ body.drophover > .dropoverlay {
 }
 
 form.basic {
-  display: grid;
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -118,7 +118,7 @@ select {
 /* New UI */
 
 form.newui {
-  display: none;
+  display: grid;
   position: fixed;
   grid-template-columns: [menu] 1fr [options-start] 2fr [options-end];
   grid-template-rows: auto;
@@ -143,21 +143,22 @@ ul {
 
 ul.menu {
   display: grid;
-  grid-auto-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 2fr 1fr 1fr;
 }
 
 ul.menu > li {
   display: grid;
   padding: 10px;
   align-items: center;
-  background: #e8e8e8;
+  background: #f8f8f8;
+}
+ul.menu > li.option {
   border: 1px solid #d8d8d8;
   border-bottom: 0;
 }
-ul.menu > li:last-of-type {
+ul.menu > li.option-last {
   border-bottom: 1px solid #d8d8d8;
 }
-
 ul.menu > li.active {
   position: relative;
   background: #e8e8e8;
@@ -191,7 +192,6 @@ ul.menu > li.active:before {
   border-width: 11px;
   margin-top: -11px;
 }
-
 ul.menu > li:hover.active:after {
   border-left-color: #d8d8d8;
 }
@@ -199,11 +199,19 @@ ul.menu > li:hover.active:before {
   border-left-color: #d8d8d8;
 }
 
+ul.menu > li.title {
+  font-weight: bold;
+  background-color: #ffffff;
+}
+ul.menu > li.divider,
+ul.menu > li.action {
+  background-color: #ffffff;
+}
+
 ul.options {
   display: none;
   grid-auto-columns: 1fr;
   grid-template-rows: max-content;
-  grid-gap: 5px;
   overflow: scroll;
   background-color: #f8f8f8;
   border: 1px solid #d8d8d8;
@@ -216,8 +224,11 @@ ul.options > li {
   grid-gap: 5px;
   grid-template-columns: [preview] minmax(70px, auto) [opt1-start] 4fr [opt2-start] 4fr [opt3-start] 4fr [opt3-end];
   grid-template-rows: [top-start] max-content [mid-start] auto[bottom-start] max-content [bottom-end];
-  padding: 5px 5px 10px 5px;
+  padding: 10px 10px 10px 10px;
   border-bottom: 1px solid #d8d8d8;
+}
+ul.options > li.active {
+  background-color: #e8e8e8;
 }
 li > img {
   grid-column: preview;
