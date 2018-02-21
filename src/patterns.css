@@ -30,7 +30,7 @@ body.drophover > .dropoverlay {
 }
 
 form.basic {
-  display: grid;
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -118,11 +118,11 @@ select {
 /* New UI */
 
 form.newui {
-  display: none;
+  display: grid;
   position: fixed;
   grid-template-columns: [menu] 1fr [options-start] 2fr [options-end];
   grid-template-rows: auto;
-  grid-gap: 0px 10px;
+  grid-gap: 0px 15px;
   top: 0;
   left: 0;
   width: 40vw;
@@ -148,7 +148,6 @@ ul.menu {
 
 ul.menu > li {
   display: grid;
-  transition: 0.1s linear;
   padding: 10px;
   align-items: center;
   background: #e8e8e8;
@@ -162,6 +161,12 @@ ul.menu > li:last-of-type {
 ul.menu > li.active {
   position: relative;
   background: #e8e8e8;
+}
+ul.menu > li:hover.option {
+  background: #d8d8d8;
+}
+ul.menu > li.option {
+  cursor: pointer;
 }
 ul.menu > li.active:after,
 ul.menu > li.active:before {
@@ -187,24 +192,32 @@ ul.menu > li.active:before {
   margin-top: -11px;
 }
 
+ul.menu > li:hover.active:after {
+  border-left-color: #d8d8d8;
+}
+ul.menu > li:hover.active:before {
+  border-left-color: #d8d8d8;
+}
+
 ul.options {
-  display: grid;
+  display: none;
   grid-auto-columns: 1fr;
   grid-template-rows: max-content;
   grid-gap: 5px;
   overflow: scroll;
+  background-color: #f8f8f8;
+  border: 1px solid #d8d8d8;
 }
-
+ul.options.active {
+  display: grid;
+}
 ul.options > li {
   display: grid;
   grid-gap: 5px;
   grid-template-columns: [preview] minmax(70px, auto) [opt1-start] 4fr [opt2-start] 4fr [opt3-start] 4fr [opt3-end];
   grid-template-rows: [top-start] max-content [mid-start] auto[bottom-start] max-content [bottom-end];
-  transition: 0.1s linear;
-  padding: 5px;
-}
-li:hover {
-  background-color: #f8f8f8;
+  padding: 5px 5px 10px 5px;
+  border-bottom: 1px solid #d8d8d8;
 }
 li > img {
   grid-column: preview;
@@ -212,7 +225,6 @@ li > img {
   width: 60px;
   height: 60px;
   padding: 5px;
-  background-color: #888888;
 }
 li > b {
   grid-column: opt1-start / opt3-end;
@@ -237,7 +249,7 @@ li > div {
   border-radius: 3px;
   font-size: 0.6rem;
   padding: 3px;
-  align-self: baseline;
+  align-self: center;
   justify-self: stretch;
 }
 li > div:nth-of-type(1) {

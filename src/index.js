@@ -231,27 +231,25 @@ let createSVG = function() {
   }
 };
 
-// document.querySelectorAll("form.newui>ul.options>li").forEach(el => {
-//   el.addEventListener("click", e => {
-//     e.preventDefault();
-//     console.log(el.getAttribute("rel"));
-//   });
-// });
+document.querySelectorAll("form>ul.options>li").forEach(el => {
+  el.addEventListener("click", e => {
+    e.preventDefault();
+    console.log(el.getAttribute("rel"));
+  });
+});
 
-// document.querySelectorAll("form.newui>ul.menu>li").forEach(el => {
-//   el.addEventListener("click", e => {
-//     console.log("click");
-//     e.preventDefault();
-//     document.querySelectorAll("ul.menu>li.active").forEach(el => {
-//       el.classList.remove("active");
-//     });
-//     el.classList.add("active");
-//   });
-// });
+document.querySelectorAll("form>ul.menu>li.option").forEach(el => {
+  el.addEventListener("click", e => {
+    e.preventDefault();
+    document.querySelectorAll("ul.menu>li.active").forEach(el => {
+      el.classList.remove("active");
+    });
+    el.classList.add("active");
+  });
+});
 
 document.getElementById("regen").addEventListener("click", e => {
   e.preventDefault();
-  console.log("regen");
   createSVG();
 });
 
@@ -275,6 +273,18 @@ shapeSelect.addEventListener("change", () => {
     el
   ) {
     el.classList.add("show-option");
+  });
+});
+
+document.querySelectorAll("li.option").forEach(o => {
+  o.addEventListener("click", () => {
+    let op = o.getAttribute("rel");
+    [].map.call(document.querySelectorAll("ul.options"), function(el) {
+      el.style.display = "none";
+    });
+
+    let el = document.querySelector('ul.options[rel="' + op + '"]');
+    el.style.display = "grid";
   });
 });
 

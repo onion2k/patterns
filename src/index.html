@@ -12,15 +12,15 @@
     </svg>
   </div>
   <h1>IMGSVG</h1>
-  <!-- 
+
   <form class="newui">
     <ul class="menu">
-      <li class="active">Shape</li>
-      <li>Options</li>
-      <li>Size</li>
-      <li>Scaling</li>
-      <li>Color</li>
-      <li>Background</li>
+      <li class="option active" rel="shape">Shape</li>
+      <li class="option" rel="options">Options</li>
+      <li class="option" rel="size">Size</li>
+      <li class="option" rel="scaling">Scaling</li>
+      <li class="option" rel="color">Color</li>
+      <li class="option" rel="background">Background</li>
       <li>
         <button id="regen">Regenerate</button>
       </li>
@@ -29,7 +29,7 @@
       </li>
     </ul>
 
-    <ul class="options">
+    <ul class="options active" rel="shape">
       <li rel="hex">
         <img src="" />
         <b>Hex</b>
@@ -114,7 +114,16 @@
         <p>A space-filling Hilbert curve</p>
       </li>
     </ul>
-  </form> -->
+
+    <ul class="options" rel="options">
+      <li>
+        <img src="" />
+        <b>Hilbert</b>
+        <p>A space-filling Hilbert curve</p>
+      </li>
+    </ul>
+
+  </form>
   <form class="basic">
     <div>
       <label>Shape</label>
