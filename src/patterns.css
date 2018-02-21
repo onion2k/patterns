@@ -30,7 +30,7 @@ body.drophover > .dropoverlay {
 }
 
 form.basic {
-  display: none;
+  display: grid;
   position: fixed;
   top: 0;
   left: 0;
@@ -118,7 +118,7 @@ select {
 /* New UI */
 
 form.newui {
-  display: grid;
+  display: none;
   position: fixed;
   grid-template-columns: [menu] 1fr [options-start] 2fr [options-end];
   grid-template-rows: auto;

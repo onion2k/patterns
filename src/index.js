@@ -276,7 +276,7 @@ shapeSelect.addEventListener("change", () => {
   });
 });
 
-document.querySelectorAll("li.option").forEach(o => {
+document.querySelectorAll("form.newui>li.option").forEach(o => {
   o.addEventListener("click", () => {
     let op = o.getAttribute("rel");
     [].map.call(document.querySelectorAll("ul.options"), function(el) {
