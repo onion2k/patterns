@@ -231,14 +231,14 @@ let createSVG = function() {
   }
 };
 
-document.querySelectorAll("form>ul.options>li").forEach(el => {
-  el.addEventListener("click", e => {
-    e.preventDefault();
-    console.log(el.getAttribute("rel"));
-  });
-});
+// document.querySelectorAll("form>ul.options>li").forEach(el => {
+//   el.addEventListener("click", e => {
+//     e.preventDefault();
+//     console.log(el.getAttribute("rel"));
+//   });
+// });
 
-document.querySelectorAll("form>ul.menu>li.option").forEach(el => {
+document.querySelectorAll("form.newui>ul.menu>li.option").forEach(el => {
   el.addEventListener("click", e => {
     e.preventDefault();
     document.querySelectorAll("ul.menu>li.active").forEach(el => {
@@ -276,7 +276,7 @@ document.getElementById("download").addEventListener("click", e => {
 //   });
 // });
 
-document.querySelectorAll("form.newui>li.option").forEach(o => {
+document.querySelectorAll("form.newui>ul.menu>li.option").forEach(o => {
   o.addEventListener("click", () => {
     let op = o.getAttribute("rel");
     [].map.call(document.querySelectorAll("ul.options"), function(el) {
