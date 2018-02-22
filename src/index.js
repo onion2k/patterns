@@ -164,8 +164,6 @@ let createSVG = function() {
   elProgress.style.display = "grid";
   elSvg.style.display = "none";
 
-  // let shapeSelect = document.getElementById("shape");
-  // let shape = shapeSelect.options[shapeSelect.selectedIndex].value;
   let imgSize = parseInt(document.getElementById("size").value) || 48;
   let cellSize = parseInt(document.getElementById("cellsize").value) || 5;
   let padding = parseInt(document.getElementById("gap").value) || 0;
@@ -181,10 +179,16 @@ let createSVG = function() {
   window.location.hash = `#${shape},${imgSize},${cellSize},${padding},${variance},${scaling},${background}`;
 
   if (shape === "words") {
-    let text = document.getElementById("text").value || "IMGSVG";
+    let text = "IMGSVG";
+    if (document.getElementById("text")) {
+      text = document.getElementById("text").value || text;
+    }
 
-    let fontSelect = document.getElementById("font");
-    let font = fontSelect.options[fontSelect.selectedIndex].value;
+    let font = "Ubuntu Mono";
+    if (document.getElementById("font")) {
+      let fontSelect = document.getElementById("font");
+      font = fontSelect.options[fontSelect.selectedIndex].value || font;
+    }
 
     meta = {
       text,
@@ -195,7 +199,10 @@ let createSVG = function() {
   }
 
   if (shape === "hilbert") {
-    let factor = document.getElementById("factor").value || 6;
+    let factor = 7;
+    if (document.getElementById("factor")) {
+      factor = document.getElementById("factor").value || factor;
+    }
 
     meta = {
       factor

@@ -143,7 +143,7 @@ ul {
 
 ul.menu {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 4fr 1fr 1fr;
 }
 
 ul.menu > li {
@@ -211,6 +211,7 @@ ul.menu > li.action {
 ul.options {
   display: none;
   grid-auto-columns: 1fr;
+  grid-auto-rows: max-content;
   overflow: scroll;
   background-color: #f8f8f8;
   border: 1px solid #d8d8d8;
@@ -225,16 +226,19 @@ ul.options > li {
   grid-template-rows: [top-start] max-content [mid-start] auto[bottom-start] max-content [bottom-end];
   padding: 10px 10px 10px 10px;
   border-bottom: 1px solid #d8d8d8;
+  cursor: pointer;
 }
 ul.options > li.active {
   background-color: #e8e8e8;
 }
-li > img {
+li > img,
+li > svg {
   grid-column: preview;
   grid-row: top-start / bottom-end;
   width: 60px;
   height: 60px;
   padding: 5px;
+  background-color: #000;
 }
 li > b {
   grid-column: opt1-start / opt3-end;
