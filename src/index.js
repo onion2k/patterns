@@ -164,8 +164,8 @@ let createSVG = function() {
   elProgress.style.display = "grid";
   elSvg.style.display = "none";
 
-  let shapeSelect = document.getElementById("shape");
-  let shape = shapeSelect.options[shapeSelect.selectedIndex].value;
+  // let shapeSelect = document.getElementById("shape");
+  // let shape = shapeSelect.options[shapeSelect.selectedIndex].value;
   let imgSize = parseInt(document.getElementById("size").value) || 48;
   let cellSize = parseInt(document.getElementById("cellsize").value) || 5;
   let padding = parseInt(document.getElementById("gap").value) || 0;
@@ -248,37 +248,10 @@ document.querySelectorAll("form.newui>ul.menu>li.option").forEach(el => {
   });
 });
 
-document.getElementById("regen").addEventListener("click", e => {
-  e.preventDefault();
-  createSVG();
-});
-
-document.getElementById("download").addEventListener("click", e => {
-  e.preventDefault();
-  let svg = new File([document.getElementById("svg").innerHTML], "imgsvg.svg", {
-    type: "image/svg+xml"
-  });
-  filesaver.saveAs(svg);
-});
-
-// let shapeSelect = document.getElementById("shape");
-// shapeSelect.addEventListener("change", () => {
-//   let shape = shapeSelect.options[shapeSelect.selectedIndex].value;
-
-//   [].map.call(document.querySelectorAll(".shape-option"), function(el) {
-//     el.classList.remove("show-option");
-//   });
-
-//   [].map.call(document.querySelectorAll(".shape-option-for-" + shape), function(
-//     el
-//   ) {
-//     el.classList.add("show-option");
-//   });
-// });
-
 document.querySelectorAll("form.newui>ul.menu>li.option").forEach(o => {
   o.addEventListener("click", () => {
     let op = o.getAttribute("rel");
+
     [].map.call(document.querySelectorAll("ul.options"), function(el) {
       el.style.display = "none";
     });
@@ -293,8 +266,26 @@ document.querySelectorAll("form.newui>ul.menu>li.option").forEach(o => {
     [].map.call(document.querySelectorAll("form.newui>ul.options>li"), o => {
       o.classList.remove("active");
     });
+
+    if (o.getAttribute("rel")) {
+      shape = o.getAttribute("rel");
+    }
+
     o.classList.add("active");
   });
+});
+
+document.getElementById("regen").addEventListener("click", e => {
+  e.preventDefault();
+  createSVG();
+});
+
+document.getElementById("download").addEventListener("click", e => {
+  e.preventDefault();
+  let svg = new File([document.getElementById("svg").innerHTML], "imgsvg.svg", {
+    type: "image/svg+xml"
+  });
+  filesaver.saveAs(svg);
 });
 
 /*

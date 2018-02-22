@@ -17,8 +17,7 @@
     <ul class="menu">
       <li class="option active" rel="shape">Shape</li>
       <li class="option" rel="size">Size</li>
-      <li class="option" rel="color">Color</li>
-      <li class="option option-last" rel="background">Background</li>
+      <li class="option option-last" rel="color">Color</li>
       <li class="divider"></li>
       <li class="action">
         <button id="regen">Regenerate SVG</button>
@@ -37,77 +36,77 @@
         <div>Tessellation</div>
         <div>Popular</div>
       </li>
-      <li>
+      <li rel="triangle">
         <img src="" />
         <b>Triangle</b>
         <p>Repeating normal and inverted triangle rows</p>
       </li>
-      <li>
+      <li rel="cross">
         <img src="" />
         <b>Cross</b>
         <p>Tightly packed cross tessellation</p>
       </li>
-      <li>
+      <li rel="flower">
         <img src="" />
         <b>Flower</b>
         <p>Similar to hexagons, but with a subtle hex-based 'flower' design.</p>
       </li>
-      <li>
+      <li rel="pentagon">
         <img src="" />
         <b>Cairo Pentagons</b>
         <p>Blocks of 4 unequal pentagons in the classic Cairo layout</p>
       </li>
-      <li>
+      <li rel="bricks">
         <img src="" />
         <b>Bricks</b>
         <p>Like bricks in a wall, this pattern is made up of offset rectangles.</p>
       </li>
-      <li>
+      <li rel="fans">
         <img src="" />
         <b>Fans</b>
         <p>Offset fan design made from arcs.</p>
       </li>
-      <li>
+      <li rel="square">
         <img src="" />
         <b>Square</b>
         <p>Each pixel in the image represented by a square</p>
       </li>
-      <li>
+      <li rel="circle">
         <img src="" />
         <b>Circle</b>
         <p>Each pixel in the image represented by a circle</p>
       </li>
-      <li>
+      <li rel="heart">
         <img src="" />
         <b>Heart</b>
         <p>Each pixel in the image represented by a heart</p>
       </li>
-      <li>
+      <li rel="tapestry">
         <img src="" />
         <b>Tapestry</b>
         <p>Each pixel in the image represented by a 'tapestry stitch'</p>
       </li>
-      <li>
+      <li rel="crossstitch">
         <img src="" />
         <b>Cross Stitch</b>
         <p>Each pixel in the image represented by a 'cross stitch'</p>
       </li>
-      <li>
+      <li rel="paint">
         <img src="" />
         <b>Paint</b>
         <p>Repeating a paint stroke motif rotated to match the pixel's position in the image</p>
       </li>
-      <li>
+      <li rel="puzzle">
         <img src="" />
         <b>Puzzle</b>
         <p>A complete jigsaw, with edges and corners</p>
       </li>
-      <li>
+      <li rel="words">
         <img src="" />
         <b>Words</b>
         <p>Building up the image using characters, with a choice of input text and font</p>
       </li>
-      <li>
+      <li rel="hilbert">
         <img src="" />
         <b>Hilbert</b>
         <p>A space-filling Hilbert curve</p>
@@ -116,25 +115,40 @@
 
     <ul class="options" rel="size">
       <li>
-        <img src="" />
-        <b>Hilbert</b>
-        <p>A space-filling Hilbert curve</p>
+        <label>Tile Count</label>
+        <input type="number" name="size" id="size" value="128" />
+      </li>
+      <li>
+        <label>Size</label>
+        <input type="number" name="cellsize" id="cellsize" value="10" />
+      </li>
+      <li>
+        <label>Padding</label>
+        <input type="number" name="gap" id="gap" value="1" />
+      </li>
+      <li>
+        <label>Scaling</label>
+        <select name="scaling" id="scaling">
+          <option value="none">None</option>
+          <option value="additive">Additive</option>
+          <option value="multiply">Multiply</option>
+          <option value="random">Random</option>
+        </select>
       </li>
     </ul>
 
     <ul class="options" rel="color">
       <li>
-        <img src="" />
-        <b>Hilbert</b>
-        <p>A space-filling Hilbert curve</p>
+        <label>Color Variance</label>
+        <input type="number" name="variance" id="variance" value="30" />
       </li>
-    </ul>
-
-    <ul class="options" rel="background">
       <li>
-        <img src="" />
-        <b>Hilbert</b>
-        <p>A space-filling Hilbert curve</p>
+        <label>Background</label>
+        <select name="background" id="background">
+          <option value="black" selected>Black</option>
+          <option value="grey">Grey</option>
+          <option value="white">White</option>
+        </select>
       </li>
     </ul>
 
