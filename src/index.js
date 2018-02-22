@@ -231,13 +231,6 @@ let createSVG = function() {
   }
 };
 
-// document.querySelectorAll("form>ul.options>li").forEach(el => {
-//   el.addEventListener("click", e => {
-//     e.preventDefault();
-//     console.log(el.getAttribute("rel"));
-//   });
-// });
-
 document.querySelectorAll("form.newui>ul.menu>li.option").forEach(el => {
   el.addEventListener("click", e => {
     e.preventDefault();
