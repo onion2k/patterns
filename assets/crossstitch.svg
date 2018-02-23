@@ -1,0 +1,26 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-50 -40 208.5 188.5"
+          preserveAspectRatio="xMidYMid slice" width="108.5" height="108.5">
+          <defs>
+            <g id="crossstitch">
+              <rect x="-15" y="-15" width="30" height="7.5" rx="3.75" ry="3.75" } "=" " transform="rotate(45) translate(0, 11.25) "></rect>
+          <rect x="-15 " y="-15 " width="30 " height="7.5 " rx="3.75 " ry="3.75 " }"="" transform="rotate(135) translate(0, 11.25)"></rect>
+            </g>
+          </defs>
+          <rect width="100%" height="100%" fill="black"></rect>
+          <use xlink:href="#crossstitch" fill="rgb(138,28,189)" transform="translate(0, 0) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(85,0,171)" transform="translate(31, 0) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(60,-1,180)" transform="translate(62, 0) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(32,-4,186)" transform="translate(93, 0) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(145,11,162)" transform="translate(0, 31) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(138,29,190)" transform="translate(31, 31) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(92,7,178)" transform="translate(62, 31) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(74,14,195)" transform="translate(93, 31) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(175,18,159)" transform="translate(0, 62) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(157,24,175)" transform="translate(31, 62) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(115,6,167)" transform="translate(62, 62) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(94,10,181)" transform="translate(93, 62) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(216,35,166)" transform="translate(0, 93) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(194,37,178)" transform="translate(31, 93) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(154,21,172)" transform="translate(62, 93) "></use>
+          <use xlink:href="#crossstitch" fill="rgb(138,30,191)" transform="translate(93, 93) "></use>
+        </svg>
