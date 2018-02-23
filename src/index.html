@@ -18,7 +18,9 @@
       <li class="option active" rel="shape">Shape</li>
       <li class="option" rel="size">Size</li>
       <li class="option option-last" rel="color">Color</li>
-      <li class="divider"></li>
+      <li class="divider">
+        <img src="hilbert.svg" />
+      </li>
       <li class="action">
         <button id="regen">Regenerate SVG</button>
       </li>
@@ -134,14 +136,17 @@
       <li>
         <label>Tile Count</label>
         <input type="number" name="size" id="size" value="128" />
+        <p class="hint">The number of tiles (approximately) across the image.</p>
       </li>
       <li>
         <label>Size</label>
         <input type="number" name="cellsize" id="cellsize" value="10" />
+        <p class="hint">The size of each file.</p>
       </li>
       <li>
         <label>Padding</label>
         <input type="number" name="gap" id="gap" value="1" />
+        <p class="hint">The space between each tile.</p>
       </li>
       <li>
         <label>Scaling</label>
@@ -151,6 +156,7 @@
           <option value="multiply">Multiply</option>
           <option value="random">Random</option>
         </select>
+        <p class="hint">Scaling increases the size of the tiles relative to their brightness.</p>
       </li>
     </ul>
 
@@ -158,6 +164,8 @@
       <li>
         <label>Color Variance</label>
         <input type="number" name="variance" id="variance" value="30" />
+        <p class="hint">Level to modify the color of each tile by (decrease for accurate colors, increase it if there are large flat areas
+          in your source image.</p>
       </li>
       <li>
         <label>Background</label>
@@ -166,6 +174,7 @@
           <option value="grey">Grey</option>
           <option value="white">White</option>
         </select>
+        <p class="hint">Change the background color of the SVG.</p>
       </li>
     </ul>
 

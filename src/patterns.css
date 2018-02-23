@@ -207,7 +207,13 @@ ul.menu > li.divider,
 ul.menu > li.action {
   background-color: #ffffff;
 }
-
+ul.menu > li.divider {
+  align-self: center;
+}
+ul.menu > li.divider > img {
+  width: 120px;
+  height: 120px;
+}
 ul.options {
   display: none;
   grid-auto-columns: 1fr;
@@ -337,6 +343,9 @@ li > p {
   font-size: 0.7rem;
   padding: 5px 5px;
   margin: 0;
+}
+li > p.hint {
+  grid-column: preview / opt3-end;
 }
 li > div {
   text-align: center;
