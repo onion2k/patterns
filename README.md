@@ -1,10 +1,10 @@
 # Patterns
 
-An SVG pattern generator. Takes an image as inout and outputs various different shapes.
+An SVG pattern generator. It takes an image as input and outputs an SVG with various different shape options.
 
 # Usage
 
-Use `npm run atart` to run
+Use `npm run start` to run.
 
 # Roadmap
 
