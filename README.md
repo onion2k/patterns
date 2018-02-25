@@ -18,3 +18,8 @@ Use `npm run start` to run.
 * Circle packing
 * Halftone
 * Semi regular
+
+# Issues
+
+* Feature flag for new ui not implemented
+* Spacing differences between shape types
