@@ -22,6 +22,10 @@ module.exports = {
     contentBase: path.join(__dirname, "assets"),
     port: 3000
   },
+  serve: {
+    content: path.join(__dirname, "assets"),
+    port: 3000
+  },
   module: {
     rules: [
       {
