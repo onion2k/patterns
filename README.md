@@ -6,6 +6,24 @@ An SVG pattern generator. It takes an image as input and outputs an SVG with var
 
 Use `npm run start` to run.
 
+# Availalble Shapes
+
+* Hex
+* Cross
+* Flower
+* Pentagon
+* Bricks
+* Fans
+* Square
+* Circle
+* Heart
+* Tapestry
+* Cross Stitch
+* Paint
+* Puzzle
+* Words
+* Hilbert
+
 # Roadmap
 
 * More shapes
