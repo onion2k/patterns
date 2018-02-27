@@ -6,7 +6,7 @@ An SVG pattern generator. It takes an image as input and outputs an SVG with var
 
 Use `npm run start` to run.
 
-# Availalble Shapes
+# Available Shapes
 
 * Hex
 * Cross
