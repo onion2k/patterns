@@ -2,83 +2,26 @@ import MosaicWorker from "./mosaic.worker.js";
 import "./patterns.css";
 import filesaver from "file-saver";
 import default_image from "./default_gen.js";
+import distortion from "./shapes.json";
+import { getScaledImageData } from "./scaledData";
+import { createSVG } from "./createSVG";
 
-let progress = 0;
-let imgCache;
+let [shape, imgSize, cellSize, padding, variance, scaling, background] = [
+  "fans",
+  12,
+  10,
+  1,
+  30,
+  "none",
+  "black"
+];
 
 let elProgress = document.getElementById("progress");
 let elSvg = document.getElementById("svg");
 let elProgressCircle = document.getElementById("progressCircle");
 
-let distortion = {
-  hex: { x: 1, y: 1.25, meta: {} },
-  fans: { x: 1, y: 2, meta: {} },
-  triangle: { x: 1, y: 1, meta: {} },
-  square: {
-    x: 1,
-    y: 1,
-    meta: {
-      length: [1, 1],
-      offset: 0,
-      rotation: 0,
-      borderRadius: [0, 0],
-      offsetMod: 1
-    }
-  },
-  circle: { x: 1, y: 1, meta: {} },
-  flower: { x: 1, y: 1, meta: {} },
-  pentagon: { x: 8, y: 1, meta: {} },
-  cross: { x: 1.5, y: 1, meta: {} },
-  paint: { x: 1, y: 1, meta: {} },
-  puzzle: { x: 1, y: 1, meta: {} },
-  words: {
-    x: 1,
-    y: 1,
-    meta: {
-      text: "IMGSVG",
-      font: "Ubuntu Mono"
-    }
-  },
-  bricks: {
-    x: 0.5,
-    y: 1,
-    meta: {
-      length: [2, 1],
-      offset: 0.5,
-      rotation: 0,
-      borderRadius: [0, 0],
-      offsetMod: 2
-    }
-  },
-  tapestry: {
-    x: 0.75,
-    y: 1,
-    meta: {
-      offset: 0.25,
-      length: [1.6, 1],
-      rotation: -45,
-      borderRadius: [7, 3],
-      offsetMod: 4
-    }
-  },
-  crossstitch: {
-    x: 1,
-    y: 1,
-    meta: {}
-  },
-  heart: {
-    x: 1,
-    y: 1,
-    meta: {}
-  },
-  hilbert: {
-    x: 1,
-    y: 1,
-    meta: {
-      factor: 6
-    }
-  }
-};
+let progress = 0;
+let imgCache;
 
 let progressPath = document.querySelector("#progress > svg > path");
 let progressPathLength = progressPath.getTotalLength();
@@ -96,26 +39,6 @@ mosaicWorker.addEventListener("message", e => {
 });
 
 elProgress.style.display = "none";
-
-const getScaledImageData = function(imgSize, dX, dY) {
-  const distX = dX || 1;
-  const distY = dY || 1;
-  const c = document.createElement("canvas");
-  const aspect = imgCache.height / imgCache.width;
-
-  c.width = imgSize * distX;
-  c.height = Math.floor(imgSize * aspect * distY);
-
-  const ctx = c.getContext("2d");
-
-  ctx.drawImage(imgCache, 0, 0, c.width, c.height);
-
-  return {
-    data: ctx.getImageData(0, 0, c.width, c.height).data,
-    width: c.width,
-    height: c.height
-  };
-};
 
 var holder = document.body;
 
@@ -151,91 +74,13 @@ holder.ondrop = function(e) {
 
     img.addEventListener("load", function() {
       imgCache = img;
-      createSVG();
+      createSVG(mosaicWorker, shape, imgCache);
     });
   };
 
   reader.readAsDataURL(file);
 
   return false;
-};
-
-let createSVG = function() {
-  elProgress.style.display = "grid";
-  elSvg.style.display = "none";
-
-  let imgSize = parseInt(document.getElementById("size").value) || 48;
-  let cellSize = parseInt(document.getElementById("cellsize").value) || 5;
-  let padding = parseInt(document.getElementById("gap").value) || 0;
-  let variance = parseInt(document.getElementById("variance").value) || 30;
-  let scalingSelect = document.getElementById("scaling");
-  let scaling = scalingSelect.options[scalingSelect.selectedIndex].value;
-  let backgroundSelect = document.getElementById("background");
-  let background =
-    backgroundSelect.options[backgroundSelect.selectedIndex].value;
-
-  let meta = distortion[shape].meta;
-
-  window.location.hash = `#${shape},${imgSize},${cellSize},${padding},${variance},${scaling},${background}`;
-
-  if (shape === "words") {
-    let text = "IMGSVG";
-    if (document.getElementById("text")) {
-      text = document.getElementById("text").value || text;
-    }
-
-    let font = "Ubuntu Mono";
-    if (document.getElementById("font")) {
-      let fontSelect = document.getElementById("font");
-      font = fontSelect.options[fontSelect.selectedIndex].value || font;
-    }
-
-    meta = {
-      text,
-      font
-    };
-
-    window.location.hash += `,font=${font},text=${text}`;
-  }
-
-  if (shape === "hilbert") {
-    let factor = 7;
-    if (document.getElementById("factor")) {
-      factor = document.getElementById("factor").value || factor;
-    }
-
-    meta = {
-      factor
-    };
-
-    window.location.hash += `,complexity=${factor}`;
-  }
-
-  let data = getScaledImageData(
-    imgSize,
-    distortion[shape].x,
-    distortion[shape].y
-  );
-
-  if (window.Worker) {
-    document.body.classList.add("black");
-    mosaicWorker.postMessage({
-      type: "create",
-      shape,
-      imgSize: data.width,
-      cellSize,
-      padding,
-      aspect: data.height / data.width,
-      variance,
-      scaling,
-      data: data.data,
-      background,
-      distortion: distortion[shape],
-      meta
-    });
-  } else {
-    document.body.innerHTML = "Sorry, you need web workers.";
-  }
 };
 
 document.querySelectorAll("form.newui>ul.menu>li.option").forEach(el => {
@@ -277,7 +122,7 @@ document.querySelectorAll("form.newui>ul.menu>li.option").forEach(o => {
 
 document.getElementById("regen").addEventListener("click", e => {
   e.preventDefault();
-  createSVG();
+  createSVG(mosaicWorker, shape, imgCache);
 });
 
 document.getElementById("download").addEventListener("click", e => {
@@ -291,16 +136,6 @@ document.getElementById("download").addEventListener("click", e => {
 /*
   Set some defaults
 */
-
-let [shape, imgSize, cellSize, padding, variance, scaling, background] = [
-  "fans",
-  12,
-  10,
-  1,
-  30,
-  "none",
-  "black"
-];
 
 if (window.location.hash !== "undefined" && window.location.hash) {
   [
@@ -316,6 +151,7 @@ if (window.location.hash !== "undefined" && window.location.hash) {
 
 imgCache = default_image();
 let data = getScaledImageData(
+  imgCache,
   imgSize,
   distortion[shape].x,
   distortion[shape].y
