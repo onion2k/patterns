@@ -6,8 +6,6 @@ const SriPlugin = require("webpack-subresource-integrity");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
-// const Jarvis = require("webpack-jarvis");
-
 module.exports = {
   entry: {
     app: ["./src/index.js"]
@@ -17,10 +15,6 @@ module.exports = {
     publicPath: "/",
     filename: "index.js",
     crossOriginLoading: "anonymous"
-  },
-  devServer: {
-    contentBase: path.join(__dirname, "assets"),
-    port: 3000
   },
   serve: {
     content: path.join(__dirname, "assets"),
