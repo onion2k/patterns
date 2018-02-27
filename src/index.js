@@ -6,6 +6,10 @@ import distortion from "./shapes.json";
 import { getScaledImageData } from "./scaledData";
 import { createSVG } from "./createSVG";
 
+/*
+  Set some defaults
+*/
+
 let [shape, imgSize, cellSize, padding, variance, scaling, background] = [
   "fans",
   12,
@@ -16,18 +20,16 @@ let [shape, imgSize, cellSize, padding, variance, scaling, background] = [
   "black"
 ];
 
-let elProgress = document.getElementById("progress");
-let elSvg = document.getElementById("svg");
-let elProgressCircle = document.getElementById("progressCircle");
-
 let progress = 0;
 let imgCache;
 
+let elProgress = document.getElementById("progress");
+let elSvg = document.getElementById("svg");
+let elProgressCircle = document.getElementById("progressCircle");
 let progressPath = document.querySelector("#progress > svg > path");
 let progressPathLength = progressPath.getTotalLength();
 
 progressPath.style.strokeDasharray = 50 + " " + progressPathLength;
-// progressPath.style.strokeDashoffset = 0;
 
 let mosaicWorker = new MosaicWorker();
 mosaicWorker.addEventListener("message", e => {
@@ -96,11 +98,9 @@ document.querySelectorAll("form.newui>ul.menu>li.option").forEach(el => {
 document.querySelectorAll("form.newui>ul.menu>li.option").forEach(o => {
   o.addEventListener("click", () => {
     let op = o.getAttribute("rel");
-
     [].map.call(document.querySelectorAll("ul.options"), function(el) {
       el.style.display = "none";
     });
-
     let el = document.querySelector('ul.options[rel="' + op + '"]');
     el.style.display = "grid";
   });
@@ -111,11 +111,9 @@ document.querySelectorAll("form.newui>ul.menu>li.option").forEach(o => {
     [].map.call(document.querySelectorAll("form.newui>ul.options>li"), o => {
       o.classList.remove("active");
     });
-
     if (o.getAttribute("rel")) {
       shape = o.getAttribute("rel");
     }
-
     o.classList.add("active");
   });
 });
@@ -132,10 +130,6 @@ document.getElementById("download").addEventListener("click", e => {
   });
   filesaver.saveAs(svg);
 });
-
-/*
-  Set some defaults
-*/
 
 if (window.location.hash !== "undefined" && window.location.hash) {
   [
