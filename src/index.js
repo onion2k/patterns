@@ -44,7 +44,6 @@ mosaicWorker.addEventListener("message", e => {
 elProgress.style.display = "none";
 
 attachDropTarget(document.body, img => {
-  console.log(img);
   imgCache = img;
   createSVG(mosaicWorker, shape, imgCache);
 });
