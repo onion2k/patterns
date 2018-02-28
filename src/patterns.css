@@ -234,6 +234,7 @@ ul.options > li {
   border-bottom: 1px solid #d8d8d8;
   cursor: pointer;
   transform: translateX(100%);
+  overflow: hidden;
 }
 
 :root {
@@ -313,6 +314,35 @@ ul.options > li:nth-child(20) {
   }
   to {
     transform: translateX(0);
+  }
+}
+
+ul.options > li > div {
+  transform: translateY(200%);
+}
+
+ul.options > li > div {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-name: slideup;
+}
+
+ul.options > li > div:nth-of-type(1) {
+  animation-delay: calc(var(--delay) * 10s);
+}
+ul.options > li > div:nth-of-type(2) {
+  animation-delay: calc(var(--delay) * 12s);
+}
+ul.options > li > div:nth-of-type(3) {
+  animation-delay: calc(var(--delay) * 14s);
+}
+
+@keyframes slideup {
+  from {
+    transform: translateY(200%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
 
