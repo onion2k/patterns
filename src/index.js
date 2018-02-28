@@ -5,6 +5,7 @@ import default_image from "./default_gen.js";
 import distortion from "./shapes.json";
 import { getScaledImageData } from "./scaledData";
 import { createSVG } from "./createSVG";
+import attachDropTarget from "./droptarget";
 
 /*
   Set some defaults
@@ -42,48 +43,11 @@ mosaicWorker.addEventListener("message", e => {
 
 elProgress.style.display = "none";
 
-var holder = document.body;
-
-holder.ondragenter = function() {
-  document.body.classList.add("drophover");
-  return false;
-};
-holder.ondragover = function() {
-  return false;
-};
-holder.ondragend = function() {
-  return false;
-};
-holder.ondragleave = function(e) {
-  if (e.target.id !== "dropoverlay") {
-    return;
-  }
-  document.body.classList.remove("drophover");
-  return false;
-};
-
-holder.ondrop = function(e) {
-  e.preventDefault();
-
-  document.body.classList.remove("drophover");
-
-  var file = e.dataTransfer.files[0];
-  var reader = new FileReader();
-
-  reader.onload = function(event) {
-    var img = document.createElement("img");
-    img.src = event.target.result;
-
-    img.addEventListener("load", function() {
-      imgCache = img;
-      createSVG(mosaicWorker, shape, imgCache);
-    });
-  };
-
-  reader.readAsDataURL(file);
-
-  return false;
-};
+attachDropTarget(document.body, img => {
+  console.log(img);
+  imgCache = img;
+  createSVG(mosaicWorker, shape, imgCache);
+});
 
 document.querySelectorAll("form.newui>ul.menu>li.option").forEach(el => {
   el.addEventListener("click", e => {
