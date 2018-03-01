@@ -1,4 +1,9 @@
-export default function(holder, dropCallback) {
+/**
+ * Drop target handler function
+ * @param {object} holder - element to use as drop target (eg document.body)
+ * @param {object} callback - callback function called with image on load
+ */
+export default function(holder, callback) {
   holder.ondragenter = function() {
     holder.classList.add("drophover");
     return false;
@@ -28,7 +33,7 @@ export default function(holder, dropCallback) {
     reader.onload = function(event) {
       var img = document.createElement("img");
       img.src = event.target.result;
-      img.addEventListener("load", dropCallback.bind(this, img));
+      img.addEventListener("load", callback.bind(this, img));
     };
 
     reader.readAsDataURL(file);
