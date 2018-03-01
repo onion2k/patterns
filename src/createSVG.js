@@ -1,6 +1,14 @@
 import distortion from "./shapes.json";
 import { getScaledImageData } from "./scaledData";
 
+/**
+ * SVG generator function to post data to worker
+ * @external document - browser document to access form data 
+ * @external window - browser window object to update hash 
+ * @param {worker} mosaicWorker - initialised web worker to generate SVG data
+ * @param {string} shape - shape string
+ * @param {image} imgCache - scaled image data 
+ */
 export function createSVG(mosaicWorker, shape, imgCache) {
   let elProgress = document.getElementById("progress");
   let elSvg = document.getElementById("svg");
