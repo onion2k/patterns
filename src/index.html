@@ -16,6 +16,7 @@
   <form class="newui">
     <ul class="menu">
       <li class="option active" rel="shape">Shape</li>
+      <li class="option" rel="options">Options</li>
       <li class="option" rel="size">Size</li>
       <li class="option option-last" rel="color">Color</li>
       <li class="divider">
@@ -29,106 +30,113 @@
       </li>
     </ul>
 
+    <ul class="options" rel="options">
+      <li>
+        <label>Complexity</label>
+        <input name="factor" id="factor" value="6" />
+      </li>
+    </ul>
+
     <ul class="options active" rel="shape">
       <li rel="hex">
         <img src="hex.svg" />
         <b>Hex</b>
         <p>Hexagonal tessellation using top pointed shapes to produce a nice looking 'honeycomb' effect.</p>
-        <div>Fast</div>
-        <div>Tessellation</div>
-        <div>Popular</div>
+        <div class="badge">Fast</div>
+        <div class="badge">Tessellation</div>
+        <div class="badge">Popular</div>
       </li>
       <li rel="triangle">
         <img src="triangle.svg" />
         <b>Triangle</b>
         <p>Repeating normal and inverted triangle rows</p>
-        <div>Fast</div>
+        <div class="badge">Fast</div>
       </li>
       <li rel="cross">
         <img src="cross.svg" />
         <b>Cross</b>
         <p>Tightly packed cross tessellation</p>
-        <div>Fast</div>
+        <div class="badge">Fast</div>
       </li>
       <li rel="flower">
         <img src="flower.svg" />
         <b>Flower</b>
         <p>Similar to hexagons, but with a subtle hex-based 'flower' design.</p>
-        <div>Fast</div>
+        <div class="badge">Fast</div>
       </li>
       <li rel="pentagon">
         <img src="pentagons.svg" />
         <b>Cairo Pentagons</b>
         <p>Blocks of 4 unequal pentagons in the classic Cairo layout</p>
-        <div>Fast</div>
+        <div class="badge">Fast</div>
       </li>
       <li rel="bricks">
         <img src="bricks.svg" />
         <b>Bricks</b>
         <p>Like bricks in a wall, this pattern is made up of offset rectangles.</p>
-        <div>Fast</div>
+        <div class="badge">Fast</div>
       </li>
       <li rel="fans">
         <img src="fans.svg" />
         <b>Fans</b>
         <p>Offset fan design made from arcs.</p>
-        <div>Fast</div>
+        <div class="badge">Fast</div>
       </li>
       <li rel="square">
         <img src="square.svg" />
         <b>Square</b>
         <p>Each pixel in the image represented by a square</p>
-        <div>Fast</div>
+        <div class="badge">Fast</div>
       </li>
       <li rel="circle">
         <img src="circle.svg" />
         <b>Circle</b>
         <p>Each pixel in the image represented by a circle</p>
-        <div>Fast</div>
+        <div class="badge">Fast</div>
       </li>
       <li rel="heart">
         <img src="heart.svg" />
         <b>Heart</b>
         <p>Each pixel in the image represented by a heart</p>
-        <div>Fast</div>
+        <div class="badge">Fast</div>
       </li>
       <li rel="tapestry">
         <img src="tapestry.svg" />
         <b>Tapestry</b>
         <p>Each pixel in the image represented by a 'tapestry stitch'</p>
-        <div>Fast</div>
+        <div class="badge">Fast</div>
       </li>
       <li rel="crossstitch">
         <img src="crossstitch.svg" />
         <b>Cross Stitch</b>
         <p>Each pixel in the image represented by a 'cross stitch'</p>
-        <div>Fast</div>
-      </li>
-      <li rel="paint">
-        <img src="paint.svg" />
-        <b>Paint</b>
-        <p>Repeating a paint stroke motif rotated to match the pixel's position in the image</p>
-        <div>Slow</div>
-      </li>
-      <li rel="puzzle">
-        <img src="puzzle.svg" />
-        <b>Puzzle</b>
-        <p>A complete jigsaw, with edges and corners</p>
-        <div>Slow</div>
+        <div class="badge">Fast</div>
       </li>
       <li rel="words">
         <img src="words.svg" />
         <b>Words</b>
         <p>Building up the image using characters, with a choice of input text and font</p>
-        <div>Slow</div>
-        <div>Options</div>
+        <div class="badge">Slow</div>
+        <div class="badge">Options</div>
       </li>
       <li rel="hilbert">
         <img src="hilbert.svg" />
         <b>Hilbert</b>
         <p>A space-filling Hilbert curve</p>
-        <div>Slow</div>
-        <div>Options</div>
+        <div class="badge">Slow</div>
+        <div class="badge">Options</div>
+      </li>
+      <li rel="puzzle">
+        <img src="puzzle.svg" />
+        <b>Puzzle</b>
+        <p>A complete jigsaw, with edges and corners</p>
+        <div class="badge">Slow</div>
+      </li>
+      <li rel="paint">
+        <img src="paint.svg" />
+        <b>Paint</b>
+        <p>Repeating a paint stroke motif rotated to match the pixel's position in the image</p>
+        <div class="badge">Slow</div>
       </li>
     </ul>
 

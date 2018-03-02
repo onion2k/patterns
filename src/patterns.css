@@ -126,7 +126,7 @@ form.newui {
   top: 0;
   left: 0;
   width: 40vw;
-  height: 40vh;
+  height: 50vh;
   z-index: 1;
   background-color: rgb(255, 255, 255);
   padding: 20px;
@@ -143,7 +143,7 @@ ul {
 
 ul.menu {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 4fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 4fr 1fr 1fr;
 }
 
 ul.menu > li {
