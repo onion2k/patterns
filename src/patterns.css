@@ -29,21 +29,6 @@ body.drophover > .dropoverlay {
   display: grid;
 }
 
-form.basic {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 25%;
-  z-index: 1;
-  background-color: rgb(255, 255, 255);
-  padding: 20px;
-  margin: 20px;
-  border: 1px solid #888;
-  border-radius: 5px;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-}
-
 h1 {
   font-size: 4.2rem;
   padding: 0 0 30px 0;
@@ -121,12 +106,10 @@ form.newui {
   display: grid;
   position: fixed;
   grid-template-columns: [menu] 1fr [options-start] 2fr [options-end];
-  grid-template-rows: auto;
-  grid-gap: 0px 15px;
+  grid-gap: 10px 15px;
   top: 0;
   left: 0;
   width: 40vw;
-  height: 50vh;
   z-index: 1;
   background-color: rgb(255, 255, 255);
   padding: 20px;
@@ -136,13 +119,20 @@ form.newui {
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
+form > div {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
 ul {
   padding: 0;
   margin: 0;
 }
 
 ul.menu {
-  display: grid;
+  display: none;
   grid-template-rows: 1fr 1fr 1fr 1fr 4fr 1fr 1fr;
 }
 
@@ -223,7 +213,7 @@ ul.options {
   border: 1px solid #d8d8d8;
 }
 ul.options.active {
-  display: grid;
+  display: none;
 }
 ul.options > li {
   display: grid;
@@ -235,6 +225,14 @@ ul.options > li {
   cursor: pointer;
   transform: translateX(100%);
   overflow: hidden;
+}
+
+form.open {
+  height: 54vh;
+}
+form.open > ul.menu,
+form.open > ul.options.active {
+  display: grid;
 }
 
 :root {

@@ -11,23 +11,15 @@
         stroke="#ffffff" stroke-width="2" />
     </svg>
   </div>
-  <h1>IMGSVG V.1</h1>
 
-  <form class="newui">
+  <form class="newui open">
+
     <ul class="menu">
       <li class="option active" rel="shape">Shape</li>
       <li class="option" rel="options">Options</li>
       <li class="option" rel="size">Size</li>
       <li class="option option-last" rel="color">Color</li>
-      <li class="divider">
-        <img src="hilbert.svg" />
-      </li>
-      <li class="action">
-        <button id="regen">Regenerate SVG</button>
-      </li>
-      <li class="action">
-        <button id="download">Download SVG</button>
-      </li>
+      <li class="divider"></li>
     </ul>
 
     <ul class="options" rel="options">
@@ -185,6 +177,12 @@
         <p class="hint">Change the background color of the SVG.</p>
       </li>
     </ul>
+
+    <div>
+      <button id="download">Download SVG</button>
+      <button id="regen">Regenerate SVG</button>
+      <button type="button" id="toggle">Close Options</button>
+    </div>
 
   </form>
 </body>

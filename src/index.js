@@ -94,6 +94,11 @@ document.getElementById("download").addEventListener("click", e => {
   filesaver.saveAs(svg);
 });
 
+document.getElementById("toggle").addEventListener("click", e => {
+  e.preventDefault();
+  document.querySelector("form.newui").classList.toggle("open");
+});
+
 if (window.location.hash !== "undefined" && window.location.hash) {
   [
     shape,
