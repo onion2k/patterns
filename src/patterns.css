@@ -106,6 +106,7 @@ form.newui {
   display: grid;
   position: fixed;
   grid-template-columns: [menu] 1fr [options-start] 2fr [options-end];
+  grid-template-rows: 15fr 1fr;
   grid-gap: 10px 15px;
   top: 0;
   left: 0;
@@ -120,6 +121,7 @@ form.newui {
 }
 
 form > div {
+  height: 4vh;
   grid-column: span 2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -219,7 +221,7 @@ ul.options > li {
   display: grid;
   grid-gap: 5px;
   grid-template-columns: [preview] minmax(70px, auto) [opt1-start] 4fr [opt2-start] 4fr [opt3-start] 4fr [opt3-end];
-  grid-template-rows: [top-start] max-content [mid-start] auto [bottom-start] max-content [bottom-end];
+  grid-template-rows: [top-start] max-content [mid-start] minmax(4vh, auto) [bottom-start] max-content [bottom-end];
   padding: 10px;
   border-bottom: 1px solid #d8d8d8;
   cursor: pointer;
