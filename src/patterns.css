@@ -219,14 +219,17 @@ ul.options > li {
   display: grid;
   grid-gap: 5px;
   grid-template-columns: [preview] minmax(70px, auto) [opt1-start] 4fr [opt2-start] 4fr [opt3-start] 4fr [opt3-end];
-  grid-template-rows: [top-start] max-content [mid-start] auto[bottom-start] max-content [bottom-end];
-  padding: 10px 10px 10px 10px;
+  grid-template-rows: [top-start] max-content [mid-start] auto [bottom-start] max-content [bottom-end];
+  padding: 10px;
   border-bottom: 1px solid #d8d8d8;
   cursor: pointer;
   transform: translateX(100%);
   overflow: hidden;
 }
 
+form {
+  height: 3vh;
+}
 form.open {
   height: 54vh;
 }
