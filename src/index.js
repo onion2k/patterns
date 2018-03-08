@@ -62,10 +62,12 @@ document.querySelectorAll("form.newui>ul.menu>li.option").forEach(o => {
   o.addEventListener("click", () => {
     let op = o.getAttribute("rel");
     [].map.call(document.querySelectorAll("ul.options"), function(el) {
-      el.style.display = "none";
+      el.classList.remove("active");
     });
     let el = document.querySelector('ul.options[rel="' + op + '"]');
-    el.style.display = "grid";
+    if (el) {
+      el.classList.add("active");
+    }
   });
 });
 
@@ -78,6 +80,16 @@ document.querySelectorAll("form.newui>ul.menu>li.option").forEach(o => {
       shape = o.getAttribute("rel");
     }
     o.classList.add("active");
+    if (o.classList.contains("options")) {
+      let so = document.querySelector("ul[rel=shapeoptions]");
+      if (so) {
+        so.classList.remove("active");
+        so.setAttribute("rel", "");
+      }
+      document
+        .querySelector("ul.options." + shape)
+        .setAttribute("rel", "shapeoptions");
+    }
   });
 });
 

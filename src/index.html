@@ -16,17 +16,10 @@
 
     <ul class="menu">
       <li class="option active" rel="shape">Shape</li>
-      <li class="option" rel="options">Options</li>
+      <li class="option" rel="shapeoptions">Options</li>
       <li class="option" rel="size">Size</li>
       <li class="option option-last" rel="color">Color</li>
       <li class="divider"></li>
-    </ul>
-
-    <ul class="options" rel="options">
-      <li>
-        <label>Complexity</label>
-        <input name="factor" id="factor" value="6" />
-      </li>
     </ul>
 
     <ul class="options active" rel="shape">
@@ -104,14 +97,14 @@
         <p>Each pixel in the image represented by a 'cross stitch'</p>
         <div class="badge">Fast</div>
       </li>
-      <li rel="words">
+      <li rel="words" class="options">
         <img src="words.svg" />
         <b>Words</b>
         <p>Building up the image using characters, with a choice of input text and font</p>
         <div class="badge">Slow</div>
         <div class="badge">Options</div>
       </li>
-      <li rel="hilbert">
+      <li rel="hilbert" class="options">
         <img src="hilbert.svg" />
         <b>Hilbert</b>
         <p>A space-filling Hilbert curve</p>
@@ -129,6 +122,26 @@
         <b>Paint</b>
         <p>Repeating a paint stroke motif rotated to match the pixel's position in the image</p>
         <div class="badge">Slow</div>
+      </li>
+    </ul>
+
+    <ul class="options hilbert" rel="">
+      <li>
+        <label>Complexity</label>
+        <input name="factor" id="factor" value="6" />
+      </li>
+    </ul>
+
+    <ul class="options words" rel="">
+      <li>
+        <label>Text</label>
+        <textarea name="text" id="text" />IMGSVG</textarea>
+      </li>
+      <li>
+        <label>Font</label>
+        <select name="font" id="font">
+          <option value="Ubuntu Mono" selected>Ubuntu Mono</option>
+        </select>
       </li>
     </ul>
 
