@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.config.js --progress --colors --watch",
+    "start": "webpack-serve ./webpack-serve.config.js --no-reload",
     "watch": "webpack --config webpack.config.js --watch",
     "build": "webpack --config webpack.config.js"
   },
@@ -23,6 +23,7 @@
     "webpack": "^3.10.0",
     "webpack-cleanup-plugin": "^0.5.1",
     "webpack-dev-server": "^2.9.7",
+    "webpack-serve": "^0.1.4",
     "webpack-subresource-integrity": "^1.0.3",
     "worker-loader": "^1.1.0"
   },

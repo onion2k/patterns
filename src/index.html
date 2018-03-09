@@ -11,206 +11,192 @@
         stroke="#ffffff" stroke-width="2" />
     </svg>
   </div>
-  <h1>IMGSVG</h1>
-  <!-- 
-  <form class="newui">
+
+  <form class="newui open">
+
     <ul class="menu">
       <li class="option active" rel="shape">Shape</li>
-      <li class="option" rel="options">Options</li>
+      <li class="option hide" rel="shapeoptions">Options</li>
       <li class="option" rel="size">Size</li>
-      <li class="option" rel="scaling">Scaling</li>
-      <li class="option" rel="color">Color</li>
-      <li class="option" rel="background">Background</li>
-      <li>
-        <button id="regen">Regenerate</button>
-      </li>
-      <li>
-        <button id="download">Download SVG</button>
-      </li>
+      <li class="option option-last" rel="color">Color</li>
+      <li class="divider"></li>
     </ul>
 
     <ul class="options active" rel="shape">
       <li rel="hex">
-        <img src="" />
+        <img src="hex.svg" />
         <b>Hex</b>
         <p>Hexagonal tessellation using top pointed shapes to produce a nice looking 'honeycomb' effect.</p>
-        <div>Fast</div>
-        <div>Tessellation</div>
-        <div>Popular</div>
+        <div class="badge">Fast</div>
+        <div class="badge">Tessellation</div>
+        <div class="badge">Popular</div>
       </li>
-      <li>
-        <img src="" />
+      <li rel="triangle">
+        <img src="triangle.svg" />
         <b>Triangle</b>
         <p>Repeating normal and inverted triangle rows</p>
+        <div class="badge">Fast</div>
       </li>
-      <li>
-        <img src="" />
+      <li rel="cross">
+        <img src="cross.svg" />
         <b>Cross</b>
         <p>Tightly packed cross tessellation</p>
+        <div class="badge">Fast</div>
       </li>
-      <li>
-        <img src="" />
+      <li rel="flower">
+        <img src="flower.svg" />
         <b>Flower</b>
         <p>Similar to hexagons, but with a subtle hex-based 'flower' design.</p>
+        <div class="badge">Fast</div>
       </li>
-      <li>
-        <img src="" />
+      <li rel="pentagon">
+        <img src="pentagons.svg" />
         <b>Cairo Pentagons</b>
         <p>Blocks of 4 unequal pentagons in the classic Cairo layout</p>
+        <div class="badge">Fast</div>
       </li>
-      <li>
-        <img src="" />
+      <li rel="bricks">
+        <img src="bricks.svg" />
         <b>Bricks</b>
         <p>Like bricks in a wall, this pattern is made up of offset rectangles.</p>
+        <div class="badge">Fast</div>
       </li>
-      <li>
-        <img src="" />
+      <li rel="fans">
+        <img src="fans.svg" />
         <b>Fans</b>
         <p>Offset fan design made from arcs.</p>
+        <div class="badge">Fast</div>
       </li>
-      <li>
-        <img src="" />
+      <li rel="square">
+        <img src="square.svg" />
         <b>Square</b>
         <p>Each pixel in the image represented by a square</p>
+        <div class="badge">Fast</div>
       </li>
-      <li>
-        <img src="" />
+      <li rel="circle">
+        <img src="circle.svg" />
         <b>Circle</b>
         <p>Each pixel in the image represented by a circle</p>
+        <div class="badge">Fast</div>
       </li>
-      <li>
-        <img src="" />
+      <li rel="heart">
+        <img src="heart.svg" />
         <b>Heart</b>
         <p>Each pixel in the image represented by a heart</p>
+        <div class="badge">Fast</div>
       </li>
-      <li>
-        <img src="" />
+      <li rel="tapestry">
+        <img src="tapestry.svg" />
         <b>Tapestry</b>
         <p>Each pixel in the image represented by a 'tapestry stitch'</p>
+        <div class="badge">Fast</div>
       </li>
-      <li>
-        <img src="" />
+      <li rel="crossstitch">
+        <img src="crossstitch.svg" />
         <b>Cross Stitch</b>
         <p>Each pixel in the image represented by a 'cross stitch'</p>
+        <div class="badge">Fast</div>
       </li>
-      <li>
-        <img src="" />
-        <b>Paint</b>
-        <p>Repeating a paint stroke motif rotated to match the pixel's position in the image</p>
-      </li>
-      <li>
-        <img src="" />
-        <b>Puzzle</b>
-        <p>A complete jigsaw, with edges and corners</p>
-      </li>
-      <li>
-        <img src="" />
+      <li rel="words" class="options">
+        <img src="words.svg" />
         <b>Words</b>
         <p>Building up the image using characters, with a choice of input text and font</p>
+        <div class="badge">Slow</div>
+        <div class="badge">Options</div>
       </li>
-      <li>
-        <img src="" />
+      <li rel="hilbert" class="options">
+        <img src="hilbert.svg" />
         <b>Hilbert</b>
         <p>A space-filling Hilbert curve</p>
+        <div class="badge">Slow</div>
+        <div class="badge">Options</div>
+      </li>
+      <li rel="puzzle">
+        <img src="puzzle.svg" />
+        <b>Puzzle</b>
+        <p>A complete jigsaw, with edges and corners</p>
+        <div class="badge">Slow</div>
+      </li>
+      <li rel="paint">
+        <img src="paint.svg" />
+        <b>Paint</b>
+        <p>Repeating a paint stroke motif rotated to match the pixel's position in the image</p>
+        <div class="badge">Slow</div>
       </li>
     </ul>
 
-    <ul class="options" rel="options">
+    <ul class="options hilbert" rel="">
       <li>
-        <img src="" />
-        <b>Hilbert</b>
-        <p>A space-filling Hilbert curve</p>
+        <label>Complexity</label>
+        <input name="factor" id="factor" value="6" />
       </li>
     </ul>
 
-  </form> -->
-  <form class="basic">
+    <ul class="options words" rel="">
+      <li>
+        <label>Text</label>
+        <textarea name="text" id="text" />IMGSVG</textarea>
+      </li>
+      <li>
+        <label>Font</label>
+        <select name="font" id="font">
+          <option value="Ubuntu Mono" selected>Ubuntu Mono</option>
+        </select>
+      </li>
+    </ul>
+
+    <ul class="options" rel="size">
+      <li>
+        <label>Tile Count</label>
+        <input type="number" name="size" id="size" value="128" />
+        <p class="hint">The number of tiles (approximately) across the image.</p>
+      </li>
+      <li>
+        <label>Size</label>
+        <input type="number" name="cellsize" id="cellsize" value="10" />
+        <p class="hint">The size of each file.</p>
+      </li>
+      <li>
+        <label>Padding</label>
+        <input type="number" name="gap" id="gap" value="1" />
+        <p class="hint">The space between each tile.</p>
+      </li>
+      <li>
+        <label>Scaling</label>
+        <select name="scaling" id="scaling">
+          <option value="none">None</option>
+          <option value="additive">Additive</option>
+          <option value="multiply">Multiply</option>
+          <option value="random">Random</option>
+        </select>
+        <p class="hint">Scaling increases the size of the tiles relative to their brightness.</p>
+      </li>
+    </ul>
+
+    <ul class="options" rel="color">
+      <li>
+        <label>Color Variance</label>
+        <input type="number" name="variance" id="variance" value="30" />
+        <p class="hint">Level to modify the color of each tile by (decrease for accurate colors, increase it if there are large flat areas
+          in your source image.</p>
+      </li>
+      <li>
+        <label>Background</label>
+        <select name="background" id="background">
+          <option value="black" selected>Black</option>
+          <option value="grey">Grey</option>
+          <option value="white">White</option>
+        </select>
+        <p class="hint">Change the background color of the SVG.</p>
+      </li>
+    </ul>
+
     <div>
-      <label>Shape</label>
-      <select name="shape" id="shape">
-        <optgroup label="Tessellations">
-          <option value="hex">Hex</option>
-          <option value="triangle">Triangle</option>
-          <option value="cross">Cross</option>
-          <option value="flower">Flower</option>
-          <option value="pentagon">Pentagon</option>
-          <option value="bricks">Bricks</option>
-          <option value="fans">Fans</option>
-        </optgroup>
-        <optgroup label="Repetitions">
-          <option value="square">Square</option>
-          <option value="circle">Circle</option>
-          <option value="heart">Heart</option>
-          <option value="tapestry">Tapestry</option>
-          <option value="crossstitch">Cross Stitch</option>
-        </optgroup>
-        <optgroup label="Experiments">
-          <option value="paint">Paint</option>
-          <option value="puzzle" selected>Puzzle</option>
-          <option value="words">Words</option>
-          <option value="hilbert">Hilbert</option>
-        </optgroup>
-      </select>
+      <button id="download">Download SVG</button>
+      <button type="button" id="toggle">Toggle Options</button>
+      <button id="regen">Regenerate SVG</button>
     </div>
-    <div class="shape-option shape-option-for-words hide-option">
-      <label>Text</label>
-      <textarea name="text" id="text" />IMGSVG</textarea>
-    </div>
-    <div class="shape-option shape-option-for-words hide-option">
-      <label>Font</label>
-      <select name="font" id="font">
-        <option value="Ubuntu Mono" selected>Ubuntu Mono</option>
-      </select>
-    </div>
-    <div class="shape-option shape-option-for-hilbert hide-option">
-      <label>Complexity</label>
-      <input name="factor" id="factor" value="6" />
-    </div>
-    <div>
-      <label>Tile Count</label>
-      <input type="number" name="size" id="size" value="128" />
-    </div>
-    <div>
-      <label>Size</label>
-      <input type="number" name="cellsize" id="cellsize" value="10" />
-    </div>
-    <div>
-      <label>Padding</label>
-      <input type="number" name="gap" id="gap" value="1" />
-    </div>
-    <div>
-      <label>Scaling</label>
-      <select name="scaling" id="scaling">
-        <option value="none">None</option>
-        <option value="additive">Additive</option>
-        <option value="multiply">Multiply</option>
-        <option value="random">Random</option>
-      </select>
-    </div>
-    <div>
-      <label>Color Variance</label>
-      <input type="number" name="variance" id="variance" value="30" />
-    </div>
-    <div>
-      <label>Background</label>
-      <select name="background" id="background">
-        <option value="black" selected>Black</option>
-        <option value="grey">Grey</option>
-        <option value="white">White</option>
-      </select>
-    </div>
-    <div>
-      <label></label>
-      <button type="button" id="regen">Regenerate</button>
-    </div>
-    <div>
-      <label></label>
-      <button type="button" id="download">Download SVG</button>
-    </div>
-    <div>
-      <label></label>
-      <p>Drop any image on the page to generate a new picture</p>
-    </div>
+
   </form>
 </body>
 

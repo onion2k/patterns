@@ -13,6 +13,11 @@ import words from "./generators/words";
 import crossstitch from "./generators/crossstitch";
 import hilbert from "./generators/hilbert";
 
+/**
+ * SVG generator from shape generators
+ * @constructor
+ * @param {object} data - parameters for the SVG generator
+ */
 class Mosaic {
   constructor(data) {
     // Worker for building mosaics

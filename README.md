@@ -1,10 +1,28 @@
 # Patterns
 
-An SVG pattern generator. Takes an image as inout and outputs various different shapes.
+An SVG pattern generator. It takes an image as input and outputs an SVG with various different shape options.
 
 # Usage
 
-Use `npm run atart` to run
+Use `npm run start` to run.
+
+# Available Shapes
+
+* Hex
+* Cross
+* Flower
+* Pentagon
+* Bricks
+* Fans
+* Square
+* Circle
+* Heart
+* Tapestry
+* Cross Stitch
+* Paint
+* Puzzle
+* Words
+* Hilbert
 
 # Roadmap
 
@@ -18,3 +36,8 @@ Use `npm run atart` to run
 * Circle packing
 * Halftone
 * Semi regular
+
+# Issues
+
+* Feature flag for new ui not implemented
+* Spacing differences between shape types

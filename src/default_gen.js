@@ -1,6 +1,13 @@
-export default function() {
-  const w = document.body.clientWidth;
-  const h = document.body.clientHeight;
+/**
+ * Create a basic image to use when there isn't one available.
+ * @constructor
+ * @external document - A browser document instance
+ * @param {number} width - image width
+ * @param {number} height - image height
+ */
+export default function(width, height) {
+  const w = width || document.body.clientWidth;
+  const h = height || document.body.clientHeight;
 
   const c = document.createElement("canvas");
   const aspect = h / w;

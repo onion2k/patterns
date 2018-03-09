@@ -1,0 +1,19 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-50 -40 259.25 188.5"
+          preserveAspectRatio="xMidYMid slice" width="159.25" height="108.5">
+          <defs>
+            <rect id="tapestry" x="-24" y="-15" width="48" height="30" rx="7" ry="3" transform="rotate(-45)"></rect>
+          </defs>
+          <rect width="100%" height="100%" fill="black"></rect>
+          <use xlink:href="#tapestry" fill="rgb(112,6,169)" transform="translate(0, 0) "></use>
+          <use xlink:href="#tapestry" fill="rgb(79,6,182)" transform="translate(49, 0) "></use>
+          <use xlink:href="#tapestry" fill="rgb(31,-9,179)" transform="translate(98, 0) "></use>
+          <use xlink:href="#tapestry" fill="rgb(143,13,166)" transform="translate(12.25, 31) "></use>
+          <use xlink:href="#tapestry" fill="rgb(99,2,168)" transform="translate(61.25, 31) "></use>
+          <use xlink:href="#tapestry" fill="rgb(68,4,183)" transform="translate(110.25, 31) "></use>
+          <use xlink:href="#tapestry" fill="rgb(166,12,155)" transform="translate(24.5, 62) "></use>
+          <use xlink:href="#tapestry" fill="rgb(141,20,176)" transform="translate(73.5, 62) "></use>
+          <use xlink:href="#tapestry" fill="rgb(90,1,171)" transform="translate(122.5, 62) "></use>
+          <use xlink:href="#tapestry" fill="rgb(204,26,159)" transform="translate(36.75, 93) "></use>
+          <use xlink:href="#tapestry" fill="rgb(178,33,179)" transform="translate(85.75, 93) "></use>
+          <use xlink:href="#tapestry" fill="rgb(128,15,175)" transform="translate(134.75, 93) "></use>
+        </svg>

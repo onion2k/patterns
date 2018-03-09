@@ -1,0 +1,69 @@
+{
+  "hex": { "x": 1, "y": 1.25, "meta": {} },
+  "fans": { "x": 1, "y": 2, "meta": {} },
+  "triangle": { "x": 1, "y": 1, "meta": {} },
+  "square": {
+    "x": 1,
+    "y": 1,
+    "meta": {
+      "length": [1, 1],
+      "offset": 0,
+      "rotation": 0,
+      "borderRadius": [0, 0],
+      "offsetMod": 1
+    }
+  },
+  "circle": { "x": 1, "y": 1, "meta": {} },
+  "flower": { "x": 1, "y": 1, "meta": {} },
+  "pentagon": { "x": 8, "y": 1, "meta": {} },
+  "cross": { "x": 1.5, "y": 1, "meta": {} },
+  "paint": { "x": 1, "y": 1, "meta": {} },
+  "puzzle": { "x": 1, "y": 1, "meta": {} },
+  "words": {
+    "x": 1,
+    "y": 1,
+    "meta": {
+      "text": "IMGSVG",
+      "font": "Ubuntu Mono"
+    }
+  },
+  "bricks": {
+    "x": 0.5,
+    "y": 1,
+    "meta": {
+      "length": [2, 1],
+      "offset": 0.5,
+      "rotation": 0,
+      "borderRadius": [0, 0],
+      "offsetMod": 2
+    }
+  },
+  "tapestry": {
+    "x": 0.75,
+    "y": 1,
+    "meta": {
+      "offset": 0.25,
+      "length": [1.6, 1],
+      "rotation": -45,
+      "borderRadius": [7, 3],
+      "offsetMod": 4
+    }
+  },
+  "crossstitch": {
+    "x": 1,
+    "y": 1,
+    "meta": {}
+  },
+  "heart": {
+    "x": 1,
+    "y": 1,
+    "meta": {}
+  },
+  "hilbert": {
+    "x": 1,
+    "y": 1,
+    "meta": {
+      "factor": 6
+    }
+  }
+}
