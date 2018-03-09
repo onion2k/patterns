@@ -161,6 +161,9 @@ ul.menu > li:hover.option {
 ul.menu > li.option {
   cursor: pointer;
 }
+ul.menu > li.hide {
+  display: none;
+}
 ul.menu > li.active:after,
 ul.menu > li.active:before {
   left: 100%;

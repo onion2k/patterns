@@ -89,6 +89,9 @@ document.querySelectorAll("form.newui>ul.menu>li.option").forEach(o => {
       document
         .querySelector("ul.options." + shape)
         .setAttribute("rel", "shapeoptions");
+      document.querySelector("li[rel=shapeoptions]").classList.remove("hide");
+    } else {
+      document.querySelector("li[rel=shapeoptions]").classList.add("hide");
     }
   });
 });

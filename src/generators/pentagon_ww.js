@@ -34,8 +34,8 @@ export default class Hex extends base {
     path += this.round(Math.sin(r) * c) + " ";
     path += "Z";
 
-    this.mX = Math.max(...this.extents.x);
-    this.mY = Math.max(...this.extents.y);
+    this.mX = 4 * Math.max(...this.extents.x);
+    this.mY = 4 * Math.max(...this.extents.y);
 
     this.addDef(`<path id="h" d="${path}"></path>`);
   }
@@ -60,7 +60,7 @@ export default class Hex extends base {
       )})`;
 
       let s = this.round(this.scale(r, g, b));
-      s = 0.25;
+      s = 1;
       let scale = "";
       if (s) {
         scale = `scale(${s})`;
