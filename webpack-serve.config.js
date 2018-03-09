@@ -16,6 +16,10 @@ module.exports = {
     filename: "index.js",
     crossOriginLoading: "anonymous"
   },
+  serve: {
+    content: path.join(__dirname, "assets"),
+    port: 3000
+  },
   module: {
     rules: [
       {

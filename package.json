@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-serve ./webpack.config.js --no-reload",
+    "start": "webpack-serve ./webpack-serve.config.js --no-reload",
     "watch": "webpack --config webpack.config.js --watch",
     "build": "webpack --config webpack.config.js"
   },
