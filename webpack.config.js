@@ -37,6 +37,7 @@ module.exports = {
   },
   plugins: [
     new WebpackCleanupPlugin(),
+    new CopyWebpackPlugin([{ from: "assets" }]),
     new HtmlWebpackPlugin({
       template: "src/index.html",
       favicon: "src/favicon.ico"

@@ -1,0 +1,167 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -10 49.5 49.5" preserveAspectRatio="xMidYMid slice" width="49.5" height="49.5">
+	<defs>
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+		</style>
+		<text id="a" font-family="Ubuntu Mono" font-size="15">
+			A
+		</text>
+		<text id="b" font-family="Ubuntu Mono" font-size="15">
+			B
+		</text>
+		<text id="c" font-family="Ubuntu Mono" font-size="15">
+			C
+		</text>
+		<text id="d" font-family="Ubuntu Mono" font-size="15">
+			D
+		</text>
+		<text id="e" font-family="Ubuntu Mono" font-size="15">
+			E
+		</text>
+		<text id="f" font-family="Ubuntu Mono" font-size="15">
+			F
+		</text>
+		<text id="g" font-family="Ubuntu Mono" font-size="15">
+			G
+		</text>
+		<text id="h" font-family="Ubuntu Mono" font-size="15">
+			H
+		</text>
+		<text id="i" font-family="Ubuntu Mono" font-size="15">
+			I
+		</text>
+		<text id="j" font-family="Ubuntu Mono" font-size="15">
+			J
+		</text>
+		<text id="k" font-family="Ubuntu Mono" font-size="15">
+			K
+		</text>
+		<text id="l" font-family="Ubuntu Mono" font-size="15">
+			L
+		</text>
+		<text id="m" font-family="Ubuntu Mono" font-size="15">
+			M
+		</text>
+		<text id="n" font-family="Ubuntu Mono" font-size="15">
+			N
+		</text>
+		<text id="o" font-family="Ubuntu Mono" font-size="15">
+			O
+		</text>
+		<text id="p" font-family="Ubuntu Mono" font-size="15">
+			P
+		</text>
+		<text id="q" font-family="Ubuntu Mono" font-size="15">
+			Q
+		</text>
+		<text id="r" font-family="Ubuntu Mono" font-size="15">
+			R
+		</text>
+		<text id="s" font-family="Ubuntu Mono" font-size="15">
+			S
+		</text>
+		<text id="t" font-family="Ubuntu Mono" font-size="15">
+			T
+		</text>
+		<text id="u" font-family="Ubuntu Mono" font-size="15">
+			U
+		</text>
+		<text id="v" font-family="Ubuntu Mono" font-size="15">
+			V
+		</text>
+		<text id="w" font-family="Ubuntu Mono" font-size="15">
+			W
+		</text>
+		<text id="x" font-family="Ubuntu Mono" font-size="15">
+			X
+		</text>
+		<text id="y" font-family="Ubuntu Mono" font-size="15">
+			Y
+		</text>
+		<text id="z" font-family="Ubuntu Mono" font-size="15">
+			Z
+		</text>
+		<text id="0" font-family="Ubuntu Mono" font-size="15">
+			0
+		</text>
+		<text id="1" font-family="Ubuntu Mono" font-size="15">
+			1
+		</text>
+		<text id="2" font-family="Ubuntu Mono" font-size="15">
+			2
+		</text>
+		<text id="3" font-family="Ubuntu Mono" font-size="15">
+			3
+		</text>
+		<text id="4" font-family="Ubuntu Mono" font-size="15">
+			4
+		</text>
+		<text id="5" font-family="Ubuntu Mono" font-size="15">
+			5
+		</text>
+		<text id="6" font-family="Ubuntu Mono" font-size="15">
+			6
+		</text>
+		<text id="7" font-family="Ubuntu Mono" font-size="15">
+			7
+		</text>
+		<text id="8" font-family="Ubuntu Mono" font-size="15">
+			8
+		</text>
+		<text id="9" font-family="Ubuntu Mono" font-size="15">
+			9
+		</text>
+	</defs>
+	<rect width="100%" height="100%" fill="black">
+	</rect>
+	<use xlink:href="#i" fill="rgb(116,6,167)" transform="translate(0, 0) ">
+	</use>
+	<use xlink:href="#m" fill="rgb(114,24,192)" transform="translate(11, 0) ">
+	</use>
+	<use xlink:href="#g" fill="rgb(74,3,180)" transform="translate(22, 0) ">
+	</use>
+	<use xlink:href="#s" fill="rgb(57,6,191)" transform="translate(33, 0) ">
+	</use>
+	<use xlink:href="#v" fill="rgb(45,13,206)" transform="translate(44, 0) ">
+	</use>
+	<use xlink:href="#g" fill="rgb(145,17,170)" transform="translate(0, 11) ">
+	</use>
+	<use xlink:href="#i" fill="rgb(134,25,186)" transform="translate(11, 11) ">
+	</use>
+	<use xlink:href="#m" fill="rgb(113,24,193)" transform="translate(22, 11) ">
+	</use>
+	<use xlink:href="#g" fill="rgb(76,5,182)" transform="translate(33, 11) ">
+	</use>
+	<use xlink:href="#s" fill="rgb(51,0,185)" transform="translate(44, 11) ">
+	</use>
+	<use xlink:href="#v" fill="rgb(162,14,159)" transform="translate(0, 22) ">
+	</use>
+	<use xlink:href="#g" fill="rgb(161,32,185)" transform="translate(11, 22) ">
+	</use>
+	<use xlink:href="#i" fill="rgb(136,27,188)" transform="translate(22, 22) ">
+	</use>
+	<use xlink:href="#m" fill="rgb(98,8,178)" transform="translate(33, 22) ">
+	</use>
+	<use xlink:href="#g" fill="rgb(76,6,183)" transform="translate(44, 22) ">
+	</use>
+	<use xlink:href="#s" fill="rgb(190,22,160)" transform="translate(0, 33) ">
+	</use>
+	<use xlink:href="#v" fill="rgb(163,14,159)" transform="translate(11, 33) ">
+	</use>
+	<use xlink:href="#g" fill="rgb(162,33,186)" transform="translate(22, 33) ">
+	</use>
+	<use xlink:href="#i" fill="rgb(138,29,190)" transform="translate(33, 33) ">
+	</use>
+	<use xlink:href="#m" fill="rgb(116,27,195)" transform="translate(44, 33) ">
+	</use>
+	<use xlink:href="#g" fill="rgb(227,40,170)" transform="translate(0, 44) ">
+	</use>
+	<use xlink:href="#s" fill="rgb(187,20,158)" transform="translate(11, 44) ">
+	</use>
+	<use xlink:href="#v" fill="rgb(164,16,162)" transform="translate(22, 44) ">
+	</use>
+	<use xlink:href="#g" fill="rgb(141,13,167)" transform="translate(33, 44) ">
+	</use>
+	<use xlink:href="#i" fill="rgb(130,22,183)" transform="translate(44, 44) ">
+	</use>
+</svg>
