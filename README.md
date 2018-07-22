@@ -36,6 +36,9 @@ Use `npm run start` to run.
 * Circle packing
 * Halftone
 * Semi regular
+* Convert to React
+* Add stories
+* Add tests
 
 # Issues
 
