@@ -37,6 +37,7 @@ Use `npm run start` to run.
 * Halftone
 * Semi regular
 * Convert to React
+* Add state manager (MobX)
 * Add stories
 * Add tests
 
