@@ -39,7 +39,7 @@ Use `npm run start` to run.
 * Convert to React
 * Add state manager (MobX)
 * Add stories
-* Add tests
+* Add tests using Jest and Enzyme
 
 # Issues
 
